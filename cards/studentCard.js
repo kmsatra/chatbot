@@ -734,7 +734,7 @@ exports.cgpaCard = async (data, nu) => {
                 ]
             }
         ]
-    }
+     }
     for (let i = 0; i < data.length; i++) {
         var color = "Dark"
         if (data[i].result.toLowerCase() !== "pass") {
@@ -877,10 +877,320 @@ exports.cgpaCard = async (data, nu) => {
 
             })
     }
-
+        
     return cgpa
 }
+exports.imarkCard = async (data, nu) => {
+var imark = 
+    {
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0",
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
+                                    "horizontalAlignment": "Left",
+                                    "size": "Medium"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Poornima University",
+                                    "horizontalAlignment": "Center",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Large"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "2020 - 2021",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQzMjgyNDgwNjIxODIzNTU5/jennifer-lawrence_gettyimages-626382596jpg.jpg",
+                                    "size": "Medium",
+                                    "horizontalAlignment": "Right"
+                                }
+                            ],
+                            "horizontalAlignment": "Center"
+                        }
+                    ]
+                }
+            ],
+            "spacing": "None"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "Score Card- III Semester",
+                    "horizontalAlignment": "Center",
+                    "color": "Accent",
+                    "size": "Medium",
+                    "weight": "Bolder"
+                }
+            ],
+            "spacing": "None"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Subject Code",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Left",
+                                    "weight": "Bolder"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Subject Name",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Left",
+                                    "weight": "Bolder"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "First Mid Term\n",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center",
+                                    "weight": "Bolder"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Second Mid Term\n",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center",
+                                    "weight": "Bolder"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "BASC1011",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Left"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "English",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "width": "stretch",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "A",
+                                                    "horizontalAlignment": "Center"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "width": "stretch",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "A",
+                                                    "horizontalAlignment": "Center"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+        imark['body'].push({
 
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "MCAL010",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Left"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator" : true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "AI",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Left"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator" : true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "A",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator" : true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Pass",
+                                    "wrap": true,
+                                    // "color": "`${color}`",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator" : true
+                        }
+                    ]
+                }
+            ]
+
+        })
+        
+    return imark
+}
 exports.assignmentCard = async (data) => {
     var assignment = {
         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",

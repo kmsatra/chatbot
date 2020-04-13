@@ -1,10 +1,157 @@
 exports.fclCard = async (data) => {
     var fcldetail = {
-        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-        "version": "1.0",
-        "type": "AdaptiveCard",
-        "body": [
-            {
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0",
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
+                                    "horizontalAlignment": "Left",
+                                    "size": "Medium"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Poornima University",
+                                    "horizontalAlignment": "Center",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Large"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "2020 - 2021",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                    "size": "Medium",
+                                    "horizontalAlignment": "Right"
+                                }
+                            ],
+                            "horizontalAlignment": "Center"
+                        }
+                    ]
+                }
+            ],
+            "spacing": "None"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "Faculty Detail",
+                    "horizontalAlignment": "Center",
+                    "color": "Accent",
+                    "size": "Medium",
+                    "weight": "Bolder"
+                }
+            ],
+            "spacing": "None"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "EmployeeCode",
+                                    "weight": "Bolder",
+                                    "horizontalAlignment": "Left",
+                              
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Name",
+                                    "weight": "Bolder",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Designation",
+                                    "separator": true,
+                                    "horizontalAlignment": "Center",
+                                    "weight": "Bolder"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Department",
+                                    "weight": "Bolder",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "seperator": true,
+                            "horizontalAlignment": "Center"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
                 "type": "Container",
                 "items": [
                     {
@@ -12,135 +159,20 @@ exports.fclCard = async (data) => {
                         "columns": [
                             {
                                 "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",
-                                        "style": "Person",
-                                        "altText": "",
-                                        "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
-                                        "horizontalAlignment": "Left",
-                                        "size": "Medium"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "Column",
                                 "width": "stretch",
                                 "items": [
                                     {
                                         "type": "TextBlock",
-                                        "text": "Poornima University",
+                                        "text": "EMP 0017",
                                         "horizontalAlignment": "Center",
-                                        "wrap": true,
-                                        "weight": "Bolder",
-                                        "size": "Large"
-                                    },
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "2020 - 2021",
-                                        "horizontalAlignment": "Center"
-                                    }
-                                ],
-                                "verticalContentAlignment": "Center",
-                                "seperator": true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",
-                                        "style": "Person",
-                                        "altText": "",
-                                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
-                                        "size": "Medium",
-                                        "horizontalAlignment": "Right"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center"
-                            }
-                        ]
-                    }
-                ],
-                "spacing": "None"
-            },
-            {
-                "type": "Container",
-                "items": [
-                    {
-                        "type": "TextBlock",
-                        "text": "Faculty Detail",
-                        "horizontalAlignment": "Center",
-                        "color": "Accent",
-                        "size": "Medium",
-                        "weight": "Bolder"
-                    }
-                ],
-                "spacing": "None"
-            },
-            {
-                "type": "Container",
-                "items": [
-                    {
-                        "type": "ColumnSet",
-                        "columns": [
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Name",
-                                        "weight": "Bolder",
-                                        "horizontalAlignment": "Left"
+                                        "wrap": true
                                     }
                                 ],
                                 "horizontalAlignment": "Center",
-                                "verticalContentAlignment": "Center",
-                                "seperator": true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Designation",
-                                        "separator": true,
-                                        "horizontalAlignment": "Left",
-                                        "weight": "Bolder"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center",
-                                "verticalContentAlignment": "Center",
-                                "seperator": true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Department",
-                                        "weight": "Bolder",
-                                        "horizontalAlignment": "Left"
-                                    }
-                                ],
                                 "verticalContentAlignment": "Center",
                                 "seperator": true,
-                                "horizontalAlignment": "Center"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "Container",
-                "items": [
-                    {
-                        "type": "ColumnSet",
-                        "columns": [
+                                "separator": true
+                            },
                             {
                                 "type": "Column",
                                 "width": "stretch",
@@ -148,7 +180,7 @@ exports.fclCard = async (data) => {
                                     {
                                         "type": "TextBlock",
                                         "text": data.recordset[0].name,
-                                        "horizontalAlignment": "Left",
+                                        "horizontalAlignment": "Center",
                                         "wrap": true
                                     }
                                 ],
@@ -165,7 +197,7 @@ exports.fclCard = async (data) => {
                                         "type": "TextBlock",
                                         "text": data.recordset[0].designation,
                                         "wrap": true,
-                                        "horizontalAlignment": "Left"
+                                        "horizontalAlignment": "Center"
                                     }
                                 ],
                                 "horizontalAlignment": "Center",
@@ -179,7 +211,7 @@ exports.fclCard = async (data) => {
                                     {
                                         "type": "TextBlock",
                                         "text": data.recordset[0].department,
-                                        "horizontalAlignment": "Left",
+                                        "horizontalAlignment": "Center",
                                         "wrap": true
                                     }
                                 ],
@@ -650,7 +682,7 @@ exports.fclCard = async (data) => {
                                 "items": [
                                     {
                                         "type": "TextBlock",
-                                        "text": "Net Salary",
+                                        "text": "Gross Salary",
                                         "weight": "Bolder"
                                     }
                                 ]
@@ -662,6 +694,38 @@ exports.fclCard = async (data) => {
                                     {
                                         "type": "TextBlock",
                                         "text": `₹ ${data.recordset[0].netSalary}`
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "separator": true
+            },
+            {
+                "type": "Container",
+                "items": [
+                    {
+                        "type": "ColumnSet",
+                        "columns": [
+                            {
+                                "type": "Column",
+                                "width": "stretch",
+                                "items": [
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "Total Working Days",
+                                        "weight": "Bolder"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Column",
+                                "width": "stretch",
+                                "items": [
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "120"
                                     }
                                 ]
                             }
@@ -686,14 +750,14 @@ exports.fclCard = async (data) => {
                     "x": "Leave Detail"
                 }
             },
+            // {
+            //     "type": "Action.Submit",
+            //     "title": "Salary Detail",
+            //     "data": {
+            //         "x": "Net Salary"
+            //     }
+            // }
             {
-                "type": "Action.Submit",
-                "title": "Salary Detail",
-                "data": {
-                    "x": "Net Salary"
-                }
-            }
-            ,{
                 "type": "Action.Submit",
                 "title": "Take Attendance",
                 "data": {
