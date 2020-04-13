@@ -139,7 +139,7 @@ class FacultyDialog extends ComponentDialog {
                     return await stepContext.next();
 
 
-                case 'Net Salary':
+                case 'Gross Salary':
 
                     var sal
                     await db.facultySalaryDetail('1').then(async result => {
@@ -212,9 +212,9 @@ class FacultyDialog extends ComponentDialog {
                 // return Dialog.EndOfTurn
                 // return await stepContext.endDialog()
                 case 'Salary Detail':
-                    // console.log("====================Net Salary")
+                    // console.log("====================Gross Salary")
                     // await stepContext.context.sendActivity("deposit");
-                    fclDialogInternalVar = "Net Salary"
+                    fclDialogInternalVar = "Gross Salary"
                     return await stepContext.beginDialog(WATERFALL_DIALOG)
                 // return Dialog.EndOfTurn
                 // return await stepContext.endDialog()

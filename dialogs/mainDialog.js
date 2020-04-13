@@ -58,7 +58,7 @@ class MainDialog extends ComponentDialog {
         // await stepContext.context.sendActivity("Hello, Please enter Your mail Id to proceed!");
         await stepContext.context.sendActivity({type: ActivityTypes.Typing});
         await stepContext.context.sendActivity("Please choose a role to proceed:")
-        await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Management', 'Faculty', 'Student', 'Parent']));
+        await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Management','HOD', 'Faculty', 'Student', 'Parent']));
         return Dialog.EndOfTurn;
     }
     async userInput(stepContext) {
@@ -71,6 +71,10 @@ class MainDialog extends ComponentDialog {
                 await stepContext.beginDialog(Mgt_Dialog);
                 return Dialog.EndOfTurn;
             // return await stepContext.endDialog()
+            case 'HOD':
+                await stepContext.beginDialog(Mgt_Dialog);
+                return Dialog.EndOfTurn;
+            
             case 'Student':
                 await stepContext.beginDialog(Stu_Dialog);
                 return Dialog.EndOfTurn;

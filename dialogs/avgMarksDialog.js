@@ -184,7 +184,7 @@ class avgMarksDialog extends ComponentDialog {
             // console.log("ssssss",s, s2)
             dbcgpa.push(s)
             dbcgpa.push(s2)
-            // console.log("=====>>>>", dbcgpa[0])
+             console.log("=====>>>>")
             const cgpa = { attachments: [], attachmentLayout: AttachmentLayoutTypes.Carousel };
             for (var i = 0; i < dbcgpa.length; i++) {
                 var ccard = await stuCard.cgpaCard(dbcgpa[i], dbcgpa.length)

@@ -102,11 +102,15 @@ class StudentDialog extends ComponentDialog {
                     // console.log("=====>>>>", dbcgpa[0])
                     const cgpa = { attachments: [], attachmentLayout: AttachmentLayoutTypes.Carousel };
                     for (var i = 0; i < dbcgpa.length; i++) {
-                        var ccard = await stucard.cgpaCard(dbcgpa[i], dbcgpa.length)
-                        var cgcard = await CardFactory.adaptiveCard(ccard)
-                        cgpa.attachments.push(cgcard);
+                         var ccard = await stucard.cgpaCard(dbcgpa[i], dbcgpa.length)
+                         var cgcard = await CardFactory.adaptiveCard(ccard)
+                        cgpa.attachments.push(cgcard);    
                     }
-                    await stepContext.context.sendActivity(cgpa);
+                       var iccard = await stucard.imarkCard()
+                       var igcard = await CardFactory.adaptiveCard(iccard)
+                       cgpa.attachments.push(igcard);
+
+                        await stepContext.context.sendActivity(cgpa)
                     // return Dialog.EndOfTurn;
                     // return await stepContext.endDialog()
                     return await stepContext.next()

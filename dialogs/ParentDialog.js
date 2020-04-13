@@ -97,19 +97,25 @@ class ParentDialog extends ComponentDialog {
                         else if (element.semester === 'II') {
                             s2.push(element)
                         }
+                        
                     });
                     // console.log("ssssss",s, s2)
                     dbcgpa.push(s)
                     dbcgpa.push(s2)
-                    // console.log("=====>>>>", dbcgpa[0])
+                    console.log("=====>>>>")
                     const cgpa = { attachments: [], attachmentLayout: AttachmentLayoutTypes.Carousel };
                     for (var i = 0; i < 2; i++) {
                         var ccard = await parcard.cgpaCard(dbcgpa[i], dbcgpa.length)
                         var cgcard = await CardFactory.adaptiveCard(ccard)
                         cgpa.attachments.push(cgcard);
-
                     }
-                    await stepContext.context.sendActivity(cgpa);
+                    // await stepContext.context.sendActivity(cgpa);
+                        var iccard = await parcard.imarkCard()
+                        var igcard = await CardFactory.adaptiveCard(iccard)
+                        cgpa.attachments.push(igcard);
+
+                        await stepContext.context.sendActivity(cgpa)
+        
                     // return Dialog.EndOfTurn;
                     // return await stepContext.endDialog()
                     return await stepContext.next();
@@ -158,7 +164,7 @@ class ParentDialog extends ComponentDialog {
                 // return await stepContext.endDialog()
 
                 case 'Marks Details':
-                    // console.log("====================CGPA")
+                     //console.log("====================CGPA")
                     // await stepContext.context.sendActivity("deposit");
                     parDialogInternalVar = "CGPA"
                     return await stepContext.beginDialog(WATERFALL_DIALOG)
