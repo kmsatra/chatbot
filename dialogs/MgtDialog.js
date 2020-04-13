@@ -1,6 +1,7 @@
 const { ComponentDialog, NumberPrompt, TextPrompt, ChoiceFactory, WaterfallDialog, Dialog } = require('botbuilder-dialogs');
 const { AttachmentLayoutTypes, CardFactory, ActivityTypes } = require('botbuilder');
 const { avgAttd_Dialog, avgAttendanceDialog } = require('./avgAttendanceDialog')
+const { feeDeta_Dialog, feeDetailsDialog } = require('./feeDetailsDialog')
 const { avgMarks_Dialog, avgMarksDialog } = require('./avgMarksDialog')
 const TEXT_PROMPT = 'TEXT_PROMPT';
 const NUMBER_PROMPT = 'NUMBER_PROMPT';
@@ -15,6 +16,7 @@ class MgtDialog extends ComponentDialog {
         this.addDialog(new TextPrompt(TEXT_PROMPT));
         this.addDialog(new NumberPrompt(NUMBER_PROMPT));
         this.addDialog(new avgAttendanceDialog());
+        this.addDialog(new feeDetailsDialog());
         this.addDialog(new avgMarksDialog());
         this.addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
             //this.mgtbuttons.bind(this),
@@ -132,6 +134,12 @@ class MgtDialog extends ComponentDialog {
                 mgtDialogInternalVar = stepContext.context.activity.value.x
             }
             switch (mgtDialogInternalVar) {
+                
+                case 'feeDetails':
+                    console.log("1",mgtDialogInternalVar);
+                    await stepContext.beginDialog(feeDeta_Dialog);
+                    return Dialog.EndOfTurn;
+                
                 case 'Pending':
                     await stepContext.context.sendActivity(pending);
                     // return Dialog.EndOfTurn;
@@ -144,7 +152,7 @@ class MgtDialog extends ComponentDialog {
                     return await stepContext.next();
                 // return await stepContext.endDialog()
                 case 'avgAttendance':
-                    console.log(mgtDialogInternalVar);
+                    console.log("1",mgtDialogInternalVar);
                     await stepContext.beginDialog(avgAttd_Dialog);
                     return Dialog.EndOfTurn;
                 case 'avgMarks':
@@ -169,7 +177,7 @@ class MgtDialog extends ComponentDialog {
     }
 
     async tryOut(stepContext) {
-        console.log("----->>", stepContext.result)
+        console.log("----->>first here", stepContext.result)
         try {
             switch (stepContext.result) {
                 case 'Pending Fees Details':
@@ -187,6 +195,10 @@ class MgtDialog extends ComponentDialog {
                     return await stepContext.beginDialog(WATERFALL_DIALOG)
                 // return Dialog.EndOfTurn
                 // return await stepContext.endDialog()
+                case 'Fees Details':
+                    mgtDialogInternalVar = "feeDetails"
+                    return await stepContext.beginDialog(WATERFALL_DIALOG)
+                
                 case 'Average Attendance':
                     mgtDialogInternalVar = "avgAttendance"
                     return await stepContext.beginDialog(WATERFALL_DIALOG)
