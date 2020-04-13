@@ -353,6 +353,13 @@ exports.mgtCard = async (data) => {
             },
             {
                 "type": "Action.Submit",
+                "title": "Fees Details",
+                "data": {
+                    "x": "feeDetails"
+                }
+            },
+            {
+                "type": "Action.Submit",
                 "title": "Average Attendance",
                 "data": {
                     "x": "avgAttendance"
@@ -370,7 +377,6 @@ exports.mgtCard = async (data) => {
 
     return mgtdetail
 }
-
 
 
 exports.PendingCard = async (data) => {

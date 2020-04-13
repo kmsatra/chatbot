@@ -880,6 +880,7 @@ exports.cgpaCard = async (data, nu) => {
         
     return cgpa
 }
+
 exports.imarkCard = async (data, nu) => {
 var imark = 
     {
