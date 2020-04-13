@@ -25,6 +25,8 @@ class DialogBot extends ActivityHandler {
             console.log('Running dialog with Message Activity.');
             const members = await TeamsInfo.getMembers(context);
 
+            // console.log("data of user=======>>>>>",members)
+
             // Run the Dialog with the new message Activity.
             await this.dialog.run(context, this.dialogState);
 
