@@ -1,7 +1,7 @@
 var sql = require("mssql");
 
 const config = {
-    user: 'erp',
+    user: 'chatbot',
     password: 'celebal@123',
     server: 'cterpdbserver.database.windows.net',
     database: 'erpdb',
