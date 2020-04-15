@@ -206,13 +206,34 @@ exports.facultyClassDetail = (facultyId) => new Promise((resolve, reject) => {
     });
 
 })
+// function name
+// parameter
 
 exports.averageAttendance = (id, type) => new Promise((resolve, reject) => {
 
     var request = new sql.Request();
     request.input('id', sql.Int(30), id)//1
-    request.input('type', sql.VarChar(30), type)//1
+    request.input('type', sql.VarChar(30), type)//1 konsa type h average  college
     request.execute('sp_avergaeAttendance', function (err, recordset) {
+        if (err) {
+            console.log("Error in fetching faculty class details.", err);
+            reject();
+        }
+        else {
+         //console.log(recordset);
+            resolve(recordset);
+        }
+    });
+
+})
+
+
+exports.feeDetail = (id, type) => new Promise((resolve, reject) => {
+
+    var request = new sql.Request();
+    request.input('id', sql.Int(30), id)//1
+    request.input('type', sql.VarChar(30), type)//1 konsa type h average  college
+    request.execute('fee_details', function (err, recordset) {
         if (err) {
             console.log("Error in fetching faculty class details.", err);
             reject();
