@@ -177,7 +177,7 @@ exports.CampuswisefeedetailCard = async (data) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].campusName}`
+                    "x": `${data[i].recordId},${data[i].CampusName}`
                 }
             },
             "items": [
@@ -190,7 +190,7 @@ exports.CampuswisefeedetailCard = async (data) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": `${data[i].campusName}`,
+                                    "text": `${data[i].CampusName}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Left"
                                 }
@@ -205,7 +205,7 @@ exports.CampuswisefeedetailCard = async (data) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "10,00,000",
+                                    "text": `${data[i].TotalFee}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Left"
                                 }
@@ -220,7 +220,7 @@ exports.CampuswisefeedetailCard = async (data) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "6,00,000",
+                                    "text": `${data[i].TotalFeeDeposited }`,
                                     "wrap": true,
                                     "horizontalAlignment": "Center"
                                 }
@@ -235,7 +235,7 @@ exports.CampuswisefeedetailCard = async (data) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "4,00,000",
+                                    "text": `${data[i].TotalFeePending }`,
                                     "wrap": true,
                                     "horizontalAlignment": "Center"
                                 }
@@ -249,17 +249,15 @@ exports.CampuswisefeedetailCard = async (data) => {
                             "width": "stretch",
                             "items": [
                                 {
-                                    "type": "TextBlock",
-                                    "text": "Details >",
-                                    "color": "Accent",
-                                    "wrap": true,
-                                    "horizontalAlignment": "Center",
-                                    "weight": "Bolder"
+                                    "type": "Image",
+                                    "altText": "",
+                                    "url": "https://png.pngtree.com/svg/20170919/2551b1199e.png",
+                                    "height": "stretch",
+                                    "size": "Small",
+                                    "width": "21px",
+                                    "horizontalAlignment": "Center"
                                 }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
+                                    ]
                         }
                     ]
                 }
@@ -449,7 +447,7 @@ exports.schoolwisefeedetails = async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].schoolName}`
+                    "x": `${data[i].recordId},${data[i].SchoolName}`
                 }
             },
             "items": [
@@ -462,7 +460,7 @@ exports.schoolwisefeedetails = async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": `${data[i].schoolName}`,
+                                    "text": `${data[i].SchoolName}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Left"
                                 }
@@ -477,7 +475,7 @@ exports.schoolwisefeedetails = async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "10,00,000",
+                                    "text": `${data[i].TotalFee}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Left"
                                 }
@@ -492,7 +490,7 @@ exports.schoolwisefeedetails = async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "6,00,000",
+                                    "text": `${data[i].TotalFeeDeposited}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Center"
                                 }
@@ -507,7 +505,7 @@ exports.schoolwisefeedetails = async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "4,00,000",
+                                    "text": `${data[i].TotalFeePending}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Center"
                                 }
@@ -521,17 +519,15 @@ exports.schoolwisefeedetails = async (data, name) => {
                             "width": "stretch",
                             "items": [
                                 {
-                                    "type": "TextBlock",
-                                    "text": "Details >",
-                                    "color": "Accent",
-                                    "wrap": true,
-                                    "horizontalAlignment": "Center",
-                                    "weight": "Bolder"
+                                    "type": "Image",
+                                    "altText": "",
+                                    "url": "https://png.pngtree.com/svg/20170919/2551b1199e.png",
+                                    "height": "stretch",
+                                    "size": "Small",
+                                    "width": "21px",
+                                    "horizontalAlignment": "Center"
                                 }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
+                                    ]
                         }
                     ]
                 }
@@ -720,7 +716,7 @@ exports.deptwisefeedetails = async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].departmentName}`
+                    "x": `${data[i].recordId},${data[i].DepartmentName}`
                 }
             },
             "items": [
@@ -733,7 +729,7 @@ exports.deptwisefeedetails = async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": `${data[i].departmentName}`,
+                                    "text": `${data[i].DepartmentName}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Left"
                                 }
@@ -748,7 +744,7 @@ exports.deptwisefeedetails = async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "10,00,000",
+                                    "text": `${data[i].TotalFee}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Left"
                                 }
@@ -763,7 +759,7 @@ exports.deptwisefeedetails = async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "6,00,000",
+                                    "text": `${data[i].TotalFeeDeposited}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Center"
                                 }
@@ -778,7 +774,7 @@ exports.deptwisefeedetails = async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "4,00,000",
+                                    "text": `${data[i].TotalFeePending}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Center"
                                 }
@@ -792,17 +788,15 @@ exports.deptwisefeedetails = async (data, name) => {
                             "width": "stretch",
                             "items": [
                                 {
-                                    "type": "TextBlock",
-                                    "text": "Details >",
-                                    "color": "Accent",
-                                    "wrap": true,
-                                    "horizontalAlignment": "Center",
-                                    "weight": "Bolder"
+                                    "type": "Image",
+                                    "altText": "",
+                                    "url": "https://png.pngtree.com/svg/20170919/2551b1199e.png",
+                                    "height": "stretch",
+                                    "size": "Small",
+                                    "width": "21px",
+                                    "horizontalAlignment": "Center"
                                 }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
+                                    ]
                         }
                     ]
                 }
@@ -989,7 +983,7 @@ exports.semwisefeedetails= async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].semester}`
+                    "x": `${data[i].recordId},${data[i].SemesterName}`
                 }
             },
             "items": [
@@ -1002,7 +996,7 @@ exports.semwisefeedetails= async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": `${data[i].semester}`,
+                                    "text": `${data[i].SemesterName}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Center"
                                 }
@@ -1017,7 +1011,7 @@ exports.semwisefeedetails= async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "10,00,000",
+                                    "text": `${data[i].TotalFee}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Left"
                                 }
@@ -1032,7 +1026,7 @@ exports.semwisefeedetails= async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "6,00,000",
+                                    "text": `${data[i].TotalFeeDeposited}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Center"
                                 }
@@ -1047,7 +1041,7 @@ exports.semwisefeedetails= async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "4,00,000",
+                                    "text": `${data[i].TotalFeePending}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Center"
                                 }
@@ -1061,17 +1055,15 @@ exports.semwisefeedetails= async (data, name) => {
                             "width": "stretch",
                             "items": [
                                 {
-                                    "type": "TextBlock",
-                                    "text": "Details >",
-                                    "color": "Accent",
-                                    "wrap": true,
-                                    "horizontalAlignment": "Center",
-                                    "weight": "Bolder"
+                                    "type": "Image",
+                                    "altText": "",
+                                    "url": "https://png.pngtree.com/svg/20170919/2551b1199e.png",
+                                    "height": "stretch",
+                                    "size": "Small",
+                                    "width": "21px",
+                                    "horizontalAlignment": "Center"
                                 }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
+                                    ]
                         }
                     ]
                 }
@@ -1258,7 +1250,7 @@ exports.classwisefeedetails = async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].class}`
+                    "x": `${data[i].recordId},${data[i].ClassName}`
                 }
             },
             "items": [
@@ -1271,7 +1263,7 @@ exports.classwisefeedetails = async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": `${data[i].class}`,
+                                    "text": `${data[i].ClassName}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Center"
                                 }
@@ -1280,13 +1272,13 @@ exports.classwisefeedetails = async (data, name) => {
                             "verticalContentAlignment": "Center",
                             "seperator" : true
                         },
-{
+                        {
                             "type": "Column",
                             "width": "stretch",
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "10,00,000",
+                                    "text": `${data[i].TotalFee}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Left"
                                 }
@@ -1301,7 +1293,7 @@ exports.classwisefeedetails = async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "6,00,000",
+                                    "text": `${data[i].TotalFeeDeposited}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Center"
                                 }
@@ -1316,7 +1308,7 @@ exports.classwisefeedetails = async (data, name) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "4,00,000",
+                                    "text": `${data[i].TotalFeePending}`,
                                     "wrap": true,
                                     "horizontalAlignment": "Center"
                                 }
@@ -1330,9 +1322,130 @@ exports.classwisefeedetails = async (data, name) => {
                             "width": "stretch",
                             "items": [
                                 {
+                                    "type": "Image",
+                                    "altText": "",
+                                    "url": "https://png.pngtree.com/svg/20170919/2551b1199e.png",
+                                    "height": "stretch",
+                                    "size": "Small",
+                                    "width": "21px",
+                                    "horizontalAlignment": "Center"
+                                }
+                                    ]
+                        }
+                        ]
+                }
+            ]
+        })
+    }
+    return card;
+
+}
+
+exports.sectionwisefeedetails = async (data, name) => {
+    var card = {
+        "type": "AdaptiveCard",
+        "body": [
+            {
+                "type": "Container",
+                "items": [
+                    {
+                        "type": "ColumnSet",
+                        "columns": [
+                            {
+                                "type": "Column",
+                                "width": "auto",
+                                "items": [
+                                    {
+                                        "type": "Image",             "style": "Person",
+                                        "altText": "",
+                                        "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
+                                        "horizontalAlignment": "Left",
+                                        "size": "Medium"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Column",
+                                "width": "stretch",
+                                "items": [
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "Poornima University",
+                                        "horizontalAlignment": "Center",
+                                        "wrap": true,
+                                        "weight": "Bolder",
+                                        "size": "Large"
+                                    },
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "2020 - 2021",
+                                        "horizontalAlignment": "Center"
+                                    }
+                                ],
+                                "verticalContentAlignment": "Center",
+                                "seperator" : true
+                            },
+                            {
+                                "type": "Column",
+                                "width": "auto",
+                                "items": [
+                                    {
+                                        "type": "Image",             "style": "Person",
+                                        "altText": "",
+                                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                        "size": "Medium",
+                                        "horizontalAlignment": "Right"
+                                    }
+                                ],
+                                "horizontalAlignment": "Center"
+                            }
+                        ]
+                    }
+                ],
+                "spacing": "None"
+            },
+            {
+                "type": "Container",
+                "items": [
+                    {
+                        "type": "TextBlock",
+                        "text": `Section ${name} - Fee Details`,
+                        "horizontalAlignment": "Center",
+                        "color": "Accent",
+                        "weight": "Bolder",
+                        "size": "Medium"
+                    }
+                ]
+            },
+            {
+                "type": "Container",
+                "items": [
+                    {
+                        "type": "ColumnSet",
+                        "columns": [
+                            {
+                                "type": "Column",
+                                "width": "stretch",
+                                "items": [
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "Student Name",
+                                        "wrap": true,
+                                        "horizontalAlignment": "Left",
+                                        "weight": "Bolder"
+                                    }
+                                ],
+                                "horizontalAlignment": "Center",
+                                "verticalContentAlignment": "Center",
+                                "seperator" : true
+                            },
+                            {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
                                     "type": "TextBlock",
-                                    "text": "Details >",
-                                    "color": "Accent",
+                                    "text": "Total Fee",
                                     "wrap": true,
                                     "horizontalAlignment": "Center",
                                     "weight": "Bolder"
@@ -1340,12 +1453,431 @@ exports.classwisefeedetails = async (data, name) => {
                             ],
                             "horizontalAlignment": "Center",
                             "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Deposited Fee",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center",
+                                    "weight": "Bolder"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Pending Fee",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center",
+                                    "weight": "Bolder"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center",
+                                    "weight": "Bolder"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        }
+                            
+                        ]
+                    }
+                ]
+            }
+        ],
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "version": "1.0"
+    }
+    for (var i = 0; i < data.length; i++) {
+        card['body'].push({
+            "type": "Container",
+            "selectAction": {
+                "title": "Maunfacturer",
+                "type": "Action.Submit",
+                "data": {
+                    "x": `${data[i].enrollmentNo},${data[i].StudentName}`
+                }
+            },
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": `${data[i].StudentName}`,
+                                    "wrap": true,
+                                    "horizontalAlignment": "Left"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
                             "seperator" : true
-                        }                    ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": `${data[i].TotalFee}`,
+                                    "wrap": true,
+                                    "horizontalAlignment": "Left"
+                                }
+                            ],
+                            "seperator": true,
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": `${data[i].TotalFeeDeposited}`,
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "seperator": true,
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": `${data[i].TotalFeePending}`,
+                                    "wrap": true,
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "seperator": true,
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "altText": "",
+                                    "url": "https://png.pngtree.com/svg/20170919/2551b1199e.png",
+                                    "height": "stretch",
+                                    "size": "Small",
+                                    "width": "21px",
+                                    "horizontalAlignment": "Center"
+                                }
+                                    ]
+                        }
+                        
+                    ]
                 }
             ]
         })
     }
-    return card;
+    return card
+}
 
+exports.Studentfeedetails = async (data) => {
+    var studentfee = {
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "version": "1.0",
+        "type": "AdaptiveCard",
+        "body": [
+            {
+                "type": "Container",
+                "items": [
+                    {
+                        "type": "ColumnSet",
+                        "columns": [
+                            {
+                                "type": "Column",
+                                "width": "auto",
+                                "items": [
+                                    {
+                                        "type": "Image",             "style": "Person",
+                                        "altText": "",
+                                        "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
+                                        "horizontalAlignment": "Left",
+                                        "size": "Medium"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Column",
+                                "width": "stretch",
+                                "items": [
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "Poornima University",
+                                        "horizontalAlignment": "Center",
+                                        "wrap": true,
+                                        "weight": "Bolder",
+                                        "size": "Large"
+                                    },
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "2020 - 2021",
+                                        "horizontalAlignment": "Center"
+                                    }
+                                ],
+                                "verticalContentAlignment": "Center",
+                                "seperator" : true
+                            },
+                            {
+                                "type": "Column",
+                                "width": "auto",
+                                "items": [
+                                    {
+                                        "type": "Image",             "style": "Person",
+                                        "altText": "",
+                                        "url": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQzMjgyNDgwNjIxODIzNTU5/jennifer-lawrence_gettyimages-626382596jpg.jpg",
+                                        "size": "Medium",
+                                        "horizontalAlignment": "Right"
+                                    }
+                                ],
+                                "horizontalAlignment": "Center"
+                            }
+                        ]
+                    }
+                ],
+                "spacing": "None"
+            },
+            {
+                "type": "Container",
+                "items": [
+                    {
+                        "type": "TextBlock",
+                        "text": "Fees Details - Sem III",
+                        "horizontalAlignment": "Center",
+                        "color": "Accent",
+                        "size": "Medium",
+                        "weight": "Bolder"
+                    }
+                ],
+                "spacing": "None"
+            },
+            {
+                "type": "Container",
+                "items": [
+                    {
+                        "type": "ColumnSet",
+                        "columns": [
+                            {
+                                "type": "Column",
+                                "width": "stretch",
+                                "items": [
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "Fees Type",
+                                        "wrap": true,
+                                        "horizontalAlignment": "Left",
+                                        "weight": "Bolder"
+                                    }
+                                ],
+                                "horizontalAlignment": "Center",
+                                "verticalContentAlignment": "Center",
+                                "seperator" : true
+                            },
+                            {
+                                "type": "Column",
+                                "width": "stretch",
+                                "items": [
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "Total Amount",
+                                        "wrap": true,
+                                        "horizontalAlignment": "Right",
+                                        "weight": "Bolder"
+                                    }
+                                ],
+                                "horizontalAlignment": "Center",
+                                "verticalContentAlignment": "Center",
+                                "seperator" : true
+                            },
+                            {
+                                "type": "Column",
+                                "width": "stretch",
+                                "items": [
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "Pending Amount",
+                                        "wrap": true,
+                                        "horizontalAlignment": "Right",
+                                        "weight": "Bolder"
+                                    }
+                                ],
+                                "horizontalAlignment": "Center",
+                                "verticalContentAlignment": "Center",
+                                "seperator" : true
+                            },
+                            {
+                                "type": "Column",
+                                "width": "stretch",
+                                "items": [
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "Last day of Payment",
+                                        "wrap": true,
+                                        "horizontalAlignment": "Center",
+                                        "weight": "Bolder"
+                                    }
+                                ],
+                                "horizontalAlignment": "Center",
+                                "verticalContentAlignment": "Center",
+                                "seperator" : true
+                            },
+                            {
+                                "type": "Column",
+                                "width": "stretch",
+                                "items": [
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "Fine (After last date)",
+                                        "wrap": true,
+                                        "horizontalAlignment": "Center",
+                                        "weight": "Bolder"
+                                    }
+                                ],
+                                "horizontalAlignment": "Center",
+                                "verticalContentAlignment": "Center",
+                                "seperator" : true
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+    for (let i = 0; i < data.recordset.length; i++) {
+        var color = "Default"
+        d = new Date();
+        // console.log( data.recordset[i].lastDate.toLocaleDateString(),"--", d.toLocaleDateString());
+        if (parseInt(data.recordset[i].pendingAmount) > 0 && (data.recordset[i].lastDate.toLocaleDateString() < d.toLocaleDateString())) {
+            color = "Attention"
+        }
+        studentfee['body'].push({
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": data.recordset[i].feesType,
+                                    "wrap": true,
+                                    "horizontalAlignment": "Left"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator" : true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "₹ " + data.recordset[i].totalAmount,
+                                    "wrap": true,
+                                    "horizontalAlignment": "Right"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator" : true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": `₹ ${data.recordset[i].pendingAmount}`,
+                                    "wrap": true,
+                                    "color": `${color}`,
+                                    "horizontalAlignment": "Right"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator" : true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": data.recordset[i].lastDate.toLocaleDateString(),
+                                    "wrap": true,
+                                    "color": `${color}`,
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator" : true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": `₹ ${data.recordset[i].penalty}`,
+                                    "wrap": true,
+                                    "color": `${color}`,
+                                    "horizontalAlignment": "Right"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator" : true
+                        }
+                    ]
+                }
+            ]
+
+        }
+        )
+    }
+    return studentfee
 }

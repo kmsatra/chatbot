@@ -114,8 +114,7 @@ exports.fclCard = async (data) => {
                             ],
                             "horizontalAlignment": "Center",
                             "verticalContentAlignment": "Center",
-                            "seperator": true
-                        },
+                             },
                         {
                             "type": "Column",
                             "width": "stretch",
@@ -762,6 +761,13 @@ exports.fclCard = async (data) => {
                 "title": "Take Attendance",
                 "data": {
                     "x": "Attendance"
+                }
+            },
+            {
+                "type": "Action.Submit",
+                "title": "Apply For Leave",
+                "data": {
+                    "x": "Apply For Leave"
                 }
             }
         ]
@@ -1420,6 +1426,343 @@ exports.leaveDetail = async (data) => {
     return leaveCard
 }
 
+exports.applyLeave = async (data) => { 
+    var aleave = 
+    {
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0",
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
+                                    "horizontalAlignment": "Left",
+                                    "size": "Medium"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Poornima University",
+                                    "horizontalAlignment": "Center",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Large"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "2020 - 2021",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                    "size": "Medium",
+                                    "horizontalAlignment": "Right"
+                                }
+                            ],
+                            "horizontalAlignment": "Center"
+                        }
+                    ]
+                }
+            ],
+            "spacing": "None"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "Faculty Detail",
+                    "horizontalAlignment": "Center",
+                    "color": "Accent",
+                    "size": "Medium",
+                    "weight": "Bolder"
+                }
+            ],
+            "spacing": "None"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "EmployeeCode",
+                                    "weight": "Bolder",
+                                    "horizontalAlignment": "Left"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Name",
+                                    "weight": "Bolder",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Designation",
+                                    "separator": true,
+                                    "horizontalAlignment": "Center",
+                                    "weight": "Bolder"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Department",
+                                    "weight": "Bolder",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "seperator": true,
+                            "horizontalAlignment": "Center"
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "items": [
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "EMP 0017",
+                                            "horizontalAlignment": "Center",
+                                            "wrap": true
+                                        }
+                                    ],
+                                    "horizontalAlignment": "Center",
+                                    "verticalContentAlignment": "Center",
+                                    "seperator": true,
+                                    "separator": true
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "statice name",
+                                            "horizontalAlignment": "Center",
+                                            "wrap": true
+                                        }
+                                    ],
+                                    "horizontalAlignment": "Center",
+                                    "verticalContentAlignment": "Center"
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "static desg",
+                                            "wrap": true,
+                                            "horizontalAlignment": "Center"
+                                        }
+                                    ],
+                                    "horizontalAlignment": "Center",
+                                    "verticalContentAlignment": "Center",
+                                    "seperator": true
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "static dept",
+                                            "horizontalAlignment": "Center",
+                                            "wrap": true
+                                        }
+                                    ],
+                                    "horizontalAlignment": "Center",
+                                    "verticalContentAlignment": "Center",
+                                    "seperator": true
+                                }
+                            ]
+                        }
+                    ],
+                    "spacing": "None"
+                },
+                {
+                    "type": "Container",
+                    "items": [
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "Start Date",
+                                            "horizontalAlignment": "Center"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "Input.Date",
+                                            "id": "fromdate"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "End Date",
+                                            "horizontalAlignment": "Center"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "Input.Date",
+                                            "id": "todate"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Reason of leave",
+                    "wrap": true
+                },
+                {
+                    "type": "Input.ChoiceSet",
+                    "placeholder": "Placeholder text",
+                    "choices": [
+                        {
+                            "title": "I am Not Well",
+                            "value": "1"
+                        },
+                        {
+                            "title": "not available in town",
+                            "value": "2"
+                        },
+                        {
+                            "title": "going to attend marriage",
+                            "value": "3"
+                        }
+                    ],
+                    "value": "1",
+                    "id": "Reason"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Nature of Leave"
+                }
+            ]
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "placeholder": "Placeholder text",
+            "choices": [
+                {
+                    "title": "Medical",
+                    "value": "1"
+                },
+                {
+                    "title": "Casual",
+                    "value": "2"
+                }
+            ],
+            "value": "1",
+            "id": "Nature"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Apply Leave",
+            "data": {
+                "x": "Apply"
+            }
+        }
+    ]  
+
+    }  
+ return aleave
+
+}    
+    
 exports.SalaryDetail = async (data) => {
     var salarycard = {
         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",

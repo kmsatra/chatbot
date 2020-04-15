@@ -903,7 +903,7 @@ exports.cgpaCard = async (data, nu) => {
     return cgpa
 }
 exports.imarkCard = async (data, nu) => {
-var imark = 
+    var imark = 
     {
     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
     "version": "1.0",
@@ -1136,7 +1136,7 @@ var imark =
             ]
         }
     ]
-}    
+ }    
     return imark
 }
 exports.pfCard = async (data) => {

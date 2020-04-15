@@ -337,20 +337,7 @@ exports.mgtCard = async (data) => {
             }
         ],
         "actions": [
-            {
-                "type": "Action.Submit",
-                "title": "Deposited Fees Details",
-                "data": {
-                    "x": "Deposited"
-                }
-            },
-            {
-                "type": "Action.Submit",
-                "title": "Pending Fees Details",
-                "data": {
-                    "x": "Pending"
-                }
-            },
+            
             {
                 "type": "Action.Submit",
                 "title": "Fees Details",
@@ -379,467 +366,467 @@ exports.mgtCard = async (data) => {
 }
 
 
-exports.PendingCard = async (data) => {
-    var pdetail = {
-        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-        "version": "1.0",
-        "type": "AdaptiveCard",
-        "body": [
-            {
-                "type": "Container",
-                "items": [
-                    {
-                        "type": "ColumnSet",
-                        "columns": [
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",             "style": "Person",
-                                        "altText": "",
-                                        "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
-                                        "horizontalAlignment": "Left",
-                                        "size": "Medium"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Poornima University",
-                                        "horizontalAlignment": "Center",
-                                        "wrap": true,
-                                        "weight": "Bolder",
-                                        "size": "Large"
-                                    },
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "2020 - 2021",
-                                        "horizontalAlignment": "Center"
-                                    }
-                                ],
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",             "style": "Person",
-                                        "altText": "",
-                                        "url": "https://media-exp1.licdn.com/dms/image/C5103AQFlCq3C_ph4xQ/profile-displayphoto-shrink_200_200/0?e=1586995200&v=beta&t=jFNpcmZDaotsqHrT1QLpZTzX6g67jJi8DHrxtIb8yrI",
-                                        "size": "Medium",
-                                        "horizontalAlignment": "Right"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center"
-                            }
-                        ]
-                    }
-                ],
-                "spacing": "None"
-            },
-            {
-                "type": "Container",
-                "items": [
-                    {
-                        "type": "TextBlock",
-                        "text": "Pending Fees - " + `${data[0].semester} semester`,
-                        "horizontalAlignment": "Center",
-                        "color": "Accent",
-                        "weight": "Bolder",
-                        "size": "Medium"
-                    }
-                ]
-            },
-            {
-                "type": "Container",
-                "items": [
-                    {
-                        "type": "ColumnSet",
-                        "columns": [
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Branch",
-                                        "wrap": true,
-                                        "horizontalAlignment": "Left",
-                                        "weight": "Bolder"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center",
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Total Fees",
-                                        "wrap": true,
-                                        "horizontalAlignment": "Center",
-                                        "weight": "Bolder"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center",
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Pending Fees",
-                                        "wrap": true,
-                                        "horizontalAlignment": "Center",
-                                        "weight": "Bolder"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center",
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Percentage",
-                                        "wrap": true,
-                                        "horizontalAlignment": "Center",
-                                        "weight": "Bolder"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center",
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
-    for (let i = 0; i < data.length; i++) {
-        pdetail['body'].push({
-            "type": "Container",
-            "items": [
-                {
-                    "type": "ColumnSet",
-                    "columns": [
-                        {
-                            "type": "Column",
-                            "width": "stretch",
-                            "items": [
-                                {
-                                    "type": "TextBlock",
-                                    "text": `${data[i].branch}`,
-                                    "wrap": true,
-                                    "horizontalAlignment": "Left"
-                                }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
-                        },
-                        {
-                            "type": "Column",
-                            "width": "stretch",
-                            "items": [
-                                {
-                                    "type": "TextBlock",
-                                    "text": "₹ " + `${data[i].totalFees.substring(0, data[i].totalFees.length - 3)}`,
-                                    "wrap": true,
-                                    "horizontalAlignment": "Center"
-                                }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
-                        },
-                        {
-                            "type": "Column",
-                            "width": "stretch",
-                            "items": [
-                                {
-                                    "type": "TextBlock",
-                                    "text": "₹ " + `${data[i].feesPending.substring(0, data[i].feesPending.length - 3)}`,
-                                    "wrap": true,
-                                    "horizontalAlignment": "Right"
-                                }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
-                        },
-                        {
-                            "type": "Column",
-                            "width": "stretch",
-                            "items": [
-                                {
-                                    "type": "TextBlock",
-                                    "text": `${data[i].pendingPercentage}%`,
-                                    "wrap": true,
-                                    "horizontalAlignment": "Center"
-                                }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
-                        }
-                    ]
-                }
-            ]
+// exports.PendingCard = async (data) => {
+//     var pdetail = {
+//         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+//         "version": "1.0",
+//         "type": "AdaptiveCard",
+//         "body": [
+//             {
+//                 "type": "Container",
+//                 "items": [
+//                     {
+//                         "type": "ColumnSet",
+//                         "columns": [
+//                             {
+//                                 "type": "Column",
+//                                 "width": "auto",
+//                                 "items": [
+//                                     {
+//                                         "type": "Image",             "style": "Person",
+//                                         "altText": "",
+//                                         "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
+//                                         "horizontalAlignment": "Left",
+//                                         "size": "Medium"
+//                                     }
+//                                 ]
+//                             },
+//                             {
+//                                 "type": "Column",
+//                                 "width": "stretch",
+//                                 "items": [
+//                                     {
+//                                         "type": "TextBlock",
+//                                         "text": "Poornima University",
+//                                         "horizontalAlignment": "Center",
+//                                         "wrap": true,
+//                                         "weight": "Bolder",
+//                                         "size": "Large"
+//                                     },
+//                                     {
+//                                         "type": "TextBlock",
+//                                         "text": "2020 - 2021",
+//                                         "horizontalAlignment": "Center"
+//                                     }
+//                                 ],
+//                                 "verticalContentAlignment": "Center",
+//                                 "seperator" : true
+//                             },
+//                             {
+//                                 "type": "Column",
+//                                 "width": "auto",
+//                                 "items": [
+//                                     {
+//                                         "type": "Image",             "style": "Person",
+//                                         "altText": "",
+//                                         "url": "https://media-exp1.licdn.com/dms/image/C5103AQFlCq3C_ph4xQ/profile-displayphoto-shrink_200_200/0?e=1586995200&v=beta&t=jFNpcmZDaotsqHrT1QLpZTzX6g67jJi8DHrxtIb8yrI",
+//                                         "size": "Medium",
+//                                         "horizontalAlignment": "Right"
+//                                     }
+//                                 ],
+//                                 "horizontalAlignment": "Center"
+//                             }
+//                         ]
+//                     }
+//                 ],
+//                 "spacing": "None"
+//             },
+//             {
+//                 "type": "Container",
+//                 "items": [
+//                     {
+//                         "type": "TextBlock",
+//                         "text": "Pending Fees - " + `${data[0].semester} semester`,
+//                         "horizontalAlignment": "Center",
+//                         "color": "Accent",
+//                         "weight": "Bolder",
+//                         "size": "Medium"
+//                     }
+//                 ]
+//             },
+//             {
+//                 "type": "Container",
+//                 "items": [
+//                     {
+//                         "type": "ColumnSet",
+//                         "columns": [
+//                             {
+//                                 "type": "Column",
+//                                 "width": "stretch",
+//                                 "items": [
+//                                     {
+//                                         "type": "TextBlock",
+//                                         "text": "Branch",
+//                                         "wrap": true,
+//                                         "horizontalAlignment": "Left",
+//                                         "weight": "Bolder"
+//                                     }
+//                                 ],
+//                                 "horizontalAlignment": "Center",
+//                                 "verticalContentAlignment": "Center",
+//                                 "seperator" : true
+//                             },
+//                             {
+//                                 "type": "Column",
+//                                 "width": "stretch",
+//                                 "items": [
+//                                     {
+//                                         "type": "TextBlock",
+//                                         "text": "Total Fees",
+//                                         "wrap": true,
+//                                         "horizontalAlignment": "Center",
+//                                         "weight": "Bolder"
+//                                     }
+//                                 ],
+//                                 "horizontalAlignment": "Center",
+//                                 "verticalContentAlignment": "Center",
+//                                 "seperator" : true
+//                             },
+//                             {
+//                                 "type": "Column",
+//                                 "width": "stretch",
+//                                 "items": [
+//                                     {
+//                                         "type": "TextBlock",
+//                                         "text": "Pending Fees",
+//                                         "wrap": true,
+//                                         "horizontalAlignment": "Center",
+//                                         "weight": "Bolder"
+//                                     }
+//                                 ],
+//                                 "horizontalAlignment": "Center",
+//                                 "verticalContentAlignment": "Center",
+//                                 "seperator" : true
+//                             },
+//                             {
+//                                 "type": "Column",
+//                                 "width": "stretch",
+//                                 "items": [
+//                                     {
+//                                         "type": "TextBlock",
+//                                         "text": "Percentage",
+//                                         "wrap": true,
+//                                         "horizontalAlignment": "Center",
+//                                         "weight": "Bolder"
+//                                     }
+//                                 ],
+//                                 "horizontalAlignment": "Center",
+//                                 "verticalContentAlignment": "Center",
+//                                 "seperator" : true
+//                             }
+//                         ]
+//                     }
+//                 ]
+//             }
+//         ]
+//     }
+//     for (let i = 0; i < data.length; i++) {
+//         pdetail['body'].push({
+//             "type": "Container",
+//             "items": [
+//                 {
+//                     "type": "ColumnSet",
+//                     "columns": [
+//                         {
+//                             "type": "Column",
+//                             "width": "stretch",
+//                             "items": [
+//                                 {
+//                                     "type": "TextBlock",
+//                                     "text": `${data[i].branch}`,
+//                                     "wrap": true,
+//                                     "horizontalAlignment": "Left"
+//                                 }
+//                             ],
+//                             "horizontalAlignment": "Center",
+//                             "verticalContentAlignment": "Center",
+//                             "seperator" : true
+//                         },
+//                         {
+//                             "type": "Column",
+//                             "width": "stretch",
+//                             "items": [
+//                                 {
+//                                     "type": "TextBlock",
+//                                     "text": "₹ " + `${data[i].totalFees.substring(0, data[i].totalFees.length - 3)}`,
+//                                     "wrap": true,
+//                                     "horizontalAlignment": "Center"
+//                                 }
+//                             ],
+//                             "horizontalAlignment": "Center",
+//                             "verticalContentAlignment": "Center",
+//                             "seperator" : true
+//                         },
+//                         {
+//                             "type": "Column",
+//                             "width": "stretch",
+//                             "items": [
+//                                 {
+//                                     "type": "TextBlock",
+//                                     "text": "₹ " + `${data[i].feesPending.substring(0, data[i].feesPending.length - 3)}`,
+//                                     "wrap": true,
+//                                     "horizontalAlignment": "Right"
+//                                 }
+//                             ],
+//                             "horizontalAlignment": "Center",
+//                             "verticalContentAlignment": "Center",
+//                             "seperator" : true
+//                         },
+//                         {
+//                             "type": "Column",
+//                             "width": "stretch",
+//                             "items": [
+//                                 {
+//                                     "type": "TextBlock",
+//                                     "text": `${data[i].pendingPercentage}%`,
+//                                     "wrap": true,
+//                                     "horizontalAlignment": "Center"
+//                                 }
+//                             ],
+//                             "horizontalAlignment": "Center",
+//                             "verticalContentAlignment": "Center",
+//                             "seperator" : true
+//                         }
+//                     ]
+//                 }
+//             ]
 
-        })
-    }
-    return pdetail
-}
+//         })
+//     }
+//     return pdetail
+// }
 
 
-exports.DepositCard = async (data) => {
-    var ddetail = {
-        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-        "version": "1.0",
-        "type": "AdaptiveCard",
-        "body": [
-            {
-                "type": "Container",
-                "items": [
-                    {
-                        "type": "ColumnSet",
-                        "columns": [
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",             "style": "Person",
-                                        "altText": "",
-                                        "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
-                                        "horizontalAlignment": "Left",
-                                        "size": "Medium"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Poornima University",
-                                        "horizontalAlignment": "Center",
-                                        "wrap": true,
-                                        "weight": "Bolder",
-                                        "size": "Large"
-                                    },
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "2020 - 2021",
-                                        "horizontalAlignment": "Center"
-                                    }
-                                ],
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",             "style": "Person",
-                                        "altText": "",
-                                        "url": "https://media-exp1.licdn.com/dms/image/C5103AQFlCq3C_ph4xQ/profile-displayphoto-shrink_200_200/0?e=1586995200&v=beta&t=jFNpcmZDaotsqHrT1QLpZTzX6g67jJi8DHrxtIb8yrI",
-                                        "size": "Medium",
-                                        "horizontalAlignment": "Right"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center"
-                            }
-                        ]
-                    }
-                ],
-                "spacing": "None"
-            },
-            {
-                "type": "Container",
-                "items": [
-                    {
-                        "type": "TextBlock",
-                        "text": "Deposited Fees - " + `${data[0].semester} semester`,
-                        "horizontalAlignment": "Center",
-                        "color": "Accent",
-                        "weight": "Bolder",
-                        "size": "Medium"
-                    }
-                ]
-            },
-            {
-                "type": "Container",
-                "items": [
-                    {
-                        "type": "ColumnSet",
-                        "columns": [
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Branch",
-                                        "wrap": true,
-                                        "horizontalAlignment": "Left",
-                                        "weight": "Bolder"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center",
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Total Fees",
-                                        "wrap": true,
-                                        "horizontalAlignment": "Center",
-                                        "weight": "Bolder"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center",
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Fees Deposited",
-                                        "wrap": true,
-                                        "horizontalAlignment": "Center",
-                                        "weight": "Bolder"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center",
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Percentage",
-                                        "wrap": true,
-                                        "horizontalAlignment": "Center",
-                                        "weight": "Bolder"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center",
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            }
-                        ]
-                    }
-                ]
-            }
+// exports.DepositCard = async (data) => {
+//     var ddetail = {
+//         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+//         "version": "1.0",
+//         "type": "AdaptiveCard",
+//         "body": [
+//             {
+//                 "type": "Container",
+//                 "items": [
+//                     {
+//                         "type": "ColumnSet",
+//                         "columns": [
+//                             {
+//                                 "type": "Column",
+//                                 "width": "auto",
+//                                 "items": [
+//                                     {
+//                                         "type": "Image",             "style": "Person",
+//                                         "altText": "",
+//                                         "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
+//                                         "horizontalAlignment": "Left",
+//                                         "size": "Medium"
+//                                     }
+//                                 ]
+//                             },
+//                             {
+//                                 "type": "Column",
+//                                 "width": "stretch",
+//                                 "items": [
+//                                     {
+//                                         "type": "TextBlock",
+//                                         "text": "Poornima University",
+//                                         "horizontalAlignment": "Center",
+//                                         "wrap": true,
+//                                         "weight": "Bolder",
+//                                         "size": "Large"
+//                                     },
+//                                     {
+//                                         "type": "TextBlock",
+//                                         "text": "2020 - 2021",
+//                                         "horizontalAlignment": "Center"
+//                                     }
+//                                 ],
+//                                 "verticalContentAlignment": "Center",
+//                                 "seperator" : true
+//                             },
+//                             {
+//                                 "type": "Column",
+//                                 "width": "auto",
+//                                 "items": [
+//                                     {
+//                                         "type": "Image",             "style": "Person",
+//                                         "altText": "",
+//                                         "url": "https://media-exp1.licdn.com/dms/image/C5103AQFlCq3C_ph4xQ/profile-displayphoto-shrink_200_200/0?e=1586995200&v=beta&t=jFNpcmZDaotsqHrT1QLpZTzX6g67jJi8DHrxtIb8yrI",
+//                                         "size": "Medium",
+//                                         "horizontalAlignment": "Right"
+//                                     }
+//                                 ],
+//                                 "horizontalAlignment": "Center"
+//                             }
+//                         ]
+//                     }
+//                 ],
+//                 "spacing": "None"
+//             },
+//             {
+//                 "type": "Container",
+//                 "items": [
+//                     {
+//                         "type": "TextBlock",
+//                         "text": "Deposited Fees - " + `${data[0].semester} semester`,
+//                         "horizontalAlignment": "Center",
+//                         "color": "Accent",
+//                         "weight": "Bolder",
+//                         "size": "Medium"
+//                     }
+//                 ]
+//             },
+//             {
+//                 "type": "Container",
+//                 "items": [
+//                     {
+//                         "type": "ColumnSet",
+//                         "columns": [
+//                             {
+//                                 "type": "Column",
+//                                 "width": "stretch",
+//                                 "items": [
+//                                     {
+//                                         "type": "TextBlock",
+//                                         "text": "Branch",
+//                                         "wrap": true,
+//                                         "horizontalAlignment": "Left",
+//                                         "weight": "Bolder"
+//                                     }
+//                                 ],
+//                                 "horizontalAlignment": "Center",
+//                                 "verticalContentAlignment": "Center",
+//                                 "seperator" : true
+//                             },
+//                             {
+//                                 "type": "Column",
+//                                 "width": "stretch",
+//                                 "items": [
+//                                     {
+//                                         "type": "TextBlock",
+//                                         "text": "Total Fees",
+//                                         "wrap": true,
+//                                         "horizontalAlignment": "Center",
+//                                         "weight": "Bolder"
+//                                     }
+//                                 ],
+//                                 "horizontalAlignment": "Center",
+//                                 "verticalContentAlignment": "Center",
+//                                 "seperator" : true
+//                             },
+//                             {
+//                                 "type": "Column",
+//                                 "width": "stretch",
+//                                 "items": [
+//                                     {
+//                                         "type": "TextBlock",
+//                                         "text": "Fees Deposited",
+//                                         "wrap": true,
+//                                         "horizontalAlignment": "Center",
+//                                         "weight": "Bolder"
+//                                     }
+//                                 ],
+//                                 "horizontalAlignment": "Center",
+//                                 "verticalContentAlignment": "Center",
+//                                 "seperator" : true
+//                             },
+//                             {
+//                                 "type": "Column",
+//                                 "width": "stretch",
+//                                 "items": [
+//                                     {
+//                                         "type": "TextBlock",
+//                                         "text": "Percentage",
+//                                         "wrap": true,
+//                                         "horizontalAlignment": "Center",
+//                                         "weight": "Bolder"
+//                                     }
+//                                 ],
+//                                 "horizontalAlignment": "Center",
+//                                 "verticalContentAlignment": "Center",
+//                                 "seperator" : true
+//                             }
+//                         ]
+//                     }
+//                 ]
+//             }
 
-        ]
-    }
-    for (let i = 0; i < data.length; i++) {
-        ddetail['body'].push({
-            "type": "Container",
-            "items": [
-                {
-                    "type": "ColumnSet",
-                    "columns": [
-                        {
-                            "type": "Column",
-                            "width": "stretch",
-                            "items": [
-                                {
-                                    "type": "TextBlock",
-                                    "text": `${data[i].branch}`,
-                                    "wrap": true,
-                                    "horizontalAlignment": "Left"
-                                }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
-                        },
-                        {
-                            "type": "Column",
-                            "width": "stretch",
-                            "items": [
-                                {
-                                    "type": "TextBlock",
-                                    "text": "₹ " + `${data[i].totalFees.substring(0, data[i].totalFees.length - 3)}`,
-                                    "wrap": true,
-                                    "horizontalAlignment": "Center"
-                                }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
-                        },
-                        {
-                            "type": "Column",
-                            "width": "stretch",
-                            "items": [
-                                {
-                                    "type": "TextBlock",
-                                    "text": "₹ " + `${data[i].depositedFees.substring(0, data[i].depositedFees.length - 3)}`,
-                                    "wrap": true,
-                                    "horizontalAlignment": "Right"
-                                }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
-                        },
-                        {
-                            "type": "Column",
-                            "width": "stretch",
-                            "items": [
-                                {
-                                    "type": "TextBlock",
-                                    "text": `${data[i].depositPercentage}%`,
-                                    "wrap": true,
-                                    "horizontalAlignment": "Center"
-                                }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
-                        }
-                    ]
-                }
-            ]
+//         ]
+//     }
+//     for (let i = 0; i < data.length; i++) {
+//         ddetail['body'].push({
+//             "type": "Container",
+//             "items": [
+//                 {
+//                     "type": "ColumnSet",
+//                     "columns": [
+//                         {
+//                             "type": "Column",
+//                             "width": "stretch",
+//                             "items": [
+//                                 {
+//                                     "type": "TextBlock",
+//                                     "text": `${data[i].branch}`,
+//                                     "wrap": true,
+//                                     "horizontalAlignment": "Left"
+//                                 }
+//                             ],
+//                             "horizontalAlignment": "Center",
+//                             "verticalContentAlignment": "Center",
+//                             "seperator" : true
+//                         },
+//                         {
+//                             "type": "Column",
+//                             "width": "stretch",
+//                             "items": [
+//                                 {
+//                                     "type": "TextBlock",
+//                                     "text": "₹ " + `${data[i].totalFees.substring(0, data[i].totalFees.length - 3)}`,
+//                                     "wrap": true,
+//                                     "horizontalAlignment": "Center"
+//                                 }
+//                             ],
+//                             "horizontalAlignment": "Center",
+//                             "verticalContentAlignment": "Center",
+//                             "seperator" : true
+//                         },
+//                         {
+//                             "type": "Column",
+//                             "width": "stretch",
+//                             "items": [
+//                                 {
+//                                     "type": "TextBlock",
+//                                     "text": "₹ " + `${data[i].depositedFees.substring(0, data[i].depositedFees.length - 3)}`,
+//                                     "wrap": true,
+//                                     "horizontalAlignment": "Right"
+//                                 }
+//                             ],
+//                             "horizontalAlignment": "Center",
+//                             "verticalContentAlignment": "Center",
+//                             "seperator" : true
+//                         },
+//                         {
+//                             "type": "Column",
+//                             "width": "stretch",
+//                             "items": [
+//                                 {
+//                                     "type": "TextBlock",
+//                                     "text": `${data[i].depositPercentage}%`,
+//                                     "wrap": true,
+//                                     "horizontalAlignment": "Center"
+//                                 }
+//                             ],
+//                             "horizontalAlignment": "Center",
+//                             "verticalContentAlignment": "Center",
+//                             "seperator" : true
+//                         }
+//                     ]
+//                 }
+//             ]
 
-        })
-    }
-    return ddetail
-}
+//         })
+//     }
+//     return ddetail
+// }
 
 
 
