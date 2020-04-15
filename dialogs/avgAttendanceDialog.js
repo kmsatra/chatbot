@@ -143,6 +143,7 @@ class avgAttendanceDialog extends ComponentDialog {
             var temp = stepContext.context.activity.value.x.split(',');
             await db.averageAttendance(temp[0], 'studentList').then(async result => {
                 dbresult = result.recordset
+          
             }).catch(err => {
                 console.log("error in student list for attendance", err)
             })

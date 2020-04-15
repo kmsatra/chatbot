@@ -21,8 +21,8 @@ class feeDetailsDialog extends ComponentDialog {
             this.deptSelectionStep.bind(this),
              this.semSelectionStep.bind(this),
              this.classSelectionStep.bind(this),
-            // this.studentSelectionStep.bind(this),
-            // this.studentDetailStep.bind(this)
+            this.studentSelectionStep.bind(this),
+            this.studentDetailStep.bind(this)
         ]));
         this.initialDialogId = WATERFALL_DIALOG;
     }
@@ -32,18 +32,20 @@ class feeDetailsDialog extends ComponentDialog {
         // var cssCard = await ;
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         
-        await db.averageAttendance(0, 'campus').then(async result => {
+        await db.feeDetail(0, 'campus').then(async result => {
             dbresult = result.recordset
-        }).catch(err => {
-            console.log("error in campus data for attendance", err)
-        })
-   
-
-        const card = await feeDetaCard.CampuswisefeedetailCard(dbresult)
+        console.log(dbresult)
+            const card = await feeDetaCard.CampuswisefeedetailCard(dbresult)
+        
         console.log("this card hey")
         await stepContext.context.sendActivity({
             attachments: [CardFactory.adaptiveCard(card)]
         });
+       
+        }).catch(err => {
+            console.log("error in campus data for fee ", err)
+        })
+   
         await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
         return Dialog.EndOfTurn;
     }
@@ -54,8 +56,9 @@ class feeDetailsDialog extends ComponentDialog {
         if (stepContext.context.activity.value) {
 
             var temp = stepContext.context.activity.value.x.split(',');
-            await db.averageAttendance(temp[0], 'school').then(async result => {
+            await db.feeDetail(1, 'school').then(async result => {
                 dbresult = result.recordset
+            
             }).catch(err => {
                 console.log("error in school data for attendance", err)
             })
@@ -77,7 +80,7 @@ class feeDetailsDialog extends ComponentDialog {
         
         if (stepContext.context.activity.value) {
             var temp = stepContext.context.activity.value.x.split(',');
-            await db.averageAttendance(temp[0], 'department').then(async result => {
+            await db.feeDetail(1, 'department').then(async result => {
                 dbresult = result.recordset
             }).catch(err => {
                 console.log("error in department data for attendance", err)
@@ -94,13 +97,13 @@ class feeDetailsDialog extends ComponentDialog {
         }
     }
     async semSelectionStep(stepContext) {
-        // console.log("departmentSelected=attendance------------->>>>>>>", stepContext.context.activity.value.x);
+        console.log("departmentSelected=attendance------------->>>>>>>", stepContext.context.activity.value.x);
 
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         if (stepContext.context.activity.value) {
 
             var temp = stepContext.context.activity.value.x.split(',');
-            await db.averageAttendance(temp[0], 'semester').then(async result => {
+            await db.feeDetail(1, 'semester').then(async result => {
                 dbresult = result.recordset
             }).catch(err => {
                 console.log("error in semester data for attendance", err)
@@ -117,17 +120,17 @@ class feeDetailsDialog extends ComponentDialog {
         }
     }
     async classSelectionStep(stepContext) {
-        console.log("semesterSelected=attendance------------->>>>>>>", stepContext.context.activity.value.x);
+        console.log("semesterSelected=fee details------------->>>>>>>", stepContext.context.activity.value.x);
         if (stepContext.context.activity.value) {
 
             await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
+            
             var temp = stepContext.context.activity.value.x.split(',');
-            console.log("---------", temp)
-            await db.averageAttendance(temp[0], 'classwisefeedetails').then(async result => {
+            await db.feeDetail(1, 'classwise').then(async result => {
                 dbresult = result.recordset
-                // console.log(dbresult)
+                console.log(dbresult)
             }).catch(err => {
-                console.log("error in classwise data for attendance", err)
+                console.log("error in classwise data for Fee detail", err)
             })
             const card = await feeDetaCard.classwisefeedetails(dbresult, temp[1])
             await stepContext.context.sendActivity({
@@ -140,53 +143,55 @@ class feeDetailsDialog extends ComponentDialog {
             return await stepContext.endDialog();
         }
     }
-    // async studentSelectionStep(stepContext) {
-    //     console.log("classSelected=attendance------------->>>>>>>", stepContext.context.activity.value.x);
-    //     if (stepContext.context.activity.value) {
+    async studentSelectionStep(stepContext) {
+        console.log("classSelected=attendance------------->>>>>>>", stepContext.context.activity.value.x);
+        if (stepContext.context.activity.value) {
 
-    //         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-    //         var temp = stepContext.context.activity.value.x.split(',');
-    //         await db.averageAttendance(temp[0], 'studentList').then(async result => {
-    //             dbresult = result.recordset
-    //         }).catch(err => {
-    //             console.log("error in student list for attendance", err)
-    //         })
-    //         const card = await avgAttdCard.sectionwiseAvgAttendance(dbresult, temp[1])
-    //         await stepContext.context.sendActivity({
-    //             attachments: [CardFactory.adaptiveCard(card)]
-    //         });
-    //         await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
-    //         return Dialog.EndOfTurn;
-    //     }
-    //     else {
-    //         return await stepContext.endDialog();
-    //     }
-    // }
-    // async studentDetailStep(stepContext) {
-    //     var attendace;
-    //     console.log("studentSelected=attendance------------->>>>>>>", stepContext.context.activity.value.x);
-    //     await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-    //     if (stepContext.context.activity.value) {
-    //         var temp = stepContext.context.activity.value.x.split(',')
-    //         // '2018PUSSHBSAX06587'
-    //         await db.studentAttendanceDetail(temp[0]).then(async result => {
-    //             // console.log("=>>>>>>>>",result)
-    //             attendace = result
-    //         }).catch(err => {
-    //             console.log("error in student subjectwise attendance", err)
-    //         })
-    //         var acard = await stuCard.attendanceCard(attendace, 'management', temp[1])
-    //         await stepContext.context.sendActivity({
-    //             attachments: [CardFactory.adaptiveCard(acard)]
-    //         });
-    //         return await stepContext.endDialog()
-
-    //     }
-    //     else {
-    //         return await stepContext.endDialog();
-    //     }
-    //     // return Dialog.EndOfTurn;
-    // }
+            await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
+            
+            var temp = stepContext.context.activity.value.x.split(',');
+            await db.feeDetail(1, 'studentList').then(async result => {
+                dbresult = result.recordset
+      console.log(dbresult)
+            }).catch(err => {
+                console.log("error in student list for attendance", err)
+            })
+            const card = await feeDetaCard.sectionwisefeedetails(dbresult, temp[1])
+            await stepContext.context.sendActivity({
+                attachments: [CardFactory.adaptiveCard(card)]
+            });
+            await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
+            return Dialog.EndOfTurn;
+        }
+        else {
+            return await stepContext.endDialog();
+        }
+    }
+    async studentDetailStep(stepContext) {
+        console.log("studentSelected=attendance------------->>>>>>>", stepContext.context.activity.value.x);
+        if (stepContext.context.activity.value) {
+             await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
+            var fees;
+                    await db.studenFeesDetail('2018PUSSHBSAX06587').then(async result => {
+                        // console.log("=>>>>>>>>",result)
+                        fees = result
+                    }).catch(err => {
+                        console.log("hereeeeeeee", err)
+                    })
+                    // console.log("=====>>>>", fees)s
+                    var card = await feeDetaCard.Studentfeedetails(fees)
+                    await stepContext.context.sendActivity({
+                        attachments: [CardFactory.adaptiveCard(card)]
+                    });
+                    // return Dialog.EndOfTurn;
+                    // return await stepContext.endDialog()
+                    return await stepContext.next();
+        }
+        else {
+            return await stepContext.endDialog();
+        }
+        // return Dialog.EndOfTurn;
+    }
 }
 
 module.exports.feeDetailsDialog = feeDetailsDialog;

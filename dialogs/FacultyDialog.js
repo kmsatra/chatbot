@@ -138,7 +138,28 @@ class FacultyDialog extends ComponentDialog {
                     // return await stepContext.endDialog()
                     return await stepContext.next();
 
+                case 'Apply For Leave':
+                
+                    var lev
+                    await db.facultyLeaveDetail('1').then(async result => {
+                        // console.log("=>>>>>>>>",result)
+                        lev = result
+                    }).catch(err => {
+                        console.log("hereeeeeeee", err)
+                    })
 
+                    // console.log("data")
+                    //    await stepContext.beginDialog(Mgt_Dialog);
+                    var aleave = await fclcard.applyLeave(lev)
+                    // console.log("hello",aleave)
+                      await stepContext.context.sendActivity({
+                        attachments: [CardFactory.adaptiveCard(aleave)]
+                    });
+              
+                    // return Dialog.EndOfTurn;
+                    // return await stepContext.endDialog()
+                     return await stepContext.next();
+              
                 case 'Gross Salary':
 
                     var sal
@@ -186,7 +207,7 @@ class FacultyDialog extends ComponentDialog {
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
 
         await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
-        await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Class Detail', 'Leave Detail', 'Salary Detail', 'Switch Role']));
+        await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Class Detail', 'Leave Detail', 'Salary Detail', ' Apply For Leave', 'Switch Role']));
         return Dialog.EndOfTurn;
     }
 
@@ -211,6 +232,13 @@ class FacultyDialog extends ComponentDialog {
                     return await stepContext.beginDialog(WATERFALL_DIALOG)
                 // return Dialog.EndOfTurn
                 // return await stepContext.endDialog()
+                case 'Apply For Leave':
+                    // console.log("====================Apply For Leave")
+                    fclDialogInternalVar = "Apply For Leave"
+                    return await stepContext.beginDialog(WATERFALL_DIALOG)
+                // return Dialog.EndOfTurn
+                // return await stepContext.endDialog()
+                
                 case 'Salary Detail':
                     // console.log("====================Gross Salary")
                     // await stepContext.context.sendActivity("deposit");

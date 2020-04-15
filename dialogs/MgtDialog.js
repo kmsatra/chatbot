@@ -115,20 +115,20 @@ class MgtDialog extends ComponentDialog {
         // console.log("data", dbcgpa, dbcgpa.length)
         // console.log("data", pendingdb)
         // console.log("=>>>>>>>>>>>>>>>", stepContext.context.activity.value.x)
-        const pending = { attachments: [], attachmentLayout: AttachmentLayoutTypes.Carousel };
-        for (var i = 0; i < dbcgpa.length; i++) {
-            let fcard = await mgtcard.PendingCard(dbcgpa[i])
-            var dcard = CardFactory.adaptiveCard(fcard)
-            pending.attachments.push(dcard);
+        // const pending = { attachments: [], attachmentLayout: AttachmentLayoutTypes.Carousel };
+        // for (var i = 0; i < dbcgpa.length; i++) {
+        //     let fcard = await mgtcard.PendingCard(dbcgpa[i])
+        //     var dcard = CardFactory.adaptiveCard(fcard)
+        //     pending.attachments.push(dcard);
 
-        }
-        const deposit = { attachments: [], attachmentLayout: AttachmentLayoutTypes.Carousel };
-        for (var i = 0; i < dbcgpa.length; i++) {
-            let dcard = await mgtcard.DepositCard(dbcgpa[i])
-            var dccard = CardFactory.adaptiveCard(dcard)
-            deposit.attachments.push(dccard);
+        // }
+        // const deposit = { attachments: [], attachmentLayout: AttachmentLayoutTypes.Carousel };
+        // for (var i = 0; i < dbcgpa.length; i++) {
+        //     let dcard = await mgtcard.DepositCard(dbcgpa[i])
+        //     var dccard = CardFactory.adaptiveCard(dcard)
+        //     deposit.attachments.push(dccard);
 
-        }
+        // }
         try {
             if (stepContext.context.activity.value && stepContext.context.activity.value.x) {
                 mgtDialogInternalVar = stepContext.context.activity.value.x
@@ -140,17 +140,6 @@ class MgtDialog extends ComponentDialog {
                     await stepContext.beginDialog(feeDeta_Dialog);
                     return Dialog.EndOfTurn;
                 
-                case 'Pending':
-                    await stepContext.context.sendActivity(pending);
-                    // return Dialog.EndOfTurn;
-                    return await stepContext.next();
-                // return await stepContext.endDialog()
-
-                case 'Deposited':
-                    await stepContext.context.sendActivity(deposit);
-                    // return Dialog.EndOfTurn;
-                    return await stepContext.next();
-                // return await stepContext.endDialog()
                 case 'avgAttendance':
                     console.log("1",mgtDialogInternalVar);
                     await stepContext.beginDialog(avgAttd_Dialog);
@@ -171,7 +160,7 @@ class MgtDialog extends ComponentDialog {
 
         console.log("---------->>>>>> reached here")
         await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
-        await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Pending Fees Details', 'Deposited Fees Details',
+        await stepContext.context.sendActivity(ChoiceFactory.heroCard([ ' Fees Details',
             'Average Attendance', 'Average Marks', 'Switch Role']));
         return Dialog.EndOfTurn;
     }
@@ -180,21 +169,6 @@ class MgtDialog extends ComponentDialog {
         console.log("----->>first here", stepContext.result)
         try {
             switch (stepContext.result) {
-                case 'Pending Fees Details':
-                    // console.log("====================pending")
-                    // await stepContext.context.sendActivity("pending");
-                    mgtDialogInternalVar = "Pending"
-                    return await stepContext.beginDialog(WATERFALL_DIALOG)
-                // return Dialog.EndOfTurn;
-                // return await stepContext.endDialog()
-
-                case 'Deposited Fees Details':
-                    // console.log("====================deposited")
-                    // await stepContext.context.sendActivity("deposit");
-                    mgtDialogInternalVar = "Deposited"
-                    return await stepContext.beginDialog(WATERFALL_DIALOG)
-                // return Dialog.EndOfTurn
-                // return await stepContext.endDialog()
                 case 'Fees Details':
                     mgtDialogInternalVar = "feeDetails"
                     return await stepContext.beginDialog(WATERFALL_DIALOG)
