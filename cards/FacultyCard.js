@@ -114,7 +114,7 @@ exports.fclCard = async (data) => {
                             ],
                             "horizontalAlignment": "Center",
                             "verticalContentAlignment": "Center",
-                             },
+                        },
                         {
                             "type": "Column",
                             "width": "stretch",
@@ -749,13 +749,7 @@ exports.fclCard = async (data) => {
                     "x": "Leave Detail"
                 }
             },
-            // {
-            //     "type": "Action.Submit",
-            //     "title": "Salary Detail",
-            //     "data": {
-            //         "x": "Net Salary"
-            //     }
-            // }
+            
             {
                 "type": "Action.Submit",
                 "title": "Take Attendance",
@@ -1714,11 +1708,11 @@ exports.applyLeave = async (data) => {
                             "value": "1"
                         },
                         {
-                            "title": "not available in town",
+                            "title": "goint out of town",
                             "value": "2"
                         },
                         {
-                            "title": "going to attend marriage",
+                            "title": "going to attend family functions",
                             "value": "3"
                         }
                     ],

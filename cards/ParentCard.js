@@ -519,7 +519,10 @@ exports.attendanceCard = async (data) => {
     }
     for (let i = 0; i < data.recordset.length; i++) {
         var color = "Dark"
-        if (parseInt(data.recordset[i].percentage) < 75) {
+        if(parseInt(data.recordset[i].percentage) <= 80 && parseInt(data.recordset[i].percentage) > 70){
+            color = "Warning"
+        }
+        else if (parseInt(data.recordset[i].percentage) < 70) {
             color = "Attention"
         }
         attendance['body'].push(
@@ -761,6 +764,9 @@ exports.cgpaCard = async (data, nu) => {
         var color = "Dark"
         if (data[i].result.toLowerCase() !== "pass") {
             color = "Attention"
+         }
+        else if(data[i].cgpa == "F"){
+            color = "Attention"
         }
         cgpa['body'].push({
 
@@ -807,6 +813,7 @@ exports.cgpaCard = async (data, nu) => {
                                     "type": "TextBlock",
                                     "text": `${data[i].cgpa}`,
                                     "wrap": true,
+                                    "color": `${color}`,
                                     "horizontalAlignment": "Center"
                                 }
                             ],

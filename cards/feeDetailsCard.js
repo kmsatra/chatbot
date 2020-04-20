@@ -716,7 +716,7 @@ exports.deptwisefeedetails = async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].DepartmentName}`
+                    "x": `${data[i].DepartmentName}`
                 }
             },
             "items": [
@@ -874,7 +874,7 @@ exports.semwisefeedetails= async (data, name) => {
                 "items": [
                     {
                         "type": "TextBlock",
-                        "text": `${name} - Fees Detail`,
+                        "text": `${deptname} - Fees Detail`,
                         "horizontalAlignment": "Center",
                         "color": "Accent",
                         "weight": "Bolder",
@@ -1409,7 +1409,7 @@ exports.sectionwisefeedetails = async (data, name) => {
                 "items": [
                     {
                         "type": "TextBlock",
-                        "text": `Section ${name} - Fee Details`,
+                        "text": ` Branch ${deptname} Section ${name} - Fee Details`,
                         "horizontalAlignment": "Center",
                         "color": "Accent",
                         "weight": "Bolder",
@@ -1508,7 +1508,19 @@ exports.sectionwisefeedetails = async (data, name) => {
                     }
                 ]
             }
+            
         ],
+        
+                    "actions": [
+            {
+                "type": "Action.Submit",
+                "title": "Talk to the Parent",
+                "data": {
+                    "x": "Talk"
+                }
+            }
+         ],
+        
         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
         "version": "1.0"
     }
@@ -1600,13 +1612,19 @@ exports.sectionwisefeedetails = async (data, name) => {
                                     "horizontalAlignment": "Center"
                                 }
                                     ]
-                        }
-                        
+                        },
+                                
                     ]
+                    
                 }
-            ]
+            ],
+        
         })
+        
+        
     }
+    
+    
     return card
 }
 
@@ -1689,6 +1707,71 @@ exports.Studentfeedetails = async (data) => {
                 ],
                 "spacing": "None"
             },
+            {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Student Code :",
+                                    "weight": "Bolder"
+                                },
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "width": "stretch",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "Student Name:",
+                                                    "weight": "Bolder"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "MCal2023"
+                                },
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "width": "stretch",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "Km17"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
             {
                 "type": "Container",
                 "items": [
@@ -1789,6 +1872,46 @@ exports.Studentfeedetails = async (data) => {
             color = "Attention"
         }
         studentfee['body'].push({
+            
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "0011",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Left"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator" : true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "KM17",
+                                    "wrap": true,
+                                    "horizontalAlignment": "Right"
+                                }
+                            ],
+                            "horizontalAlignment": "Center",
+                            "verticalContentAlignment": "Center",
+                            "seperator" : true
+                        },
+                    ]
+                }
+            ],
+        
             "type": "Container",
             "items": [
                 {
