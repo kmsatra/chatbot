@@ -1,5 +1,5 @@
 exports.fclCard = async (data) => {
-    var fcldetail = {
+    var fcldetail ={
     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
     "version": "1.0",
     "type": "AdaptiveCard",

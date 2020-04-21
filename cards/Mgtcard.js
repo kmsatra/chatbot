@@ -1,68 +1,70 @@
 exports.mgtCard = async (data) => {
-    var mgtdetail = {
-        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-        "version": "1.0",
-        "type": "AdaptiveCard",
-        "body": [
-            {
-                "type": "Container",
-                "items": [
-                    {
-                        "type": "ColumnSet",
-                        "columns": [
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",             "style": "Person",
-                                        "altText": "",
-                                        "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
-                                        "horizontalAlignment": "Left",
-                                        "size": "Medium"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Poornima University",
-                                        "horizontalAlignment": "Center",
-                                        "wrap": true,
-                                        "weight": "Bolder",
-                                        "size": "Large"
-                                    },
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "2020 - 2021",
-                                        "horizontalAlignment": "Center"
-                                    }
-                                ],
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",             "style": "Person",
-                                        "altText": "",
-                                        "url": "https://media-exp1.licdn.com/dms/image/C5103AQFlCq3C_ph4xQ/profile-displayphoto-shrink_200_200/0?e=1586995200&v=beta&t=jFNpcmZDaotsqHrT1QLpZTzX6g67jJi8DHrxtIb8yrI",
-                                        "size": "Medium",
-                                        "horizontalAlignment": "Right"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center"
-                            }
-                        ]
-                    }
-                ],
-                "spacing": "None"
-            },
+    var mgtdetail =  {
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0",
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
+                                    "horizontalAlignment": "Left",
+                                    "size": "Medium"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Poornima University",
+                                    "horizontalAlignment": "Center",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Large"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "2020 - 2021",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                    "size": "Medium",
+                                    "horizontalAlignment": "Right"
+                                }
+                            ],
+                            "horizontalAlignment": "Center"
+                        }
+                    ]
+                }
+            ],
+            "spacing": "None"
+        },
             {
                 "type": "Container",
                 "items": [

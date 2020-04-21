@@ -1,81 +1,69 @@
 exports.CampuswisefeedetailCard = async (data) => {
-    var card = 
-    {
-        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-        "type": "AdaptiveCard",
-        "version": "1.0",
-        "body": [
-            {
-                "type": "Container",
-                "items": [
-                    {
-                        "type": "ColumnSet",
-                        "columns": [
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",             "style": "Person",
-                                        "altText": "",
-                                        "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
-                                        "horizontalAlignment": "Left",
-                                        "size": "Medium"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Poornima University",
-                                        "horizontalAlignment": "Center",
-                                        "wrap": true,
-                                        "weight": "Bolder",
-                                        "size": "Large"
-                                    },
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "2020 - 2021",
-                                        "horizontalAlignment": "Center"
-                                    }
-                                ],
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",             "style": "Person",
-                                        "altText": "",
-                                        "url": "https://media-exp1.licdn.com/dms/image/C5103AQFlCq3C_ph4xQ/profile-displayphoto-shrink_200_200/0?e=1586995200&v=beta&t=jFNpcmZDaotsqHrT1QLpZTzX6g67jJi8DHrxtIb8yrI",
-                                        "size": "Medium",
-                                        "horizontalAlignment": "Right"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center"
-                            }
-                        ]
-                    }
-                ],
-                "spacing": "None"
-            },
-                {
+    var card = {
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0",
+    "type": "AdaptiveCard",
+    "body": [
+        {
             "type": "Container",
             "items": [
                 {
-                    "type": "TextBlock",
-                    "text": "Campuswise Fee Detail",
-                    "horizontalAlignment": "Center",
-                    "color": "Accent",
-                    "weight": "Bolder",
-                    "size": "Medium"
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
+                                    "horizontalAlignment": "Left",
+                                    "size": "Medium"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Poornima University",
+                                    "horizontalAlignment": "Center",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Large"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "2020 - 2021",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                    "size": "Medium",
+                                    "horizontalAlignment": "Right"
+                                }
+                            ],
+                            "horizontalAlignment": "Center"
+                        }
+                    ]
                 }
-            ]
+            ],
+            "spacing": "None"
         },
         {
             "type": "Container",
@@ -270,68 +258,71 @@ exports.CampuswisefeedetailCard = async (data) => {
         
 exports.schoolwisefeedetails = async (data, name) => {
     var card = {
-        "type": "AdaptiveCard",
-        "version": "1.0",
-        "body": [
-            {
-                "type": "Container",
-                "items": [
-                    {
-                        "type": "ColumnSet",
-                        "columns": [
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",             "style": "Person",
-                                        "altText": "",
-                                        "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
-                                        "horizontalAlignment": "Left",
-                                        "size": "Medium"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Poornima University",
-                                        "horizontalAlignment": "Center",
-                                        "wrap": true,
-                                        "weight": "Bolder",
-                                        "size": "Large"
-                                    },
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "2020 - 2021",
-                                        "horizontalAlignment": "Center"
-                                    }
-                                ],
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",             "style": "Person",
-                                        "altText": "",
-                                        "url": "https://media-exp1.licdn.com/dms/image/C5103AQFlCq3C_ph4xQ/profile-displayphoto-shrink_200_200/0?e=1586995200&v=beta&t=jFNpcmZDaotsqHrT1QLpZTzX6g67jJi8DHrxtIb8yrI",
-                                        "size": "Medium",
-                                        "horizontalAlignment": "Right"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center"
-                            }
-                        ]
-                    }
-                ],
-                "spacing": "None"
-            },
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0",
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
+                                    "horizontalAlignment": "Left",
+                                    "size": "Medium"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Poornima University",
+                                    "horizontalAlignment": "Center",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Large"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "2020 - 2021",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                    "size": "Medium",
+                                    "horizontalAlignment": "Right"
+                                }
+                            ],
+                            "horizontalAlignment": "Center"
+                        }
+                    ]
+                }
+            ],
+            "spacing": "None"
+        },
             {
                 "type": "Container",
                 "items": [
@@ -540,68 +531,71 @@ exports.schoolwisefeedetails = async (data, name) => {
 
 exports.deptwisefeedetails = async (data, name) => {
     var card = {
-        "type": "AdaptiveCard",
-        "version": "1.0",
-        "body": [
-            {
-                "type": "Container",
-                "items": [
-                    {
-                        "type": "ColumnSet",
-                        "columns": [
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",             "style": "Person",
-                                        "altText": "",
-                                        "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
-                                        "horizontalAlignment": "Left",
-                                        "size": "Medium"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Poornima University",
-                                        "horizontalAlignment": "Center",
-                                        "wrap": true,
-                                        "weight": "Bolder",
-                                        "size": "Large"
-                                    },
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "2020 - 2021",
-                                        "horizontalAlignment": "Center"
-                                    }
-                                ],
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",             "style": "Person",
-                                        "altText": "",
-                                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
-                                        "size": "Medium",
-                                        "horizontalAlignment": "Right"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center"
-                            }
-                        ]
-                    }
-                ],
-                "spacing": "None"
-            },
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0",
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
+                                    "horizontalAlignment": "Left",
+                                    "size": "Medium"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Poornima University",
+                                    "horizontalAlignment": "Center",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Large"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "2020 - 2021",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                    "size": "Medium",
+                                    "horizontalAlignment": "Right"
+                                }
+                            ],
+                            "horizontalAlignment": "Center"
+                        }
+                    ]
+                }
+            ],
+            "spacing": "None"
+        },
             {
                 "type": "Container",
                 "items": [
@@ -807,68 +801,72 @@ exports.deptwisefeedetails = async (data, name) => {
 }
 
 exports.semwisefeedetails= async (data, name) => {
-    var card = {
-        "type": "AdaptiveCard",
-        "body": [
-            {
-                "type": "Container",
-                "items": [
-                    {
-                        "type": "ColumnSet",
-                        "columns": [
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",             "style": "Person",
-                                        "altText": "",
-                                        "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
-                                        "horizontalAlignment": "Left",
-                                        "size": "Medium"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "Column",
-                                "width": "stretch",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Poornima University",
-                                        "horizontalAlignment": "Center",
-                                        "wrap": true,
-                                        "weight": "Bolder",
-                                        "size": "Large"
-                                    },
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "2020 - 2021",
-                                        "horizontalAlignment": "Center"
-                                    }
-                                ],
-                                "verticalContentAlignment": "Center",
-                                "seperator" : true
-                            },
-                            {
-                                "type": "Column",
-                                "width": "auto",
-                                "items": [
-                                    {
-                                        "type": "Image",             "style": "Person",
-                                        "altText": "",
-                                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
-                                        "size": "Medium",
-                                        "horizontalAlignment": "Right"
-                                    }
-                                ],
-                                "horizontalAlignment": "Center"
-                            }
-                        ]
-                    }
-                ],
-                "spacing": "None"
-            },
+    var card ={
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0",
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Poornima_University_Logo.jpg",
+                                    "horizontalAlignment": "Left",
+                                    "size": "Medium"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Poornima University",
+                                    "horizontalAlignment": "Center",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Large"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "2020 - 2021",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "verticalContentAlignment": "Center",
+                            "seperator": true
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "style": "Person",
+                                    "altText": "",
+                                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                    "size": "Medium",
+                                    "horizontalAlignment": "Right"
+                                }
+                            ],
+                            "horizontalAlignment": "Center"
+                        }
+                    ]
+                }
+            ],
+            "spacing": "None"
+        },
             {
                 "type": "Container",
                 "items": [
@@ -1511,15 +1509,6 @@ exports.sectionwisefeedetails = async (data, name) => {
             
         ],
         
-                    "actions": [
-            {
-                "type": "Action.Submit",
-                "title": "Talk to the Parent",
-                "data": {
-                    "x": "Talk"
-                }
-            }
-         ],
         
         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
         "version": "1.0"
@@ -1749,7 +1738,7 @@ exports.Studentfeedetails = async (data) => {
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "text": "MCal2023"
+                                    "text": "18MCAL036"
                                 },
                                 {
                                     "type": "ColumnSet",
@@ -1760,7 +1749,7 @@ exports.Studentfeedetails = async (data) => {
                                             "items": [
                                                 {
                                                     "type": "TextBlock",
-                                                    "text": "Km17"
+                                                    "text": "KM17"
                                                 }
                                             ]
                                         }
@@ -1862,7 +1851,17 @@ exports.Studentfeedetails = async (data) => {
                     }
                 ]
             }
-        ]
+        ],
+        
+                    "actions": [
+            {
+                "type": "Action.Submit",
+                "title": "Talk to the Parent",
+                "data": {
+                    "x": "Talk"
+                }
+            }
+         ],
     }
     for (let i = 0; i < data.recordset.length; i++) {
         var color = "Default"
