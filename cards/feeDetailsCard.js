@@ -53,7 +53,7 @@ exports.CampuswisefeedetailCard = async (data) => {
                                     "type": "Image",
                                     "style": "Person",
                                     "altText": "",
-                                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                    "url": "https://w0.pngwave.com/png/129/94/computer-icons-avatar-icon-design-male-teacher-png-clip-art-thumbnail.png",
                                     "size": "Medium",
                                     "horizontalAlignment": "Right"
                                 }
@@ -311,7 +311,7 @@ exports.schoolwisefeedetails = async (data, name) => {
                                     "type": "Image",
                                     "style": "Person",
                                     "altText": "",
-                                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                    "url": "https://w0.pngwave.com/png/129/94/computer-icons-avatar-icon-design-male-teacher-png-clip-art-thumbnail.png",
                                     "size": "Medium",
                                     "horizontalAlignment": "Right"
                                 }
@@ -584,7 +584,7 @@ exports.deptwisefeedetails = async (data, name) => {
                                     "type": "Image",
                                     "style": "Person",
                                     "altText": "",
-                                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                    "url": "https://w0.pngwave.com/png/129/94/computer-icons-avatar-icon-design-male-teacher-png-clip-art-thumbnail.png",
                                     "size": "Medium",
                                     "horizontalAlignment": "Right"
                                 }
@@ -855,7 +855,7 @@ exports.semwisefeedetails= async (data, name) => {
                                     "type": "Image",
                                     "style": "Person",
                                     "altText": "",
-                                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                    "url": "https://w0.pngwave.com/png/129/94/computer-icons-avatar-icon-design-male-teacher-png-clip-art-thumbnail.png",
                                     "size": "Medium",
                                     "horizontalAlignment": "Right"
                                 }
@@ -1122,7 +1122,7 @@ exports.classwisefeedetails = async (data, name) => {
                                     {
                                         "type": "Image",             "style": "Person",
                                         "altText": "",
-                                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                        "url": "https://w0.pngwave.com/png/129/94/computer-icons-avatar-icon-design-male-teacher-png-clip-art-thumbnail.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }
@@ -1390,7 +1390,7 @@ exports.sectionwisefeedetails = async (data, name) => {
                                     {
                                         "type": "Image",             "style": "Person",
                                         "altText": "",
-                                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                        "url": "https://w0.pngwave.com/png/129/94/computer-icons-avatar-icon-design-male-teacher-png-clip-art-thumbnail.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }
@@ -1670,7 +1670,7 @@ exports.Studentfeedetails = async (data) => {
                                     {
                                         "type": "Image",             "style": "Person",
                                         "altText": "",
-                                        "url": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQzMjgyNDgwNjIxODIzNTU5/jennifer-lawrence_gettyimages-626382596jpg.jpg",
+                                        "url": "https://cdn4.iconfinder.com/data/icons/professions-1-1/128/25-512.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }

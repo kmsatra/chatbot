@@ -51,7 +51,7 @@ exports.stuCard = async (data) => {
                                     {
                                         "type": "Image",             "style": "Person",             "style": "Person",
                                         "altText": "",
-                                        "url": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQzMjgyNDgwNjIxODIzNTU5/jennifer-lawrence_gettyimages-626382596jpg.jpg",
+                                        "url": "https://cdn4.iconfinder.com/data/icons/professions-1-1/128/25-512.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }
@@ -378,7 +378,7 @@ exports.attendanceCard = async (data, sender, name) => {
                                     {
                                         "type": "Image",             "style": "Person",             "style": "Person",
                                         "altText": "",
-                                        "url": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQzMjgyNDgwNjIxODIzNTU5/jennifer-lawrence_gettyimages-626382596jpg.jpg",
+                                        "url": "https://cdn4.iconfinder.com/data/icons/professions-1-1/128/25-512.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }
@@ -633,7 +633,7 @@ exports.cgpaCard = async (data, nu) => {
                                     {
                                         "type": "Image",             "style": "Person",             "style": "Person",
                                         "altText": "",
-                                        "url": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQzMjgyNDgwNjIxODIzNTU5/jennifer-lawrence_gettyimages-626382596jpg.jpg",
+                                        "url": "https://cdn4.iconfinder.com/data/icons/professions-1-1/128/25-512.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }
@@ -937,7 +937,7 @@ var imark =
                                     "type": "Image",
                                     "style": "Person",
                                     "altText": "",
-                                    "url": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQzMjgyNDgwNjIxODIzNTU5/jennifer-lawrence_gettyimages-626382596jpg.jpg",
+                                    "url": "https://cdn4.iconfinder.com/data/icons/professions-1-1/128/25-512.png",
                                     "size": "Medium",
                                     "horizontalAlignment": "Right"
                                 }
@@ -1245,7 +1245,7 @@ exports.assignmentCard = async (data) => {
                                     {
                                         "type": "Image",             "style": "Person",             "style": "Person",
                                         "altText": "",
-                                        "url": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQzMjgyNDgwNjIxODIzNTU5/jennifer-lawrence_gettyimages-626382596jpg.jpg",
+                                        "url": "https://cdn4.iconfinder.com/data/icons/professions-1-1/128/25-512.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }
@@ -1508,7 +1508,7 @@ exports.YesCard = async (stepContext) => {
                                     {
                                         "type": "Image",             "style": "Person",             "style": "Person",
                                         "altText": "",
-                                        "url": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQzMjgyNDgwNjIxODIzNTU5/jennifer-lawrence_gettyimages-626382596jpg.jpg",
+                                        "url": "https://cdn4.iconfinder.com/data/icons/professions-1-1/128/25-512.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }
@@ -1973,7 +1973,7 @@ exports.NoCard = async (stepContext) => {
                                     {
                                         "type": "Image",             "style": "Person",             "style": "Person",
                                         "altText": "",
-                                        "url": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQzMjgyNDgwNjIxODIzNTU5/jennifer-lawrence_gettyimages-626382596jpg.jpg",
+                                        "url": "https://cdn4.iconfinder.com/data/icons/professions-1-1/128/25-512.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }

@@ -51,7 +51,7 @@ exports.campusweiseAvgAttendance = async (data, name) => {
                                     {
                                         "type": "Image",             "style": "Person",
                                         "altText": "",
-                                        "url": "https://media-exp1.licdn.com/dms/image/C5103AQFlCq3C_ph4xQ/profile-displayphoto-shrink_200_200/0?e=1586995200&v=beta&t=jFNpcmZDaotsqHrT1QLpZTzX6g67jJi8DHrxtIb8yrI",
+                                        "url": "https://w0.pngwave.com/png/129/94/computer-icons-avatar-icon-design-male-teacher-png-clip-art-thumbnail.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }
@@ -287,9 +287,10 @@ exports.schoolwiseAvgAttendance = async (data, name) => {
                                 "width": "auto",
                                 "items": [
                                     {
-                                        "type": "Image",             "style": "Person",
+                                        "type": "Image",             
+                                        "style": "Person",
                                         "altText": "",
-                                        "url": "https://media-exp1.licdn.com/dms/image/C5103AQFlCq3C_ph4xQ/profile-displayphoto-shrink_200_200/0?e=1586995200&v=beta&t=jFNpcmZDaotsqHrT1QLpZTzX6g67jJi8DHrxtIb8yrI",
+                                        "url": "https://w0.pngwave.com/png/129/94/computer-icons-avatar-icon-design-male-teacher-png-clip-art-thumbnail.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }
@@ -529,7 +530,7 @@ exports.deptwiseAvgAttendance = async (data, name) => {
                                     {
                                         "type": "Image",             "style": "Person",
                                         "altText": "",
-                                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                        "url": "https://w0.pngwave.com/png/129/94/computer-icons-avatar-icon-design-male-teacher-png-clip-art-thumbnail.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }
@@ -767,7 +768,7 @@ exports.semwiseAvgAttendance = async (data, name) => {
                                     {
                                         "type": "Image",             "style": "Person",
                                         "altText": "",
-                                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                        "url": "https://w0.pngwave.com/png/129/94/computer-icons-avatar-icon-design-male-teacher-png-clip-art-thumbnail.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }
@@ -1006,7 +1007,7 @@ exports.classwiseAvgAttendance = async (data, name) => {
                                     {
                                         "type": "Image",             "style": "Person",
                                         "altText": "",
-                                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                        "url": "https://w0.pngwave.com/png/129/94/computer-icons-avatar-icon-design-male-teacher-png-clip-art-thumbnail.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }
@@ -1246,7 +1247,7 @@ exports.sectionwiseAvgAttendance = async (data, name) => {
                                     {
                                         "type": "Image",             "style": "Person",
                                         "altText": "",
-                                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                        "url": "https://w0.pngwave.com/png/129/94/computer-icons-avatar-icon-design-male-teacher-png-clip-art-thumbnail.png",
                                         "size": "Medium",
                                         "horizontalAlignment": "Right"
                                     }

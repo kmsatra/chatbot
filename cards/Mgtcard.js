@@ -53,7 +53,7 @@ exports.mgtCard = async (data) => {
                                     "type": "Image",
                                     "style": "Person",
                                     "altText": "",
-                                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH8yZBluzMlWKaXD7tTgMJllGv2GAqg_SJXPpr0tIeD-IjycVJQ&s",
+                                    "url": "https://w0.pngwave.com/png/129/94/computer-icons-avatar-icon-design-male-teacher-png-clip-art-thumbnail.png",
                                     "size": "Medium",
                                     "horizontalAlignment": "Right"
                                 }
