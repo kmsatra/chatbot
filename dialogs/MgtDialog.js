@@ -9,7 +9,7 @@ const WATERFALL_DIALOG = 'WATERFALL_DIALOG';
 const Mgt_Dialog = 'Mgt_Dialog';
 var mgtcard = require('../cards/Mgtcard')
 const db = require('../db/database')
-var mgtDialogInternalVar = "";
+// var mgtDialogInternalVar = "";
 class MgtDialog extends ComponentDialog {
     constructor() {
         super(Mgt_Dialog);
@@ -31,13 +31,14 @@ class MgtDialog extends ComponentDialog {
 
     async buttonresponse(stepContext) {
         await stepContext.context.sendActivity({type: ActivityTypes.Typing});
-
-        // console.log("::::::::::::::::::::::::::::::::", mgtDialogInternalVar)
+         var mgtDialogInternalVar = "";
+        
+        console.log("::::::::::::::::::::::::::::::::", mgtDialogInternalVar)
         if (mgtDialogInternalVar === "" || mgtDialogInternalVar === null) {
             var data
             await stepContext.context.sendActivity({type: ActivityTypes.Typing});
             await db.managementFeesDetail('main').then(async result => {
-                // console.log("=>>>>>>>>",result)
+                 console.log("=>>>>>>>>",result)
                 data = result
             }).catch(err => {
                 console.log("hereeeeeeee", err)
@@ -47,14 +48,14 @@ class MgtDialog extends ComponentDialog {
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(mcard)]
             });
-            return Dialog.EndOfTurn;
+            // return Dialog.EndOfTurn;
         }
         else {
             console.log(" m here");
             // stepContext.context.activity.value.x = mgtDialogInternalVar
             return await stepContext.next();
         }
-
+        return Dialog.EndOfTurn;
         // }
     }
 
@@ -131,21 +132,23 @@ class MgtDialog extends ComponentDialog {
         // }
         try {
             if (stepContext.context.activity.value && stepContext.context.activity.value.x) {
-                mgtDialogInternalVar = stepContext.context.activity.value.x
+                var res;
+                res = stepContext.context.activity.value.x
+                console.log("",res)
             }
-            switch (mgtDialogInternalVar) {
+            switch (res) {
                 
                 case 'feeDetails':
-                    console.log("1",mgtDialogInternalVar);
+                    console.log("1",res);
                     await stepContext.beginDialog(feeDeta_Dialog);
                     return Dialog.EndOfTurn;
                 
                 case 'avgAttendance':
-                    console.log("1",mgtDialogInternalVar);
+                    console.log("1",res);
                     await stepContext.beginDialog(avgAttd_Dialog);
                     return Dialog.EndOfTurn;
                 case 'avgMarks':
-                    console.log(mgtDialogInternalVar);
+                    console.log(res);
                     await stepContext.beginDialog(avgMarks_Dialog);
                     return Dialog.EndOfTurn;
 

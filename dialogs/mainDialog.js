@@ -16,7 +16,7 @@ class MainDialog extends ComponentDialog {
     constructor(userState) {
         super(MAIN_DIALOG);
         this.userState = userState;
-        this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
+        // this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
         this.addDialog(new NumberPrompt(NUMBER_PROMPT));
         // this.addDialog(new TopLevelDialog());
         this.addDialog(new StudentDialog());

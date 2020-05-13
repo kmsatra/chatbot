@@ -7,7 +7,6 @@ const WATERFALL_DIALOG = 'WATERFALL_DIALOG';
 const db = require('../db/database')
 const Stu_Dialog = 'Stu_Dialog';
 var stucard = require('../cards/studentCard')
-var stuDialogInternalVar = "";
 // var status = ['XXXX', 'XXX', 'XX', 'X']
 class StudentDialog extends ComponentDialog {
     constructor() {
@@ -29,6 +28,7 @@ class StudentDialog extends ComponentDialog {
     async stubutton(stepContext) {
         // console.log("::::::::::::::::::::::::::::::::", stuDialogInternalVar)
         await stepContext.context.sendActivity({type: ActivityTypes.Typing});
+        var stuDialogInternalVar = "";
 
         if (stuDialogInternalVar === "" || stuDialogInternalVar === null) {
             var data
@@ -56,9 +56,10 @@ class StudentDialog extends ComponentDialog {
 
         try {
             if (stepContext.context.activity.value && stepContext.context.activity.value.x) {
-                stuDialogInternalVar = stepContext.context.activity.value.x
+              var res;
+                res = stepContext.context.activity.value.x
             }
-            switch (stuDialogInternalVar) {
+            switch (res) {
                 case 'Attendance':
                     var attendace;
                     await db.studentAttendanceDetail('2018PUSSHBSAX06587').then(async result => {
@@ -163,9 +164,10 @@ class StudentDialog extends ComponentDialog {
 
         try {
             if (stepContext.context.activity.value && stepContext.context.activity.value.x) {
-                stuDialogInternalVar = stepContext.context.activity.value.x
+                var res;
+                res = stepContext.context.activity.value.x
             }
-            switch (stuDialogInternalVar) {
+            switch (res) {
                 case 'Okay':
 
                     await stepContext.context.sendActivity("Thank you, Your enrollment has been confirmed.");
@@ -219,6 +221,7 @@ class StudentDialog extends ComponentDialog {
     async tryOut(stepContext) {
         // console.log("----->>", stepContext.result)
         try {
+            var stuDialogInternalVar="";
             switch (stepContext.result) {
                 case 'Attendance Details':
                     // console.log("====================Attendance")

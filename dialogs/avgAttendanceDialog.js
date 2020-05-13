@@ -176,7 +176,6 @@ class avgAttendanceDialog extends ComponentDialog {
                 attachments: [CardFactory.adaptiveCard(acard)]
             });
             return await stepContext.endDialog()
-
         }
         else {
             return await stepContext.endDialog();

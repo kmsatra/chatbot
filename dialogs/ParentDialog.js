@@ -7,7 +7,6 @@ const WATERFALL_DIALOG = 'WATERFALL_DIALOG';
 const Par_Dialog = 'Par_Dialog';
 const db = require('../db/database')
 var parcard = require('../cards/ParentCard')
-var parDialogInternalVar = "";
 // var status = ['XXXX', 'XXX', 'XX', 'X']
 class ParentDialog extends ComponentDialog {
     constructor() {
@@ -28,6 +27,7 @@ class ParentDialog extends ComponentDialog {
     async stubutton(stepContext) {
         // console.log("::::::::::::::::::::::::::::::::", parDialogInternalVar)
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
+        var parDialogInternalVar = "";
 
         if (parDialogInternalVar === "" || parDialogInternalVar === null) {
             var data
@@ -56,6 +56,8 @@ class ParentDialog extends ComponentDialog {
 
         try {
             if (stepContext.context.activity.value && stepContext.context.activity.value.x) {
+               var parDialogInternalVar = "";
+
                 parDialogInternalVar = stepContext.context.activity.value.x
             }
             switch (parDialogInternalVar) {
@@ -154,6 +156,8 @@ class ParentDialog extends ComponentDialog {
     async tryOut(stepContext) {
         // console.log("----->>", stepContext.result)
         try {
+            var parDialogInternalVar = "";
+
             switch (stepContext.result) {
                 case 'Attendance Details':
                     // console.log("====================Attendance")

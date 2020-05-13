@@ -102,7 +102,7 @@ class feeDetailsDialog extends ComponentDialog {
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         if (stepContext.context.activity.value) {
             console.log(stepContext.context.activity.value.x)
-            global.deptname = stepContext.context.activity.value.x
+             global.deptname = stepContext.context.activity.value.x
          
             var temp = stepContext.context.activity.value.x.split(',');
             await db.feeDetail(1, 'semester').then(async result => {
@@ -114,7 +114,7 @@ class feeDetailsDialog extends ComponentDialog {
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(card)]
             });
-        console.log("eee",`${deptname}`)
+            console.log("eee",`${deptname}`)
             
             await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
             return Dialog.EndOfTurn;
@@ -156,7 +156,7 @@ class feeDetailsDialog extends ComponentDialog {
             var temp = stepContext.context.activity.value.x.split(',');
             await db.feeDetail(1, 'studentList').then(async result => {
                 dbresult = result.recordset
-      console.log(dbresult)
+            console.log(dbresult)
             }).catch(err => {
                 console.log("error in student list for attendance", err)
             })

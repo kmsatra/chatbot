@@ -6,7 +6,6 @@ const WATERFALL_DIALOG = 'WATERFALL_DIALOG';
 const fcl_Dialog = 'fcl_Dialog';
 const db = require('../db/database')
 var fclcard = require('../cards/FacultyCard')
-var fclDialogInternalVar = "";
 
 class FacultyDialog extends ComponentDialog {
     constructor() {
@@ -28,6 +27,7 @@ class FacultyDialog extends ComponentDialog {
     async fclbutton(stepContext) {
         // console.log("::::::::::::::::::::::::::::::::", fclDialogInternalVar)
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
+        var fclDialogInternalVar = "";
 
         if (fclDialogInternalVar === "" || fclDialogInternalVar === null) {
             var data
@@ -57,9 +57,10 @@ class FacultyDialog extends ComponentDialog {
 
         try {
             if (stepContext.context.activity.value && stepContext.context.activity.value.x) {
-                fclDialogInternalVar = stepContext.context.activity.value.x
+               var res;
+                res = stepContext.context.activity.value.x
             }
-            switch (fclDialogInternalVar) {
+            switch (res) {
                 case 'Class Detail':
                     var cls
                     await db.facultyClassDetail('1').then(async result => {
@@ -193,7 +194,7 @@ class FacultyDialog extends ComponentDialog {
     }
     async middle(stepContext){
         if (stepContext.context.activity.value && stepContext.context.activity.value.x) {
-           await stepContext.context.sendActivity("Thank you for taking Attendance.");
+        //    await stepContext.context.sendActivity("Thank you for taking Attendance.");
            return await stepContext.next();
 
         }
@@ -214,13 +215,13 @@ class FacultyDialog extends ComponentDialog {
     async tryOut(stepContext) {
         console.log("----->>", stepContext.result)
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-
+        var res;
         try {
             switch (stepContext.result) {
                 case 'Class Detail':
                     // console.log("====================Class Detail")
                     // await stepContext.context.sendActivity("pending");
-                    fclDialogInternalVar = "Class Detail"
+                    res = "Class Detail"
                     return await stepContext.beginDialog(WATERFALL_DIALOG)
                 // return Dialog.EndOfTurn;
                 // return await stepContext.endDialog()
@@ -228,13 +229,13 @@ class FacultyDialog extends ComponentDialog {
                 case 'Leave Detail':
                     // console.log("====================Leave Detail")
                     // await stepContext.context.sendActivity("deposit");
-                    fclDialogInternalVar = "Leave Detail"
+                    res = "Leave Detail"
                     return await stepContext.beginDialog(WATERFALL_DIALOG)
                 // return Dialog.EndOfTurn
                 // return await stepContext.endDialog()
                 case 'Apply For Leave':
                     // console.log("====================Apply For Leave")
-                    fclDialogInternalVar = "Apply For Leave"
+                    res = "Apply For Leave"
                     return await stepContext.beginDialog(WATERFALL_DIALOG)
                 // return Dialog.EndOfTurn
                 // return await stepContext.endDialog()
@@ -242,13 +243,13 @@ class FacultyDialog extends ComponentDialog {
                 case 'Salary Detail':
                     // console.log("====================Gross Salary")
                     // await stepContext.context.sendActivity("deposit");
-                    fclDialogInternalVar = "Gross Salary"
+                    res = "Gross Salary"
                     return await stepContext.beginDialog(WATERFALL_DIALOG)
                 // return Dialog.EndOfTurn
                 // return await stepContext.endDialog()
                 case 'Switch Role':
                     // console.log("exit-------------------")
-                    fclDialogInternalVar = ""
+                    res = ""
                     return await stepContext.endDialog();
 
             }
