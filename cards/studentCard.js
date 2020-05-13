@@ -314,7 +314,7 @@ exports.stuCard = async (data) => {
                 "type": "Action.Submit",
                 "title": "Marks Details",
                 "data": {
-                    "x": "CGPA"
+                    "x": "Mark Details"
                 }
             }
 
@@ -1146,7 +1146,7 @@ var imark =
                                     "type": "TextBlock",
                                     "text": "AI",
                                     "wrap": true,
-                                    "horizontalAlignment": "Left"
+                                    "horizontalAlignment": "Center"
                                 }
                             ],
                             "horizontalAlignment": "Center",

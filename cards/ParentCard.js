@@ -351,7 +351,7 @@ exports.parCard = async (data) => {
                 "type": "Action.Submit",
                 "title": "Fees Details",
                 "data": {
-                    "x": "Pending Fees"
+                    "x": "Fees Details"
                 }
             }
         ]

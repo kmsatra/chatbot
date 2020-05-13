@@ -94,6 +94,7 @@ exports.fclCard = async (data) => {
                                     "text": "EmployeeCode",
                                     "weight": "Bolder",
                                     "horizontalAlignment": "Left",
+                                    "wrap": true
                               
                                 }
                             ],
@@ -114,6 +115,7 @@ exports.fclCard = async (data) => {
                             ],
                             "horizontalAlignment": "Center",
                             "verticalContentAlignment": "Center",
+                            "seperator": true
                         },
                         {
                             "type": "Column",
@@ -1516,7 +1518,8 @@ exports.applyLeave = async (data) => {
                                     "type": "TextBlock",
                                     "text": "EmployeeCode",
                                     "weight": "Bolder",
-                                    "horizontalAlignment": "Left"
+                                    "horizontalAlignment": "Left",
+                                    "wrap": true
                                 }
                             ],
                             "horizontalAlignment": "Center",
