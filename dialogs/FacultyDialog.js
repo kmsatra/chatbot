@@ -216,37 +216,128 @@ class FacultyDialog extends ComponentDialog {
         console.log("----->>", stepContext.result)
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         var res;
+        res=stepContext.result;
         try {
-            switch (stepContext.result) {
+            switch (res.trim()) {
                 case 'Class Detail':
-                    // console.log("====================Class Detail")
-                    // await stepContext.context.sendActivity("pending");
-                    res = "Class Detail"
-                    return await stepContext.beginDialog(WATERFALL_DIALOG)
-                // return Dialog.EndOfTurn;
-                // return await stepContext.endDialog()
+                  var cls
+                    await db.facultyClassDetail('1').then(async result => {
+                        // console.log("=>>>>>>>>",result)
+                        cls = result
+                        // console.log(cls.recordset)
+                    }).catch(err => {
+                        console.log("hereeeeeeee", err)
+                    })
+
+                    let s1 = [];
+                    let s2 = [];
+                    let s3 = [];
+                    let s4 = [];
+                    let s5 = [];
+
+                    cls.recordset.forEach(Element => {
+                        if (Element.day == 'Monday') {
+                            s1.push(Element)
+                        }
+                        else if (Element.day == 'Tuesday') {
+                            s2.push(Element)
+                        }
+                        else if (Element.day == 'Wednesday') {
+                            s3.push(Element)
+                        }
+                        else if (Element.day == 'Thursday') {
+                            s4.push(Element)
+                        }
+                        else if (Element.day == 'Friday') {
+                            s5.push(Element)
+                        }
+
+                    })
+                    var timeTable = [s1, s2, s3, s4, s5];
+                    const sendTime = { attachments: [], attachmentLayout: AttachmentLayoutTypes.Carousel };
+                    for (var i = 0; i < timeTable.length; i++) {
+                        // console.log("==========>>>>>", timeTable[i])
+                        let dcard = await fclcard.weekclass(timeTable[i])
+                        var dccard = CardFactory.adaptiveCard(dcard)
+                        sendTime.attachments.push(dccard);
+                    }
+                    await stepContext.context.sendActivity(sendTime);
+                    // console.log("data", cls)
+                    // var list = [];
+                    // for (var i = 0; i < 5; i++) {
+                    //     let wccard = await fclcard.weekclass(stepContext)
+                    //     var wcard = CardFactory.adaptiveCard(wccard)
+                    //     list.push(wcard);
+
+                    // }
+                    // const reply = { attachments: list, attachmentLayout: AttachmentLayoutTypes.Carousel };
+                    // await stepContext.context.sendActivity(reply);
+                    // return Dialog.EndOfTurn;
+                    // return await stepContext.endDialog()
+                    return await stepContext.next();
+
 
                 case 'Leave Detail':
-                    // console.log("====================Leave Detail")
-                    // await stepContext.context.sendActivity("deposit");
-                    res = "Leave Detail"
-                    return await stepContext.beginDialog(WATERFALL_DIALOG)
-                // return Dialog.EndOfTurn
-                // return await stepContext.endDialog()
-                case 'Apply For Leave':
-                    // console.log("====================Apply For Leave")
-                    res = "Apply For Leave"
-                    return await stepContext.beginDialog(WATERFALL_DIALOG)
-                // return Dialog.EndOfTurn
-                // return await stepContext.endDialog()
+
+                    var lev
+                    await db.facultyLeaveDetail('1').then(async result => {
+                        // console.log("=>>>>>>>>",result)
+                        lev = result
+                    }).catch(err => {
+                        console.log("hereeeeeeee", err)
+                    })
+
+                    // console.log("data", lev)
+                    //    await stepContext.beginDialog(Mgt_Dialog);
+                    var lcard = await fclcard.leaveDetail(lev)
+                    await stepContext.context.sendActivity({
+                        attachments: [CardFactory.adaptiveCard(lcard)]
+                    });
+                    // return Dialog.EndOfTurn;
+                    // return await stepContext.endDialog()
+                    return await stepContext.next();
+                return await stepContext.endDialog()
+case 'Apply For Leave':
                 
+                    var lev
+                    await db.facultyLeaveDetail('1').then(async result => {
+                        // console.log("=>>>>>>>>",result)
+                        lev = result
+                    }).catch(err => {
+                        console.log("hereeeeeeee", err)
+                    })
+
+                    // console.log("data")
+                    //    await stepContext.beginDialog(Mgt_Dialog);
+                    var aleave = await fclcard.applyLeave(lev)
+                    // console.log("hello",aleave)
+                      await stepContext.context.sendActivity({
+                        attachments: [CardFactory.adaptiveCard(aleave)]
+                    });
+              
+                    // return Dialog.EndOfTurn;
+                    // return await stepContext.endDialog()
+                     return await stepContext.next();
+              
                 case 'Salary Detail':
-                    // console.log("====================Gross Salary")
-                    // await stepContext.context.sendActivity("deposit");
-                    res = "Gross Salary"
-                    return await stepContext.beginDialog(WATERFALL_DIALOG)
-                // return Dialog.EndOfTurn
-                // return await stepContext.endDialog()
+
+                    var sal
+                    await db.facultySalaryDetail('1').then(async result => {
+                        // console.log("=>>>>>>>>",result)
+                        sal = result
+                    }).catch(err => {
+                        console.log("hereeeeeeee", err)
+                    })
+
+                    // console.log("data", sal)
+                    //    await stepContext.beginDialog(Mgt_Dialog);
+                    var salcard = await fclcard.SalaryDetail(sal)
+                    await stepContext.context.sendActivity({
+                        attachments: [CardFactory.adaptiveCard(salcard)]
+                    });
+                    // return Dialog.EndOfTurn;
+                    // return await stepContext.endDialog()
+                    return await stepContext.next();
                 case 'Switch Role':
                     // console.log("exit-------------------")
                     res = ""
@@ -256,6 +347,7 @@ class FacultyDialog extends ComponentDialog {
         } catch (Exception) {
             console.log("error")
         }
+    return Dialog.EndOfTurn;
     }
 }
 

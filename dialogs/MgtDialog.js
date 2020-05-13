@@ -3,10 +3,13 @@ const { AttachmentLayoutTypes, CardFactory, ActivityTypes } = require('botbuilde
 const { avgAttd_Dialog, avgAttendanceDialog } = require('./avgAttendanceDialog')
 const { feeDeta_Dialog, feeDetailsDialog } = require('./feeDetailsDialog')
 const { avgMarks_Dialog, avgMarksDialog } = require('./avgMarksDialog')
+const { MAIN_DIALOG, MainDialog } = require('./mainDialog')
+
 const TEXT_PROMPT = 'TEXT_PROMPT';
 const NUMBER_PROMPT = 'NUMBER_PROMPT';
 const WATERFALL_DIALOG = 'WATERFALL_DIALOG';
 const Mgt_Dialog = 'Mgt_Dialog';
+
 var mgtcard = require('../cards/Mgtcard')
 const db = require('../db/database')
 // var mgtDialogInternalVar = "";
@@ -169,28 +172,35 @@ class MgtDialog extends ComponentDialog {
     }
 
     async tryOut(stepContext) {
-        console.log("----->>first here", stepContext.result)
+         console.log("----->>first here", stepContext.result)
+            var res=stepContext.result;
         try {
-            switch (stepContext.result) {
+            console.log("restinf",res.trim())
+            switch(res.trim()) {
                 case 'Fees Details':
-                    mgtDialogInternalVar = "feeDetails"
-                    return await stepContext.beginDialog(WATERFALL_DIALOG)
+                     console.log("1",res);
+                    return await stepContext.beginDialog(feeDeta_Dialog);
+                    // return Dialog.EndOfTurn;
                 
                 case 'Average Attendance':
-                    mgtDialogInternalVar = "avgAttendance"
-                    return await stepContext.beginDialog(WATERFALL_DIALOG)
-                case 'Average Marks':
-                    mgtDialogInternalVar = "avgMarks"
-                    return await stepContext.beginDialog(WATERFALL_DIALOG)
-                case 'Switch Role':
-                    mgtDialogInternalVar = ""
-                    return await stepContext.endDialog();
-
+                      console.log("1",res);
+                    await stepContext.beginDialog(avgAttd_Dialog);
+                    return Dialog.EndOfTurn;
+              case 'Average Marks':
+                      console.log(res);
+                    await stepContext.beginDialog(avgMarks_Dialog);
+                    return Dialog.EndOfTurn;
+              case 'Switch Role':
+                console.log("----->>f",res)
+                   return await stepContext.endDialog();
+                    //  return Dialog.EndOfTurn;
             }
         } catch (Exception) {
             console.log("error")
         }
+     return Dialog.EndOfTurn;
     }
+   
 }
 
 
