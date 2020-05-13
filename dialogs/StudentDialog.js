@@ -19,14 +19,16 @@ class StudentDialog extends ComponentDialog {
             this.buttonresponse.bind(this),
             this.yesno.bind(this),
             this.options.bind(this),
-            this.tryOut.bind(this)
+            this.tryOut.bind(this),
+            this.final.bind(this),
+            
+            this.finall.bind(this)
         ]));
         this.initialDialogId = WATERFALL_DIALOG;
     }
 
 
     async stubutton(stepContext) {
-        // console.log("::::::::::::::::::::::::::::::::", stuDialogInternalVar)
         await stepContext.context.sendActivity({type: ActivityTypes.Typing});
         var stuDialogInternalVar = "";
 
@@ -53,14 +55,16 @@ class StudentDialog extends ComponentDialog {
     async buttonresponse(stepContext) {
         // console.log("value", stepContext.context.activity.value.x)
         await stepContext.context.sendActivity({type: ActivityTypes.Typing});
-
+            console.log("hey1",res)
         try {
             if (stepContext.context.activity.value && stepContext.context.activity.value.x) {
               var res;
                 res = stepContext.context.activity.value.x
+                console.log("hey11",res)
             }
-            switch (res) {
+            switch (res.trim()) {
                 case 'Attendance':
+                console.log("hey1.1")
                     var attendace;
                     await db.studentAttendanceDetail('2018PUSSHBSAX06587').then(async result => {
                         // console.log("=>>>>>>>>",result)
@@ -76,7 +80,8 @@ class StudentDialog extends ComponentDialog {
                     // return await stepContext.endDialog()
                     return await stepContext.next()
 
-                case 'CGPA':
+                case 'Mark Details':
+                console.log("hey1.2")
                     var dbcgpa = []
                     var dcgpa
                     await db.studentMarksDetail('2018PUSSHBSAX06587').then(async result => {
@@ -156,10 +161,12 @@ class StudentDialog extends ComponentDialog {
         } catch (Exceptionn) {
             console.log("error 4", Exceptionn)
         }
+        return Dialog.EndOfTurn;
     }
 
     async yesno(stepContext) {
-        // console.log("value", stepContext.context.activity.value.x)
+
+         console.log("hey2")
         await stepContext.context.sendActivity({type: ActivityTypes.Typing});
 
         try {
@@ -210,6 +217,7 @@ class StudentDialog extends ComponentDialog {
         }
     }
     async options(stepContext) {
+        console.log("hey3")
         await stepContext.context.sendActivity({type: ActivityTypes.Typing});
 
         // console.log("---------->>>>>> reached here")
@@ -219,26 +227,72 @@ class StudentDialog extends ComponentDialog {
     }
 
     async tryOut(stepContext) {
-        // console.log("----->>", stepContext.result)
-        try {
-            var stuDialogInternalVar="";
-            switch (stepContext.result) {
+         try {
+            var res;
+            res=stepContext.result;
+            console.log("----->>",res)
+        
+            switch (res.trim()) {
                 case 'Attendance Details':
-                    // console.log("====================Attendance")
-                    // await stepContext.context.sendActivity("pending");
-                    stuDialogInternalVar = "Attendance"
-                    return await stepContext.beginDialog(WATERFALL_DIALOG)
-                // return Dialog.EndOfTurn;
-                // return await stepContext.endDialog()
-
+                     console.log("====================Attendance")
+                   var attendace;
+                    await db.studentAttendanceDetail('2018PUSSHBSAX06587').then(async result => {
+                        // console.log("=>>>>>>>>",result)
+                        attendace = result
+                    }).catch(err => {
+                        console.log("hereeeeeeee", err)
+                    })
+                    // console.log("=====>>>>", attendace)
+                    var acard = await stucard.attendanceCard(attendace)
+                    await stepContext.context.sendActivity({
+                        attachments: [CardFactory.adaptiveCard(acard)]
+                    });
+                    await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+                    await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Attendance Details', 'Marks Details', 'Switch Role']));
+                    return Dialog.EndOfTurn;
+    
                 case 'Marks Details':
-                    // console.log("====================CGPA")
-                    // await stepContext.context.sendActivity("deposit");
-                    stuDialogInternalVar = "CGPA"
-                    return await stepContext.beginDialog(WATERFALL_DIALOG)
-                // return Dialog.EndOfTurn
-                // return await stepContext.endDialog()
-                case 'Assignment':
+                    console.log("====================CGPA",res)
+                     var dbcgpa = []
+                    var dcgpa
+                    await db.studentMarksDetail('2018PUSSHBSAX06587').then(async result => {
+                        // console.log("=>>>>>>>>",result)
+                        dcgpa = result
+
+                    }).catch(err => {
+                        console.log("hereeeeeeee", err)
+                    })
+                    var s = [];
+                    var s2 = [];
+                    dcgpa.recordset.forEach(element => {
+
+                        if (element.semester === 'I') {
+                            s.push(element)
+                        }
+                        else if (element.semester === 'II') {
+                            s2.push(element)
+                        }
+                    });
+                    // console.log("ssssss",s, s2)
+                    dbcgpa.push(s)
+                    dbcgpa.push(s2)
+                    // console.log("=====>>>>", dbcgpa[0])
+                    const cgpa = { attachments: [], attachmentLayout: AttachmentLayoutTypes.Carousel };
+                    for (var i = 0; i < dbcgpa.length; i++) {
+                         var ccard = await stucard.cgpaCard(dbcgpa[i], dbcgpa.length)
+                         var cgcard = await CardFactory.adaptiveCard(ccard)
+                        cgpa.attachments.push(cgcard);    
+                    }
+                       var iccard = await stucard.imarkCard()
+                       var igcard = await CardFactory.adaptiveCard(iccard)
+                       cgpa.attachments.push(igcard);
+
+                        await stepContext.context.sendActivity(cgpa)
+                          await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+                    await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Attendance Details', 'Marks Details', 'Switch Role']));
+                    return Dialog.EndOfTurn;
+    
+                   case 'Assignment':
                     // console.log("====================Assignment")
                     // await stepContext.context.sendActivity("deposit");
                     stuDialogInternalVar = "Assignment"
@@ -254,6 +308,165 @@ class StudentDialog extends ComponentDialog {
         } catch (Exception) {
             console.log("error")
         }
+        return Dialog.EndOfTurn;
+    }
+    async final(stepContext) {
+        console.log("hey4")
+        await stepContext.context.sendActivity({type: ActivityTypes.Typing});
+        try {
+            var res;
+            res=stepContext.result;
+            console.log("----->>",res)
+        
+            switch (res.trim()) {
+                case 'Attendance Details':
+                     console.log("====================Attendance")
+                   var attendace;
+                    await db.studentAttendanceDetail('2018PUSSHBSAX06587').then(async result => {
+                        // console.log("=>>>>>>>>",result)
+                        attendace = result
+                    }).catch(err => {
+                        console.log("hereeeeeeee", err)
+                    })
+                    // console.log("=====>>>>", attendace)
+                    var acard = await stucard.attendanceCard(attendace)
+                    await stepContext.context.sendActivity({
+                        attachments: [CardFactory.adaptiveCard(acard)]
+                    });
+                    await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+                    await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Attendance Details', 'Marks Details', 'Switch Role']));
+                    return Dialog.EndOfTurn;
+    
+                case 'Marks Details':
+                    console.log("====================CGPA",res)
+                     var dbcgpa = []
+                    var dcgpa
+                    await db.studentMarksDetail('2018PUSSHBSAX06587').then(async result => {
+                        // console.log("=>>>>>>>>",result)
+                        dcgpa = result
+
+                    }).catch(err => {
+                        console.log("hereeeeeeee", err)
+                    })
+                    var s = [];
+                    var s2 = [];
+                    dcgpa.recordset.forEach(element => {
+
+                        if (element.semester === 'I') {
+                            s.push(element)
+                        }
+                        else if (element.semester === 'II') {
+                            s2.push(element)
+                        }
+                    });
+                    // console.log("ssssss",s, s2)
+                    dbcgpa.push(s)
+                    dbcgpa.push(s2)
+                    // console.log("=====>>>>", dbcgpa[0])
+                    const cgpa = { attachments: [], attachmentLayout: AttachmentLayoutTypes.Carousel };
+                    for (var i = 0; i < dbcgpa.length; i++) {
+                         var ccard = await stucard.cgpaCard(dbcgpa[i], dbcgpa.length)
+                         var cgcard = await CardFactory.adaptiveCard(ccard)
+                        cgpa.attachments.push(cgcard);    
+                    }
+                       var iccard = await stucard.imarkCard()
+                       var igcard = await CardFactory.adaptiveCard(iccard)
+                       cgpa.attachments.push(igcard);
+
+                        await stepContext.context.sendActivity(cgpa)
+                          await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+                    await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Attendance Details', 'Marks Details', 'Switch Role']));
+                    return Dialog.EndOfTurn;
+    
+                  case 'Switch Role':
+                    // console.log("exit-------------------")
+                    return await stepContext.endDialog();
+
+            }
+        } catch (Exception) {
+            console.log("error")
+        }
+        return Dialog.EndOfTurn;
+       
+    }
+async finall(stepContext) {
+        console.log("hey4")
+        await stepContext.context.sendActivity({type: ActivityTypes.Typing});
+        try {
+            var res;
+            res=stepContext.result;
+            console.log("----->>",res)
+        
+            switch (res.trim()) {
+                case 'Attendance Details':
+                     console.log("====================Attendance")
+                   var attendace;
+                    await db.studentAttendanceDetail('2018PUSSHBSAX06587').then(async result => {
+                        // console.log("=>>>>>>>>",result)
+                        attendace = result
+                    }).catch(err => {
+                        console.log("hereeeeeeee", err)
+                    })
+                    // console.log("=====>>>>", attendace)
+                    var acard = await stucard.attendanceCard(attendace)
+                    await stepContext.context.sendActivity({
+                        attachments: [CardFactory.adaptiveCard(acard)]
+                    });
+                    await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+                    await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Attendance Details', 'Marks Details', 'Switch Role']));
+                    return Dialog.EndOfTurn;
+    
+                case 'Marks Details':
+                    console.log("====================CGPA",res)
+                     var dbcgpa = []
+                    var dcgpa
+                    await db.studentMarksDetail('2018PUSSHBSAX06587').then(async result => {
+                        // console.log("=>>>>>>>>",result)
+                        dcgpa = result
+
+                    }).catch(err => {
+                        console.log("hereeeeeeee", err)
+                    })
+                    var s = [];
+                    var s2 = [];
+                    dcgpa.recordset.forEach(element => {
+
+                        if (element.semester === 'I') {
+                            s.push(element)
+                        }
+                        else if (element.semester === 'II') {
+                            s2.push(element)
+                        }
+                    });
+                    // console.log("ssssss",s, s2)
+                    dbcgpa.push(s)
+                    dbcgpa.push(s2)
+                    // console.log("=====>>>>", dbcgpa[0])
+                    const cgpa = { attachments: [], attachmentLayout: AttachmentLayoutTypes.Carousel };
+                    for (var i = 0; i < dbcgpa.length; i++) {
+                         var ccard = await stucard.cgpaCard(dbcgpa[i], dbcgpa.length)
+                         var cgcard = await CardFactory.adaptiveCard(ccard)
+                        cgpa.attachments.push(cgcard);    
+                    }
+                       var iccard = await stucard.imarkCard()
+                       var igcard = await CardFactory.adaptiveCard(iccard)
+                       cgpa.attachments.push(igcard);
+
+                        await stepContext.context.sendActivity(cgpa)
+                          await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+                    await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Attendance Details', 'Marks Details', 'Switch Role']));
+                    return Dialog.EndOfTurn;
+    
+                  case 'Switch Role':
+                    // console.log("exit-------------------")
+                    return await stepContext.endDialog();
+
+            }
+        } catch (Exception) {
+            console.log("error")
+        }
+        return Dialog.EndOfTurn;
+       
     }
 }
 
