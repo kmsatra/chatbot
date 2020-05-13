@@ -50,7 +50,7 @@ class feeDetailsDialog extends ComponentDialog {
         return Dialog.EndOfTurn;
     }
     async schoolSelectionStep(stepContext) {
-        console.log("campusSelected=attendance------------->>>>>>>", stepContext.context.activity.value);
+        console.log("222222222222222222", stepContext.context.activity.value);
 
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         if (stepContext.context.activity.value) {
@@ -74,7 +74,7 @@ class feeDetailsDialog extends ComponentDialog {
         }
     }
     async deptSelectionStep(stepContext) {
-        console.log("schoolSelected=attendance------------->>>>>>>", stepContext.context.activity.value);
+        console.log("s333333333333333333>", stepContext.context.activity.value);
         
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         
@@ -97,7 +97,7 @@ class feeDetailsDialog extends ComponentDialog {
         }
     }
     async semSelectionStep(stepContext) {
-        console.log("departmentSelected=attendance------------->>>>>>>", stepContext.context.activity.value.x);
+        console.log("44444444444444444444>", stepContext.context.activity.value.x);
 
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         if (stepContext.context.activity.value) {
@@ -124,7 +124,7 @@ class feeDetailsDialog extends ComponentDialog {
         }
     }
     async classSelectionStep(stepContext) {
-        console.log("semesterSelected=fee details------------->>>>>>>", stepContext.context.activity.value.x);
+        console.log("55555555555555555555>", stepContext.context.activity.value.x);
         if (stepContext.context.activity.value) {
 
             await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
@@ -148,7 +148,7 @@ class feeDetailsDialog extends ComponentDialog {
         }
     }
     async studentSelectionStep(stepContext) {
-        console.log("classSelected=attendance------------->>>>>>>", stepContext.context.activity.value.x);
+        console.log("666666666666666666666", stepContext.context.activity.value.x);
         if (stepContext.context.activity.value) {
 
             await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
@@ -172,7 +172,7 @@ class feeDetailsDialog extends ComponentDialog {
         }
     }
     async studentDetailStep(stepContext) {
-        console.log("studentSelected=attendance------------->>>>>>>", stepContext.context.activity.value.x);
+        console.log("777777777777777777777777>>", stepContext.context.activity.value.x);
         if (stepContext.context.activity.value) {
              await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
             var fees;
@@ -189,12 +189,14 @@ class feeDetailsDialog extends ComponentDialog {
                     });
                     // return Dialog.EndOfTurn;
                     // return await stepContext.endDialog()
-                    return await stepContext.next();
+            return await stepContext.endDialog()
+           
         }
         else {
             return await stepContext.endDialog();
+
         }
-        // return Dialog.EndOfTurn;
+         return Dialog.EndOfTurn;
     }
 }
 

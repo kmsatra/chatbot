@@ -458,8 +458,9 @@ async finall(stepContext) {
                     return Dialog.EndOfTurn;
     
                   case 'Switch Role':
-                    // console.log("exit-------------------")
-                    return await stepContext.endDialog();
+                        await stepContext.context.sendActivity("Please choose a role to proceed:")
+                     await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Management','Faculty', 'Student', 'Parent']));
+                 return Dialog.EndOfTurn;
 
             }
         } catch (Exception) {

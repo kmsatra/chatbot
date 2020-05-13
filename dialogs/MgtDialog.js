@@ -26,7 +26,9 @@ class MgtDialog extends ComponentDialog {
             this.buttonresponse.bind(this),
             this.last.bind(this),
             this.options.bind(this),
-            this.tryOut.bind(this)
+            this.tryOut.bind(this),
+            // this.tryOut1.bind(this),
+            // this.tryOut2.bind(this)
         ]));
         this.initialDialogId = WATERFALL_DIALOG;
     }
@@ -36,12 +38,11 @@ class MgtDialog extends ComponentDialog {
         await stepContext.context.sendActivity({type: ActivityTypes.Typing});
          var mgtDialogInternalVar = "";
         
-        console.log("::::::::::::::::::::::::::::::::", mgtDialogInternalVar)
+        console.log("1111111111", mgtDialogInternalVar)
         if (mgtDialogInternalVar === "" || mgtDialogInternalVar === null) {
             var data
             await stepContext.context.sendActivity({type: ActivityTypes.Typing});
             await db.managementFeesDetail('main').then(async result => {
-                 console.log("=>>>>>>>>",result)
                 data = result
             }).catch(err => {
                 console.log("hereeeeeeee", err)
@@ -63,6 +64,7 @@ class MgtDialog extends ComponentDialog {
     }
 
     async last(stepContext) {
+        console.log("2222222")
         await stepContext.context.sendActivity({type: ActivityTypes.Typing});
 
         var dbcgpa = []
@@ -134,7 +136,7 @@ class MgtDialog extends ComponentDialog {
 
         // }
         try {
-            if (stepContext.context.activity.value && stepContext.context.activity.value.x) {
+            if (stepContext.context.activity.value && stepContext.context.activity.value.x ) {
                 var res;
                 res = stepContext.context.activity.value.x
                 console.log("",res)
@@ -162,9 +164,9 @@ class MgtDialog extends ComponentDialog {
     }
 
     async options(stepContext) {
+        
+        console.log("333333333main")
         await stepContext.context.sendActivity({type: ActivityTypes.Typing});
-
-        console.log("---------->>>>>> reached here")
         await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
         await stepContext.context.sendActivity(ChoiceFactory.heroCard([ ' Fees Details',
             'Average Attendance', 'Average Marks', 'Switch Role']));
@@ -172,7 +174,8 @@ class MgtDialog extends ComponentDialog {
     }
 
     async tryOut(stepContext) {
-         console.log("----->>first here", stepContext.result)
+
+         console.log("----->>tryout", stepContext.result)
             var res=stepContext.result;
         try {
             console.log("restinf",res.trim())
@@ -181,7 +184,6 @@ class MgtDialog extends ComponentDialog {
                      console.log("1",res);
                     return await stepContext.beginDialog(feeDeta_Dialog);
                     // return Dialog.EndOfTurn;
-                
                 case 'Average Attendance':
                       console.log("1",res);
                     await stepContext.beginDialog(avgAttd_Dialog);
@@ -193,13 +195,97 @@ class MgtDialog extends ComponentDialog {
               case 'Switch Role':
                 console.log("----->>f",res)
                    return await stepContext.endDialog();
-                    //  return Dialog.EndOfTurn;
+                case 'exit':
+                await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+                await stepContext.context.sendActivity(ChoiceFactory.heroCard([ ' Fees Details',
+            'Average Attendance', 'Average Marks', 'Switch Role']));
+                return Dialog.EndOfTurn;
+        //  return Dialog.EndOfTurn;
             }
         } catch (Exception) {
             console.log("error")
         }
      return Dialog.EndOfTurn;
     }
+    // async tryOut1(stepContext) {
+    //     var res=stepContext.result;
+    //     var result=stepContext.context.activity.text            
+    //      console.log("----->>tryout2",result)
+       
+    //     if(result==="exit")
+    //         {
+    //             console.log("inif")
+    //         await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+    //             await stepContext.context.sendActivity(ChoiceFactory.heroCard([ ' Fees Details',
+    //         'Average Attendance', 'Average Marks', 'Switch Role']));
+    //             return Dialog.EndOfTurn;
+    //     }
+    //     else{
+            
+    //             console.log("outif")
+    //              try {
+    //         console.log("restinf2",res.trim())
+    //         switch(res.trim()) {
+    //             case 'Fees Details':
+    //                  console.log("1",res);
+    //                 return await stepContext.beginDialog(feeDeta_Dialog);
+    //                 // return Dialog.EndOfTurn;
+    //             case 'Average Attendance':
+    //                   console.log("1",res);
+    //                 await stepContext.beginDialog(avgAttd_Dialog);
+    //                 return Dialog.EndOfTurn;
+    //           case 'Average Marks':
+    //                   console.log(res);
+    //                 await stepContext.beginDialog(avgMarks_Dialog);
+    //                 return Dialog.EndOfTurn;
+    //           case 'Switch Role':
+    //             console.log("----->>f",res)
+    //                return await stepContext.endDialog();
+    //                       case 'exit':
+    //             await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+    //             await stepContext.context.sendActivity(ChoiceFactory.heroCard([ ' Fees Details',
+    //         'Average Attendance', 'Average Marks', 'Switch Role']));
+    //             return Dialog.EndOfTurn;
+    //       //  return Dialog.EndOfTurn;
+    //         }
+    //     } catch (Exception) {
+    //         console.log("error")
+    //     }
+    // }
+    //  return Dialog.EndOfTurn;
+    // }
+    // async tryOut2(stepContext) {
+    //      console.log("----->>tryout3", stepContext.result)
+    //         var res=stepContext.result;
+    //     try {
+    //         console.log("restinf3",res.trim())
+    //         switch(res.trim()) {
+    //             case 'Fees Details':
+    //                  console.log("1",res);
+    //                 return await stepContext.beginDialog(feeDeta_Dialog);
+    //                 // return Dialog.EndOfTurn;
+    //             case 'Average Attendance':
+    //                   console.log("1",res);
+    //                 await stepContext.beginDialog(avgAttd_Dialog);
+    //                 return Dialog.EndOfTurn;
+    //           case 'Average Marks':
+    //                   console.log(res);
+    //                 await stepContext.beginDialog(avgMarks_Dialog);
+    //                 return Dialog.EndOfTurn;
+    //           case 'Switch Role':
+    //             console.log("----->>f",res)
+    //                return await stepContext.endDialog();
+    //                     case 'exit':
+    //             await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+    //             await stepContext.context.sendActivity(ChoiceFactory.heroCard([ ' Fees Details',
+    //         'Average Attendance', 'Average Marks', 'Switch Role']));
+    //             return Dialog.EndOfTurn;
+    //   }
+    //     } catch (Exception) {
+    //         console.log("error")
+    //     }
+    //  return Dialog.EndOfTurn;
+    // }
    
 }
 

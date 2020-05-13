@@ -1,5 +1,7 @@
 const { ComponentDialog, NumberPrompt, TextPrompt, ChoiceFactory, WaterfallDialog, Dialog } = require('botbuilder-dialogs');
 const { AttachmentLayoutTypes, CardFactory, ActivityTypes } = require('botbuilder');
+const { fcl_Dialog, FacultyDialog } = require('./FacultyDialog')
+
 const TEXT_PROMPT = 'TEXT_PROMPT';
 const NUMBER_PROMPT = 'NUMBER_PROMPT';
 const WATERFALL_DIALOG = 'WATERFALL_DIALOG';
@@ -14,6 +16,8 @@ class avgMarksDialog extends ComponentDialog {
         super(avgMarks_Dialog);
         this.addDialog(new TextPrompt(TEXT_PROMPT));
         this.addDialog(new NumberPrompt(NUMBER_PROMPT));
+        this.addDialog(new FacultyDialog());
+      
         this.addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
             //this.mgtbuttons.bind(this),
             this.campusSelectionStep.bind(this),
@@ -22,12 +26,16 @@ class avgMarksDialog extends ComponentDialog {
             this.semSelectionStep.bind(this),
             this.classSelectionStep.bind(this),
             this.studentSelectionStep.bind(this),
-            this.studentDetailStep.bind(this)
+            this.studentDetailStep.bind(this),
+            
+            this.testStep.bind(this),
         ]));
         this.initialDialogId = WATERFALL_DIALOG;
     }
 
     async campusSelectionStep(stepContext) {
+        
+        console.log("21111111111111111")
         // var cssCard = await ;
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
 
@@ -44,6 +52,8 @@ class avgMarksDialog extends ComponentDialog {
         return Dialog.EndOfTurn;
     }
     async schoolSelectionStep(stepContext) {
+        
+        console.log("2222222")
         // console.log("campusSelected=Marks------------->>>>>>>", stepContext.context.activity.value);
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         if (stepContext.context.activity.value) {
@@ -66,6 +76,8 @@ class avgMarksDialog extends ComponentDialog {
         }
     }
     async deptSelectionStep(stepContext) {
+        
+        console.log("333333333333333333")
         // console.log("schoolSelected=Marks------------->>>>>>>", stepContext.context.activity.value);
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         if (stepContext.context.activity.value) {
@@ -88,6 +100,8 @@ class avgMarksDialog extends ComponentDialog {
         }
     }
     async semSelectionStep(stepContext) {
+        
+        console.log("44444444444444")
         // console.log("departmentSelected=Marks------------->>>>>>>", stepContext.context.activity.value.x);
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         if (stepContext.context.activity.value) {
@@ -110,6 +124,8 @@ class avgMarksDialog extends ComponentDialog {
         }
     }
     async classSelectionStep(stepContext) {
+        
+        console.log("55555555555555555")
         // console.log("semesterSelected=Marks------------->>>>>>>", stepContext.context.activity.value.x);
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         if (stepContext.context.activity.value) {
@@ -132,6 +148,8 @@ class avgMarksDialog extends ComponentDialog {
         }
     }
     async studentSelectionStep(stepContext) {
+        
+        console.log("66666666666666")
         // console.log("classSelected=Marks------------->>>>>>>", stepContext.context.activity.value.x);
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         if (stepContext.context.activity.value) {
@@ -154,6 +172,8 @@ class avgMarksDialog extends ComponentDialog {
         }
     }
     async studentDetailStep(stepContext) {
+        
+        console.log("7777777777777")
         var attendace;
         console.log("studentSelected=Marks------------->>>>>>>", stepContext.context.activity.value.x);
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
@@ -191,16 +211,25 @@ class avgMarksDialog extends ComponentDialog {
                 var cgcard = await CardFactory.adaptiveCard(ccard)
                 cgpa.attachments.push(cgcard);
             }
-            await stepContext.context.sendActivity(cgpa);
-            return await stepContext.endDialog()
-            // return Dialog.EndOfTurn;
-
-        }
+             await stepContext.context.sendActivity(cgpa);
+                await stepContext.context.sendActivity("Please choose a role to proceed:")
+        await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Management','Faculty', 'Student', 'Parent']));
+        return Dialog.EndOfTurn;
+    }
         else {
             return await stepContext.endDialog();
         }
     }
+async testStep(stepContext) {
+    console.log("gegwfs0",stepContext)
+    if(stepContext.context.activity.text==='Faculty'||stepContext.context.activity)
+        {
+               await stepContext.beginDialog(fcl_Dialog);
+                return Dialog.EndOfTurn;
+            
+        }
+ return Dialog.EndOfTurn   
 }
-
+}
 module.exports.avgMarksDialog = avgMarksDialog;
 module.exports.avgMarks_Dialog = avgMarks_Dialog;

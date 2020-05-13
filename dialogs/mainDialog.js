@@ -7,6 +7,8 @@ const { MgtDialog, Mgt_Dialog } = require('./MgtDialog');
 const { Stu_Dialog, StudentDialog } = require('./StudentDialog')
 const { Par_Dialog, ParentDialog } = require('./ParentDialog')
 const { fcl_Dialog, FacultyDialog } = require('./FacultyDialog')
+const { avgMarks_Dialog, avgMarksDialog } = require('./avgMarksDialog')
+
 const NUMBER_PROMPT = 'NUMBER_PROMPT';
 const MAIN_DIALOG = 'MAIN_DIALOG';
 const WATERFALL_DIALOG = 'WATERFALL_DIALOG';
@@ -20,6 +22,7 @@ class MainDialog extends ComponentDialog {
         this.addDialog(new NumberPrompt(NUMBER_PROMPT));
         // this.addDialog(new TopLevelDialog());
         this.addDialog(new StudentDialog());
+        this.addDialog(new avgMarksDialog());
         this.addDialog(new MgtDialog());
         this.addDialog(new FacultyDialog());
         this.addDialog(new ParentDialog());
@@ -95,9 +98,29 @@ class MainDialog extends ComponentDialog {
         }
     }
     async finalStep(stepContext) {
-
+                console.log("hey",stepContext.context.activity.text)
+            if(stepContext.context.activity.text==='Switch Role'){
+        await stepContext.context.sendActivity("Please choose a role to proceed:")
+        await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Management','Faculty', 'Student', 'Parent']));
+        return Dialog.EndOfTurn;
+    
+            }
+            else if(stepContext.context.activity.text==='Average Marks' || stepContext.context.activity )
+                {
+                    console.log("inif")
+                    await stepContext.beginDialog(avgMarks_Dialog);
+                    return Dialog.EndOfTurn;
+              
+                }
+                else{
+                    console.log("putif")
+        //   await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        //    await stepContext.context.sendActivity(ChoiceFactory.heroCard([ ' Fees Details',
+        //     'Average Attendance', 'Average Marks', 'Switch Role']));
+        //    return Dialog.EndOfTurn;
         await this.userProfileAccessor.set(stepContext.context);
         return await stepContext.beginDialog(WATERFALL_DIALOG);
+                }
     }
 }
 

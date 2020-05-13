@@ -28,6 +28,8 @@ class avgAttendanceDialog extends ComponentDialog {
     }
 
     async campusSelectionStep(stepContext) {
+        
+        console.log("11111111111111")
         // var cssCard = await ;
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
 
@@ -45,7 +47,7 @@ class avgAttendanceDialog extends ComponentDialog {
         return Dialog.EndOfTurn;
     }
     async schoolSelectionStep(stepContext) {
-        console.log("campusSelected=attendance------------->>>>>>>", stepContext.context.activity.value);
+        console.log("22222222222222", stepContext.context.activity.value);
 
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         if (stepContext.context.activity.value) {
@@ -68,7 +70,7 @@ class avgAttendanceDialog extends ComponentDialog {
         }
     }
     async deptSelectionStep(stepContext) {
-        console.log("schoolSelected=attendance------------->>>>>>>", stepContext.context.activity.value);
+        console.log("333333333333333", stepContext.context.activity.value);
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         if (stepContext.context.activity.value) {
             var temp = stepContext.context.activity.value.x.split(',');
@@ -91,6 +93,7 @@ class avgAttendanceDialog extends ComponentDialog {
     async semSelectionStep(stepContext) {
         // console.log("departmentSelected=attendance------------->>>>>>>", stepContext.context.activity.value.x);
 
+        console.log("44444444444444")
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         if (stepContext.context.activity.value) {
 
@@ -112,7 +115,7 @@ class avgAttendanceDialog extends ComponentDialog {
         }
     }
     async classSelectionStep(stepContext) {
-        console.log("semesterSelected=attendance------------->>>>>>>", stepContext.context.activity.value.x);
+        console.log("555555555555555555555", stepContext.context.activity.value.x);
         if (stepContext.context.activity.value) {
 
             await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
@@ -136,7 +139,7 @@ class avgAttendanceDialog extends ComponentDialog {
         }
     }
     async studentSelectionStep(stepContext) {
-        console.log("classSelected=attendance------------->>>>>>>", stepContext.context.activity.value.x);
+        console.log("66666666666666666666666666", stepContext.context.activity.value.x);
         if (stepContext.context.activity.value) {
 
             await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
@@ -160,7 +163,7 @@ class avgAttendanceDialog extends ComponentDialog {
     }
     async studentDetailStep(stepContext) {
         var attendace;
-        console.log("studentSelected=attendance------------->>>>>>>", stepContext.context.activity.value.x);
+        console.log("7777777777777777777777", stepContext.context.activity.value.x);
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
         if (stepContext.context.activity.value) {
             var temp = stepContext.context.activity.value.x.split(',')
@@ -175,14 +178,17 @@ class avgAttendanceDialog extends ComponentDialog {
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(acard)]
             });
-            return await stepContext.endDialog()
-        }
+            await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+             await stepContext.context.sendActivity(ChoiceFactory.heroCard([ ' Fees Details',
+            'Average Attendance', 'Average Marks', 'Switch Role']));
+            return Dialog.EndOfTurn;
+      }
         else {
             return await stepContext.endDialog();
         }
-        // return Dialog.EndOfTurn;
+         return Dialog.EndOfTurn;
     }
-}
+ }
 
 module.exports.avgAttendanceDialog = avgAttendanceDialog;
 module.exports.avgAttd_Dialog = avgAttd_Dialog;
