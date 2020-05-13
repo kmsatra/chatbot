@@ -1855,11 +1855,10 @@ exports.Studentfeedetails = async (data) => {
         
                     "actions": [
             {
-                "type": "Action.Submit",
-                "title": "Talk to the Parent",
-                "data": {
-                    "x": "Talk"
-                }
+                 "type": "Action.OpenUrl",
+                    "title": "Talk to parent",
+                    "url": "https://teams.microsoft.com/l/chat/0/0?users=oindrilla.sharma@celebaltech.com&topicName=Prep%20For%20Meeting%20Tomorrow&message=Why%20your%20attendance%20is%20very%20low?"
+                
             }
          ],
     }
