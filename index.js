@@ -59,7 +59,7 @@ adapter.onTurnError = async (context, error) => {
 
     // Send a message to the user
     await conversationState.clear(context);
-    await context.sendActivity("Sorry, I could not understand this. I'm still learning! Please go through these options:-");
+    // await context.sendActivity("Sorry, I could not understand this. I'm still learning! Please go through these options:-");
     // await context.sendActivity('The bot encounted an error or bug.');
     // await context.sendActivity('To continue to run this bot, please fix the bot source code.');
     // Clear out state
