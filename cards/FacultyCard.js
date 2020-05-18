@@ -771,8 +771,6 @@ exports.fclCard = async (data) => {
 
     return fcldetail
 }
-
-
 exports.weekclass = async (data) => {
     var wcCard = {
         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
