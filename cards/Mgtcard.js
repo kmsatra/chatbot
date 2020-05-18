@@ -344,21 +344,21 @@ exports.mgtCard = async (data) => {
                 "type": "Action.Submit",
                 "title": "Fees Details",
                 "data": {
-                    "x": "feeDetails"
+                    "x": "Fees Details"
                 }
             },
             {
                 "type": "Action.Submit",
                 "title": "Average Attendance",
                 "data": {
-                    "x": "avgAttendance"
+                    "x": "Average Attendance"
                 }
             },
             {
                 "type": "Action.Submit",
                 "title": "Average Marks",
                 "data": {
-                    "x": "avgMarks"
+                    "x": "Average Marks"
                 }
             }
         ]

@@ -307,14 +307,14 @@ exports.stuCard = async (data) => {
                 "type": "Action.Submit",
                 "title": "Attendance Details",
                 "data": {
-                    "x": "Attendance"
+                    "x": "Attendance Details"
                 }
             },
             {
                 "type": "Action.Submit",
                 "title": "Marks Details",
                 "data": {
-                    "x": "Mark Details"
+                    "x": "Marks Details"
                 }
             }
 

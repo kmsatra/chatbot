@@ -159,7 +159,8 @@ exports.campusweiseAvgAttendance = async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].campusName}`
+                    "x": `${data[i].recordId},${data[i].campusName}`,
+                    "result": "Campus Name"
                 }
             },
             "items": [
@@ -216,18 +217,16 @@ exports.campusweiseAvgAttendance = async (data, name) => {
                             "width": "stretch",
                             "items": [
                                 {
-                                    "type": "TextBlock",
-                                    "text": "Details >",
-                                    "color": "Accent",
-                                    "wrap": true,
-                                    "horizontalAlignment": "Center",
-                                    "weight": "Bolder"
+                                    "type": "Image",
+                                    "altText": "",
+                                    "url": "https://png.pngtree.com/svg/20170919/2551b1199e.png",
+                                    "height": "stretch",
+                                    "size": "Small",
+                                    "width": "21px",
+                                    "horizontalAlignment": "Center"
                                 }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
-                        }
+                                    ]
+                        },
                     ]
                 }
             ]
@@ -400,7 +399,8 @@ exports.schoolwiseAvgAttendance = async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].schoolName}`
+                    "x": `${data[i].recordId},${data[i].schoolName}`,
+                    "result": "School Name"
                 }
             },
             "items": [
@@ -457,18 +457,16 @@ exports.schoolwiseAvgAttendance = async (data, name) => {
                             "width": "stretch",
                             "items": [
                                 {
-                                    "type": "TextBlock",
-                                    "text": "Details >",
-                                    "color": "Accent",
-                                    "wrap": true,
-                                    "horizontalAlignment": "Center",
-                                    "weight": "Bolder"
+                                    "type": "Image",
+                                    "altText": "",
+                                    "url": "https://png.pngtree.com/svg/20170919/2551b1199e.png",
+                                    "height": "stretch",
+                                    "size": "Small",
+                                    "width": "21px",
+                                    "horizontalAlignment": "Center"
                                 }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
-                        }
+                                    ]
+                        },
                     ]
                 }
             ]
@@ -640,7 +638,8 @@ exports.deptwiseAvgAttendance = async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].departmentName}`
+                    "x": `${data[i].recordId},${data[i].departmentName}`,
+                    "result": "Dept Name"
                 }
             },
             "items": [
@@ -692,22 +691,20 @@ exports.deptwiseAvgAttendance = async (data, name) => {
                             "verticalContentAlignment": "Center",
                             "seperator" : true
                         },
-                        {
+                       {
                             "type": "Column",
                             "width": "stretch",
                             "items": [
                                 {
-                                    "type": "TextBlock",
-                                    "text": "Details >",
-                                    "color": "Accent",
-                                    "wrap": true,
-                                    "horizontalAlignment": "Center",
-                                    "weight": "Bolder"
+                                    "type": "Image",
+                                    "altText": "",
+                                    "url": "https://png.pngtree.com/svg/20170919/2551b1199e.png",
+                                    "height": "stretch",
+                                    "size": "Small",
+                                    "width": "21px",
+                                    "horizontalAlignment": "Center"
                                 }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
+                                    ]
                         }
                     ]
                 }
@@ -879,7 +876,8 @@ exports.semwiseAvgAttendance = async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].semester}`
+                    "x": `${data[i].recordId},${data[i].semester}`,
+                    "result": "Sem Name"
                 }
             },
             "items": [
@@ -936,18 +934,16 @@ exports.semwiseAvgAttendance = async (data, name) => {
                             "width": "stretch",
                             "items": [
                                 {
-                                    "type": "TextBlock",
-                                    "text": "Details >",
-                                    "color": "Accent",
-                                    "wrap": true,
-                                    "horizontalAlignment": "Center",
-                                    "weight": "Bolder"
+                                    "type": "Image",
+                                    "altText": "",
+                                    "url": "https://png.pngtree.com/svg/20170919/2551b1199e.png",
+                                    "height": "stretch",
+                                    "size": "Small",
+                                    "width": "21px",
+                                    "horizontalAlignment": "Center"
                                 }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
-                        }
+                                    ]
+                        },
                     ]
                 }
             ]
@@ -1118,7 +1114,8 @@ exports.classwiseAvgAttendance = async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].class}`
+                    "x": `${data[i].recordId},${data[i].class}`,
+                    "result": "Class Name"
                 }
             },
             "items": [
@@ -1170,23 +1167,21 @@ exports.classwiseAvgAttendance = async (data, name) => {
                             "verticalContentAlignment": "Center",
                             "seperator" : true
                         },
-                        {
+                       {
                             "type": "Column",
                             "width": "stretch",
                             "items": [
                                 {
-                                    "type": "TextBlock",
-                                    "text": "Details >",
-                                    "color": "Accent",
-                                    "wrap": true,
-                                    "horizontalAlignment": "Center",
-                                    "weight": "Bolder"
+                                    "type": "Image",
+                                    "altText": "",
+                                    "url": "https://png.pngtree.com/svg/20170919/2551b1199e.png",
+                                    "height": "stretch",
+                                    "size": "Small",
+                                    "width": "21px",
+                                    "horizontalAlignment": "Center"
                                 }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
-                        }
+                                    ]
+                        },
                     ]
                 }
             ]
@@ -1358,7 +1353,8 @@ exports.sectionwiseAvgAttendance = async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].enrollmentNo},${data[i].name}`
+                    "x": `${data[i].enrollmentNo},${data[i].name}`,
+                    "result":"Student Name"
                 }
             },
             "items": [
@@ -1410,23 +1406,21 @@ exports.sectionwiseAvgAttendance = async (data, name) => {
                             "verticalContentAlignment": "Center",
                             "seperator" : true
                         },
-                        {
+                       {
                             "type": "Column",
                             "width": "stretch",
                             "items": [
                                 {
-                                    "type": "TextBlock",
-                                    "text": "Details >",
-                                    "color": "Accent",
-                                    "wrap": true,
-                                    "horizontalAlignment": "Center",
-                                    "weight": "Bolder"
+                                    "type": "Image",
+                                    "altText": "",
+                                    "url": "https://png.pngtree.com/svg/20170919/2551b1199e.png",
+                                    "height": "stretch",
+                                    "size": "Small",
+                                    "width": "21px",
+                                    "horizontalAlignment": "Center"
                                 }
-                            ],
-                            "horizontalAlignment": "Center",
-                            "verticalContentAlignment": "Center",
-                            "seperator" : true
-                        }
+                                    ]
+                        },
                     ]
                 }
             ]

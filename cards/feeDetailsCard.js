@@ -165,7 +165,8 @@ exports.CampuswisefeedetailCard = async (data) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].CampusName}`
+                    "x": `${data[i].recordId},${data[i].CampusName}`,
+                    "result":"Campus Name"
                 }
             },
             "items": [
@@ -438,7 +439,9 @@ exports.schoolwisefeedetails = async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].SchoolName}`
+                    "x": `${data[i].recordId},${data[i].SchoolName}`,
+                    "result":"School Name"
+           
                 }
             },
             "items": [
@@ -710,7 +713,9 @@ exports.deptwisefeedetails = async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].DepartmentName}`
+                    "x": `${data[i].DepartmentName}`,
+                    "result":"Dept Name"
+           
                 }
             },
             "items": [
@@ -981,7 +986,9 @@ exports.semwisefeedetails= async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].SemesterName}`
+                    "x": `${data[i].recordId},${data[i].SemesterName}`,
+                    "result":"Sem Name"
+           
                 }
             },
             "items": [
@@ -1248,7 +1255,9 @@ exports.classwisefeedetails = async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].recordId},${data[i].ClassName}`
+                    "x": `${data[i].recordId},${data[i].ClassName}`,
+                    "result":"Class Name"
+           
                 }
             },
             "items": [
@@ -1520,7 +1529,9 @@ exports.sectionwisefeedetails = async (data, name) => {
                 "title": "Maunfacturer",
                 "type": "Action.Submit",
                 "data": {
-                    "x": `${data[i].enrollmentNo},${data[i].StudentName}`
+                    "x": `${data[i].enrollmentNo},${data[i].StudentName}`,
+                    "result":"Student Name"
+           
                 }
             },
             "items": [
