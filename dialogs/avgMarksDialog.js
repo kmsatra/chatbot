@@ -1,6 +1,11 @@
+//import files
+
 const { ComponentDialog, NumberPrompt, TextPrompt, ChoiceFactory, WaterfallDialog, Dialog } = require('botbuilder-dialogs');
 const { AttachmentLayoutTypes, CardFactory, ActivityTypes } = require('botbuilder');
 const { fcl_Dialog, FacultyDialog } = require('./FacultyDialog')
+const { avgAttd_Dialog, avgAttendanceDialog } = require('./avgAttendanceDialog')
+const { feeDeta_Dialog, feeDetailsDialog } = require('./feeDetailsDialog')
+const { MAIN_DIALOG, MainDialog } = require('./mainDialog')
 
 const TEXT_PROMPT = 'TEXT_PROMPT';
 const NUMBER_PROMPT = 'NUMBER_PROMPT';
@@ -10,6 +15,9 @@ const db = require('../db/database');
 var avgMarksCard = require('../cards/avgMarksCard');
 var stuCard = require('../cards/studentCard');
 var avgMarksdDialogInternalVar = "", dbresult;
+var mgtServiceCard = require('../cards/serviceCard')
+
+// class declaration
 
 class avgMarksDialog extends ComponentDialog {
     constructor() {
@@ -19,7 +27,6 @@ class avgMarksDialog extends ComponentDialog {
         this.addDialog(new FacultyDialog());
       
         this.addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
-            //this.mgtbuttons.bind(this),
             this.campusSelectionStep.bind(this),
             this.schoolSelectionStep.bind(this),
             this.deptSelectionStep.bind(this),
@@ -27,18 +34,13 @@ class avgMarksDialog extends ComponentDialog {
             this.classSelectionStep.bind(this),
             this.studentSelectionStep.bind(this),
             this.studentDetailStep.bind(this),
-            
-            this.testStep.bind(this),
+            this.tryStep.bind(this),
         ]));
         this.initialDialogId = WATERFALL_DIALOG;
     }
-
+// management marks waterfall begin step 1 
     async campusSelectionStep(stepContext) {
-        
-        console.log("21111111111111111")
-        // var cssCard = await ;
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-
         await db.averageMarks(0, 'campus').then(async result => {
             dbresult = result.recordset
         }).catch(err => {
@@ -48,17 +50,20 @@ class avgMarksDialog extends ComponentDialog {
         await stepContext.context.sendActivity({
             attachments: [CardFactory.adaptiveCard(card)]
         });
-        await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
-        return Dialog.EndOfTurn;
-    }
-    async schoolSelectionStep(stepContext) {
-        
-        console.log("2222222")
-        // console.log("campusSelected=Marks------------->>>>>>>", stepContext.context.activity.value);
-        await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-        if (stepContext.context.activity.value) {
+//add suggestion card
 
-            var temp = stepContext.context.activity.value.x.split(',');
+        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        var mgtSerCard = await mgtServiceCard.mgtServiceCard()
+        await stepContext.context.sendActivity({
+        attachments: [CardFactory.adaptiveCard(mgtSerCard)]
+            });
+        return Dialog.EndOfTurn;
+     }
+//manamgement marks waterfall step 2
+    async schoolSelectionStep(stepContext) {
+        await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
+        if(stepContext.context.activity.value.result==='Campus Name') {
+           var temp = stepContext.context.activity.value.x.split(',');
             await db.averageMarks(temp[0], 'school').then(async result => {
                 dbresult = result.recordset
             }).catch(err => {
@@ -68,20 +73,24 @@ class avgMarksDialog extends ComponentDialog {
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(card)]
             });
-            await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
-            return Dialog.EndOfTurn;
-        }
+//add suggestion card
+         
+        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        var mgtSerCard = await mgtServiceCard.mgtServiceCard()
+        await stepContext.context.sendActivity({
+        attachments: [CardFactory.adaptiveCard(mgtSerCard)]
+            });
+        return Dialog.EndOfTurn;
+     }
         else {
-            return await stepContext.endDialog();
+          return await stepContext.next();
         }
     }
+    
+//manamgement marks waterfall step 3
     async deptSelectionStep(stepContext) {
-        
-        console.log("333333333333333333")
-        // console.log("schoolSelected=Marks------------->>>>>>>", stepContext.context.activity.value);
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-        if (stepContext.context.activity.value) {
-
+         if(stepContext.context.activity.value.result==='School Name') {
             var temp = stepContext.context.activity.value.x.split(',');
             await db.averageMarks(temp[0], 'department').then(async result => {
                 dbresult = result.recordset
@@ -92,21 +101,25 @@ class avgMarksDialog extends ComponentDialog {
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(card)]
             });
-            await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
-            return Dialog.EndOfTurn;
+//add suggestion card
+    
+        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        var mgtSerCard = await mgtServiceCard.mgtServiceCard()
+        await stepContext.context.sendActivity({
+        attachments: [CardFactory.adaptiveCard(mgtSerCard)]
+            });
+        return Dialog.EndOfTurn;
         }
         else {
-            return await stepContext.endDialog();
+            return await stepContext.next();
         }
     }
+    
+//manamgement marks waterfall step 4
     async semSelectionStep(stepContext) {
-        
-        console.log("44444444444444")
-        // console.log("departmentSelected=Marks------------->>>>>>>", stepContext.context.activity.value.x);
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-        if (stepContext.context.activity.value) {
-
-            var temp = stepContext.context.activity.value.x.split(',');
+        if(stepContext.context.activity.value.result==='Dept Name') {
+          var temp = stepContext.context.activity.value.x.split(',');
             await db.averageMarks(temp[0], 'semester').then(async result => {
                 dbresult = result.recordset
             }).catch(err => {
@@ -116,21 +129,25 @@ class avgMarksDialog extends ComponentDialog {
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(card)]
             });
-            await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
-            return Dialog.EndOfTurn;
+//add suggestion card
+
+        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        var mgtSerCard = await mgtServiceCard.mgtServiceCard()
+        await stepContext.context.sendActivity({
+        attachments: [CardFactory.adaptiveCard(mgtSerCard)]
+            });
+        return Dialog.EndOfTurn;
         }
         else {
-            return await stepContext.endDialog();
+             return await stepContext.next();
         }
     }
+    
+//manamgement marks waterfall step 5
     async classSelectionStep(stepContext) {
-        
-        console.log("55555555555555555")
-        // console.log("semesterSelected=Marks------------->>>>>>>", stepContext.context.activity.value.x);
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-        if (stepContext.context.activity.value) {
-
-            var temp = stepContext.context.activity.value.x.split(',');
+        if(stepContext.context.activity.value.result==='Class Name') {
+           var temp = stepContext.context.activity.value.x.split(',');
             await db.averageMarks(temp[0], 'classwise').then(async result => {
                 dbresult = result.recordset
             }).catch(err => {
@@ -140,21 +157,25 @@ class avgMarksDialog extends ComponentDialog {
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(card)]
             });
-            await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
-            return Dialog.EndOfTurn;
+//add suggestion card 
+        
+        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        var mgtSerCard = await mgtServiceCard.mgtServiceCard()
+        await stepContext.context.sendActivity({
+        attachments: [CardFactory.adaptiveCard(mgtSerCard)]
+            });
+        return Dialog.EndOfTurn;
         }
         else {
-            return await stepContext.endDialog();
+   return await stepContext.next();
         }
     }
+    
+//manamgement marks waterfall step 6
     async studentSelectionStep(stepContext) {
-        
-        console.log("66666666666666")
-        // console.log("classSelected=Marks------------->>>>>>>", stepContext.context.activity.value.x);
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-        if (stepContext.context.activity.value) {
-
-            var temp = stepContext.context.activity.value.x.split(',');
+       if(stepContext.context.activity.value.result==='Sem Name') {
+          var temp = stepContext.context.activity.value.x.split(',');
             await db.averageMarks(temp[0], 'studentList').then(async result => {
                 dbresult = result.recordset
             }).catch(err => {
@@ -164,47 +185,45 @@ class avgMarksDialog extends ComponentDialog {
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(card)]
             });
-            await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
-            return Dialog.EndOfTurn;
+//add suggestion card
+       
+        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        var mgtSerCard = await mgtServiceCard.mgtServiceCard()
+        await stepContext.context.sendActivity({
+        attachments: [CardFactory.adaptiveCard(mgtSerCard)]
+            });
+        return Dialog.EndOfTurn;
         }
         else {
-            return await stepContext.endDialog();
+            return await stepContext.next();
         }
     }
+    
+//manamgement marks waterfall step 7
     async studentDetailStep(stepContext) {
-        
-        console.log("7777777777777")
         var attendace;
-        console.log("studentSelected=Marks------------->>>>>>>", stepContext.context.activity.value.x);
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-
-        if (stepContext.context.activity.value) {
-            var temp=stepContext.context.activity.value.x.split(',')
-            // '2018PUSSHBSAX06587'
+        if(stepContext.context.activity.value.result==='Student Name') {
+          var temp=stepContext.context.activity.value.x.split(',')
             var dbcgpa = []
             var dcgpa
             await db.studentMarksDetail(temp[0]).then(async result => {
-                // console.log("=>>>>>>>>",result)
                 dcgpa = result
-
-            }).catch(err => {
+           }).catch(err => {
                 console.log("hereeeeeeee", err)
             })
             var s = [];
             var s2 = [];
             dcgpa.recordset.forEach(element => {
-
-                if (element.semester === 'I') {
+               if (element.semester === 'I') {
                     s.push(element)
                 }
                 else if (element.semester === 'II') {
                     s2.push(element)
                 }
             });
-            // console.log("ssssss",s, s2)
             dbcgpa.push(s)
             dbcgpa.push(s2)
-             console.log("=====>>>>")
             const cgpa = { attachments: [], attachmentLayout: AttachmentLayoutTypes.Carousel };
             for (var i = 0; i < dbcgpa.length; i++) {
                 var ccard = await stuCard.cgpaCard(dbcgpa[i], dbcgpa.length)
@@ -212,24 +231,44 @@ class avgMarksDialog extends ComponentDialog {
                 cgpa.attachments.push(cgcard);
             }
              await stepContext.context.sendActivity(cgpa);
-                await stepContext.context.sendActivity("Please choose a role to proceed:")
-        await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Management','Faculty', 'Student', 'Parent']));
-        return Dialog.EndOfTurn;
-    }
-        else {
-            return await stepContext.endDialog();
-        }
-    }
-async testStep(stepContext) {
-    console.log("gegwfs0",stepContext)
-    if(stepContext.context.activity.text==='Faculty'||stepContext.context.activity)
-        {
-               await stepContext.beginDialog(fcl_Dialog);
-                return Dialog.EndOfTurn;
+//add suggestion card
             
+        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        var mgtSerCard = await mgtServiceCard.mgtServiceCard()
+        await stepContext.context.sendActivity({
+        attachments: [CardFactory.adaptiveCard(mgtSerCard)]
+            });
+        return Dialog.EndOfTurn;
         }
- return Dialog.EndOfTurn   
+        else {
+            return await stepContext.next();
+        }
+    }
+    
+//manamgement marks waterfall step 8 final step
+    async tryStep(stepContext) {
+        var res=stepContext.context.activity.value.x;
+        try {
+            switch(res) {
+                case 'Fee Details':
+                    return await stepContext.beginDialog('feeDeta_Dialog');
+                case 'Average Attendance':
+                    await stepContext.beginDialog('avgAttd_Dialog');
+                    return Dialog.EndOfTurn;
+                case 'Average Marks':
+                await stepContext.beginDialog(avgMarks_Dialog);
+                    return Dialog.EndOfTurn;
+                case 'Switch Role':
+                    return await stepContext.beginDialog('MAIN_DIALOG');
+            }
+        } catch (Exception) {
+            console.log("error")
+        }
+    return Dialog.EndOfTurn;
+    }
 }
-}
+
+//export dialog
+
 module.exports.avgMarksDialog = avgMarksDialog;
 module.exports.avgMarks_Dialog = avgMarks_Dialog;

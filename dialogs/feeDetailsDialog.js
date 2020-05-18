@@ -1,5 +1,13 @@
+// import files
+
 const { ComponentDialog, NumberPrompt, TextPrompt, ChoiceFactory, WaterfallDialog, Dialog } = require('botbuilder-dialogs');
 const { AttachmentLayoutTypes, CardFactory, ActivityTypes } = require('botbuilder');
+const { avgAttd_Dialog, avgAttendanceDialog } = require('./avgAttendanceDialog')
+const { avgMarks_Dialog, avgMarksDialog } = require('./avgMarksDialog')
+const { MgtDialog, Mgt_Dialog } = require('./MgtDialog')
+const { MAIN_DIALOG, MainDialog } = require('./mainDialog')
+
+
 const TEXT_PROMPT = 'TEXT_PROMPT';
 const NUMBER_PROMPT = 'NUMBER_PROMPT';
 const WATERFALL_DIALOG = 'WATERFALL_DIALOG';
@@ -8,57 +16,62 @@ const feeDeta_Dialog = 'feeDeta_Dialog'
 var stuCard = require('../cards/studentCard');
 const db = require('../db/database');
 var feeDetaDialogInternalVar = "", dbresult;
+var mgtServiceCard = require('../cards/serviceCard')
+
+
+//class decalration
 
 class feeDetailsDialog extends ComponentDialog {
     constructor() {
         super(feeDeta_Dialog);
         this.addDialog(new TextPrompt(TEXT_PROMPT));
         this.addDialog(new NumberPrompt(NUMBER_PROMPT));
+        this.addDialog(new avgMarksDialog());
         this.addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
-            //this.mgtbuttons.bind(this),
             this.campusFeeStep.bind(this),
-             this.schoolSelectionStep.bind(this),
+            this.schoolSelectionStep.bind(this),
             this.deptSelectionStep.bind(this),
-             this.semSelectionStep.bind(this),
-             this.classSelectionStep.bind(this),
+            this.semSelectionStep.bind(this),
+            this.classSelectionStep.bind(this),
             this.studentSelectionStep.bind(this),
-            this.studentDetailStep.bind(this)
+            this.studentDetailStep.bind(this),
+            this.tryStep.bind(this)
+
         ]));
         this.initialDialogId = WATERFALL_DIALOG;
     }
 
+//Management fee detail waterfall begin step 1
     async campusFeeStep(stepContext) {
-        console.log("------------------------>hello 1")
-        // var cssCard = await ;
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-        
         await db.feeDetail(0, 'campus').then(async result => {
             dbresult = result.recordset
-        console.log(dbresult)
             const card = await feeDetaCard.CampuswisefeedetailCard(dbresult)
-        
-        console.log("this card hey")
         await stepContext.context.sendActivity({
             attachments: [CardFactory.adaptiveCard(card)]
         });
-       
         }).catch(err => {
-            console.log("error in campus data for fee ", err)
+             console.log("error in school data", err)
         })
-   
-        await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
+
+// add suggestion card 
+
+        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        var mgtSerCard = await mgtServiceCard.mgtServiceCard()
+        await stepContext.context.sendActivity({
+        attachments: [CardFactory.adaptiveCard(mgtSerCard)]
+            });
         return Dialog.EndOfTurn;
     }
+
+//Management fee detail waterfall step 2
+
     async schoolSelectionStep(stepContext) {
-        console.log("222222222222222222", stepContext.context.activity.value);
-
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-        if (stepContext.context.activity.value) {
-
+        if(stepContext.context.activity.value.result==='Campus Name') {
             var temp = stepContext.context.activity.value.x.split(',');
             await db.feeDetail(1, 'school').then(async result => {
                 dbresult = result.recordset
-            
             }).catch(err => {
                 console.log("error in school data for attendance", err)
             })
@@ -66,19 +79,25 @@ class feeDetailsDialog extends ComponentDialog {
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(card)]
             });
-            await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
-            return Dialog.EndOfTurn;
+// add suggestion card
+
+        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        var mgtSerCard = await mgtServiceCard.mgtServiceCard()
+        await stepContext.context.sendActivity({
+        attachments: [CardFactory.adaptiveCard(mgtSerCard)]
+            });
+        return Dialog.EndOfTurn;
         }
         else {
-            return await stepContext.endDialog();
+           return await stepContext.next();
         }
     }
+
+//Management fee detail waterfall step 3
+
     async deptSelectionStep(stepContext) {
-        console.log("s333333333333333333>", stepContext.context.activity.value);
-        
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-        
-        if (stepContext.context.activity.value) {
+        if(stepContext.context.activity.value.result==='School Name') {
             var temp = stepContext.context.activity.value.x.split(',');
             await db.feeDetail(1, 'department').then(async result => {
                 dbresult = result.recordset
@@ -89,21 +108,26 @@ class feeDetailsDialog extends ComponentDialog {
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(card)]
             });
-            await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
-            return Dialog.EndOfTurn;
+// add suggestion card
+
+        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        var mgtSerCard = await mgtServiceCard.mgtServiceCard()
+        await stepContext.context.sendActivity({
+        attachments: [CardFactory.adaptiveCard(mgtSerCard)]
+            });
+          return Dialog.EndOfTurn;
         }
         else {
-            return await stepContext.endDialog();
-        }
+            return await stepContext.next();
+            }
     }
-    async semSelectionStep(stepContext) {
-        console.log("44444444444444444444>", stepContext.context.activity.value.x);
 
-        await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-        if (stepContext.context.activity.value) {
-            console.log(stepContext.context.activity.value.x)
-             global.deptname = stepContext.context.activity.value.x
-         
+//Management fee detail waterfall step 4
+
+    async semSelectionStep(stepContext) {
+       await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
+       if(stepContext.context.activity.value.result==='Dept Name') {
+            global.deptname = stepContext.context.activity.value.x
             var temp = stepContext.context.activity.value.x.split(',');
             await db.feeDetail(1, 'semester').then(async result => {
                 dbresult = result.recordset
@@ -114,25 +138,27 @@ class feeDetailsDialog extends ComponentDialog {
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(card)]
             });
-            console.log("eee",`${deptname}`)
-            
-            await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
+ // add suggestion card
+
+        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        var mgtSerCard = await mgtServiceCard.mgtServiceCard()
+        await stepContext.context.sendActivity({
+        attachments: [CardFactory.adaptiveCard(mgtSerCard)]
+            });
             return Dialog.EndOfTurn;
         }
         else {
-            return await stepContext.endDialog();
-        }
+            return await stepContext.next();
+             }
     }
-    async classSelectionStep(stepContext) {
-        console.log("55555555555555555555>", stepContext.context.activity.value.x);
-        if (stepContext.context.activity.value) {
+//Management fee detail waterfall step 5
 
-            await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-            
-            var temp = stepContext.context.activity.value.x.split(',');
-            await db.feeDetail(1, 'classwise').then(async result => {
-                dbresult = result.recordset
-                console.log(dbresult)
+    async classSelectionStep(stepContext) {
+       if(stepContext.context.activity.value.result==='Sem Name') {
+             await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
+             var temp = stepContext.context.activity.value.x.split(',');
+             await db.feeDetail(1, 'classwise').then(async result => {
+                 dbresult = result.recordset
             }).catch(err => {
                 console.log("error in classwise data for Fee detail", err)
             })
@@ -140,23 +166,27 @@ class feeDetailsDialog extends ComponentDialog {
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(card)]
             });
-            await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
+// add suggestion card
+
+        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        var mgtSerCard = await mgtServiceCard.mgtServiceCard()
+        await stepContext.context.sendActivity({
+        attachments: [CardFactory.adaptiveCard(mgtSerCard)]
+            });
             return Dialog.EndOfTurn;
         }
         else {
-            return await stepContext.endDialog();
-        }
+        return await stepContext.next();
+             }
     }
+//Management fee detail waterfall step 6
+  
     async studentSelectionStep(stepContext) {
-        console.log("666666666666666666666", stepContext.context.activity.value.x);
-        if (stepContext.context.activity.value) {
-
+      if(stepContext.context.activity.value.result==='Class Name') {
             await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-            
             var temp = stepContext.context.activity.value.x.split(',');
             await db.feeDetail(1, 'studentList').then(async result => {
                 dbresult = result.recordset
-            console.log(dbresult)
             }).catch(err => {
                 console.log("error in student list for attendance", err)
             })
@@ -164,41 +194,73 @@ class feeDetailsDialog extends ComponentDialog {
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(card)]
             });
-            await stepContext.context.sendActivity('Type exit or help to retun to main menu.');
+// add suggestion card
+
+        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        var mgtSerCard = await mgtServiceCard.mgtServiceCard()
+        await stepContext.context.sendActivity({
+        attachments: [CardFactory.adaptiveCard(mgtSerCard)]
+            });
             return Dialog.EndOfTurn;
         }
         else {
-            return await stepContext.endDialog();
-        }
+            return await stepContext.next();
+             }
     }
+//Management fee detail waterfall step 7
+
     async studentDetailStep(stepContext) {
-        console.log("777777777777777777777777>>", stepContext.context.activity.value.x);
-        if (stepContext.context.activity.value) {
-             await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
+      if(stepContext.context.activity.value.result==='Student Name') {
+            await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
             var fees;
-                    await db.studenFeesDetail('2018PUSSHBSAX06587').then(async result => {
-                        // console.log("=>>>>>>>>",result)
-                        fees = result
+                await db.studenFeesDetail('2018PUSSHBSAX06587').then(async result => {
+                    fees = result
                     }).catch(err => {
                         console.log("hereeeeeeee", err)
                     })
-                    // console.log("=====>>>>", fees)s
                     var card = await feeDetaCard.Studentfeedetails(fees)
                     await stepContext.context.sendActivity({
-                        attachments: [CardFactory.adaptiveCard(card)]
+                     attachments: [CardFactory.adaptiveCard(card)]
                     });
-                    // return Dialog.EndOfTurn;
-                    // return await stepContext.endDialog()
-            return await stepContext.endDialog()
-           
+//add suggestion card
+
+        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
+        var mgtSerCard = await mgtServiceCard.mgtServiceCard()
+        await stepContext.context.sendActivity({
+        attachments: [CardFactory.adaptiveCard(mgtSerCard)]
+            });
+        return Dialog.EndOfTurn;
         }
         else {
-            return await stepContext.endDialog();
-
+         return await stepContext.next();
         }
          return Dialog.EndOfTurn;
     }
+//Management fee detail waterfall step 8 final step
+    async tryStep(stepContext) {
+        var res=stepContext.context.activity.value.x;
+        try {
+            switch(res) {
+                case 'Fee Details':
+                    return await stepContext.beginDialog(feeDeta_Dialog);
+                case 'Average Attendance':
+                    await stepContext.beginDialog('avgAttd_Dialog');
+                    return Dialog.EndOfTurn;
+                case 'Average Marks':
+                    await stepContext.beginDialog('avgMarks_Dialog');
+                    return Dialog.EndOfTurn;
+                case 'Switch Role':
+                    return await stepContext.beginDialog('MAIN_DIALOG');
+     }
+        } catch (Exception) {
+            console.log("error")
+        }
+    return Dialog.EndOfTurn;
+    }
+        
 }
+
+// exports dialog
 
 module.exports.feeDetailsDialog = feeDetailsDialog;
 module.exports.feeDeta_Dialog = feeDeta_Dialog;
