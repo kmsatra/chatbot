@@ -24,10 +24,6 @@ class DialogBot extends ActivityHandler {
         this.onMessage(async (context, next) => {
             console.log('Running dialog with Message Activity.');
             const members = await TeamsInfo.getMembers(context);
-
-            // console.log("data of user=======>>>>>",members)
-
-            // Run the Dialog with the new message Activity.
             await this.dialog.run(context, this.dialogState);
 
             // By calling next() you ensure that the next BotHandler is run.
@@ -35,6 +31,7 @@ class DialogBot extends ActivityHandler {
         });
 
         this.onDialog(async (context, next) => {
+
             // Save any state changes. The load happened during the execution of the Dialog.
             await this.conversationState.saveChanges(context, false);
             await this.userState.saveChanges(context, false);
