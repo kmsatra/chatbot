@@ -27,7 +27,6 @@ exports.login = (email) => new Promise((resolve, reject) => {
             reject();
         }
         else {
-            // console.log(recordset);
             resolve(recordset);
         }
     });
@@ -44,7 +43,6 @@ exports.managementFeesDetail = (type) => new Promise((resolve, reject) => {
             reject();
         }
         else {
-            // console.log(recordset);
             resolve(recordset);
         }
     });
@@ -62,7 +60,6 @@ exports.studentMainDetail = (enrollmentId, type) => new Promise((resolve, reject
             reject();
         }
         else {
-         //console.log(recordset);
             resolve(recordset);
         }
     });
@@ -80,7 +77,6 @@ exports.studentAssignmentDetail = (enrollmentId) => new Promise((resolve, reject
             reject();
         }
         else {
-         //console.log(recordset);
             resolve(recordset);
         }
     });
