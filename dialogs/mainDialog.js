@@ -3,12 +3,13 @@
 
 // import files
 const { ComponentDialog, DialogSet, DialogTurnStatus, WaterfallDialog, ChoiceFactory, Dialog, NumberPrompt } = require('botbuilder-dialogs');
-const {ActivityTypes} = require('botbuilder');
+const {ActivityTypes,CardFactory} = require('botbuilder');
 const { MgtDialog, Mgt_Dialog } = require('./MgtDialog');
 const { Stu_Dialog, StudentDialog } = require('./StudentDialog')
 const { Par_Dialog, ParentDialog } = require('./ParentDialog')
 const { fcl_Dialog, FacultyDialog } = require('./FacultyDialog')
 const { avgMarks_Dialog, avgMarksDialog } = require('./avgMarksDialog')
+var personaServiceCard = require('../cards/serviceCard')
 
 const NUMBER_PROMPT = 'NUMBER_PROMPT';
 const MAIN_DIALOG = 'MAIN_DIALOG';
@@ -62,18 +63,25 @@ class MainDialog extends ComponentDialog {
 // waterfall start step 1
     async initialStep(stepContext) {
         await stepContext.context.sendActivity({type: ActivityTypes.Typing});
-        await stepContext.context.sendActivity("Please choose a role to proceed:")
-        await stepContext.context.sendActivity(ChoiceFactory.heroCard(['Management','Faculty', 'Student', 'Parent']));
+        var perSerCard = await personaServiceCard.PersonaServiceCard()
+        await stepContext.context.sendActivity({
+            attachments: [CardFactory.adaptiveCard(perSerCard)]
+        });
         return Dialog.EndOfTurn;
     }
 
 // waterfall step 2
     async userInput(stepContext) {
-         console.log("Second step of main dialog");
         await stepContext.context.sendActivity({type: ActivityTypes.Typing});
-        switch (stepContext.result) {
+        console.log("Second step of main dialog",stepContext.context.activity.value.persona);
+        var res = stepContext.context.activity.value.persona;
+        console.log("testinggggggggggggggggggggggggggggggg",res)
+        switch (res) {
             case 'Management':
                 await stepContext.beginDialog(Mgt_Dialog);
+                return Dialog.EndOfTurn;
+            case 'Faculty':
+                await stepContext.beginDialog(fcl_Dialog);
                 return Dialog.EndOfTurn;
             case 'Student':
                 await stepContext.beginDialog(Stu_Dialog);
@@ -81,18 +89,18 @@ class MainDialog extends ComponentDialog {
             case 'Parent':
                 await stepContext.beginDialog(Par_Dialog);
                 return Dialog.EndOfTurn;
-            case 'Faculty':
-                await stepContext.beginDialog(fcl_Dialog);
-                return Dialog.EndOfTurn;
             default:
                 return await stepContext.beginDialog(WATERFALL_DIALOG);
         }
+        return Dialog.EndOfTurn;
     }
 
 //waterfall step 3
     async finalStep(stepContext) {
             console.log("3rd step of main dialog")
-     }
+            
+        return Dialog.EndOfTurn;   
+    }
 }
 
 module.exports.MainDialog = MainDialog;

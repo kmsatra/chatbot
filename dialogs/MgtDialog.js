@@ -38,7 +38,7 @@ class MgtDialog extends ComponentDialog {
 
     async buttonresponse(stepContext) {
         await stepContext.context.sendActivity({type: ActivityTypes.Typing});
-        if (stepContext.context.activity.value === "" || stepContext.context.activity.value === undefined) {
+        if (stepContext.context.activity.value === "" || stepContext.context.activity.value.x === undefined) {
             var data
             await stepContext.context.sendActivity({type: ActivityTypes.Typing});
             await db.managementFeesDetail('main').then(async result => {
@@ -124,18 +124,18 @@ class MgtDialog extends ComponentDialog {
         } catch (Exception) {
             console.log("error")
         }
+     return Dialog.EndOfTurn;
     }
 //management persona waterfall step 3
 
     async options(stepContext) {
         console.log("step3",stepContext)
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
             var mgtSerCard = await mgtServiceCard.mgtServiceCard()
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(mgtSerCard)]
             });
-         return Dialog.EndOfTurn;
+     return Dialog.EndOfTurn;
   }
 
   //management persona waterfall step 4 final step

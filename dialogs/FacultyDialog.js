@@ -34,8 +34,9 @@ class FacultyDialog extends ComponentDialog {
 
 //Faculty persona waterfall begin step 1
     async fclbutton(stepContext) {
+        console.log("faculty step1")
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-      if (stepContext.context.activity.value === "" || stepContext.context.activity.value === undefined) {
+      if (stepContext.context.activity.value === "" || stepContext.context.activity.value.x === undefined) {
               var data
             await db.facultyMainDetail('1').then(async result => {
                 data = result
@@ -51,6 +52,7 @@ class FacultyDialog extends ComponentDialog {
         else {
             return await stepContext.next();
         }
+    return Dialog.EndOfTurn;
     }
 // faculty waterfall step 2
 
@@ -146,13 +148,13 @@ class FacultyDialog extends ComponentDialog {
         } catch (Exception) {
             console.log("error 2")
         }
+        return Dialog.EndOfTurn;
     }
 
 //faculty waterfall step 3
     async options(stepContext) {
             await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-            await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
-           var facSerCard = await facServiceCard.facServiceCard()
+            var facSerCard = await facServiceCard.facServiceCard()
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(facSerCard)]
             });
@@ -198,7 +200,9 @@ async applyLeave(stepContext) {
         else{
             return await stepContext.beginDialog('MAIN_DIALOG');
         }
+        return Dialog.EndOfTurn;
     }
+ 
 }
 
 // exports dialog

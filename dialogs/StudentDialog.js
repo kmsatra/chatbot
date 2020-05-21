@@ -32,7 +32,7 @@ class StudentDialog extends ComponentDialog {
 //student persona waterfall begin step 1
     async stubutton(stepContext) {
         await stepContext.context.sendActivity({type: ActivityTypes.Typing});
-        if (stepContext.context.activity.value === "" || stepContext.context.activity.value === undefined) {
+        if (stepContext.context.activity.value === "" || stepContext.context.activity.value.x === undefined) {
             var data
             await db.studentMainDetail('2018PUSSHBSAX06587', 'student', 'Yogita Jain').then(async result => {
                 data = result
@@ -116,7 +116,6 @@ class StudentDialog extends ComponentDialog {
     
     async options(stepContext) {
          await stepContext.context.sendActivity({type: ActivityTypes.Typing});
-         await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
          await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
             var sSerCard = await stuServiceCard.stuServiceCard()
             await stepContext.context.sendActivity({

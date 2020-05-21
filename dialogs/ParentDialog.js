@@ -31,7 +31,7 @@ class ParentDialog extends ComponentDialog {
 //parent persona waterfall begin step 1
     async stubutton(stepContext) {
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-        if (stepContext.context.activity.value === "" || stepContext.context.activity.value === undefined) {
+        if (stepContext.context.activity.value === "" || stepContext.context.activity.value.x === undefined) {
             var data
             await db.studentMainDetail('2018PUSSHBSAX06587', 'parent').then(async result => {
                 data = result
@@ -125,7 +125,6 @@ class ParentDialog extends ComponentDialog {
 //parent waterfall step 3
     async options(stepContext) {
         await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
-        await stepContext.context.sendActivity("Here are few suggesstions which you can try: ")
             var pSerCard = await parServiceCard.parServiceCard()
             await stepContext.context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(pSerCard)]
