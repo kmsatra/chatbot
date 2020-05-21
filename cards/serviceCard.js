@@ -1,8 +1,207 @@
+exports.PersonaServiceCard = async (data) => {
+    var personaServiceCard= {
+        "type": "AdaptiveCard",
+        "version": "1.0",
+        "body": [
+            {
+                "type": "TextBlock",
+                "text": "Please select a persona",
+                "horizontalAlignment": "Left",
+                "weight": "Bolder"
+            },
+            {
+                "type": "Container",
+                "items": [
+                    {
+                        "type": "ColumnSet",
+                        "columns": [
+                            {
+                                "type": "Column",
+                                "width": "auto",
+                                "items": [
+                                    {
+                                        "type": "Image",
+                                        "altText": "",
+                                        "url": "https://cdn4.iconfinder.com/data/icons/people-avatar-1-2/512/29-512.png",
+                                        "size": "Small",
+                                        "style": "Person",
+                                        "backgroundColor": "white"
+                                    }
+                                ],
+                                "verticalContentAlignment": "Center"
+                            },
+                            {
+                                "type": "Column",
+                                "width": "auto",
+                                "items": [
+                                    {
+                                        "type": "ActionSet",
+                                        "actions": [
+                                            {
+                                                "type": "Action.Submit",
+                                                "title": "Management",
+                                                "data":{
+                                                    "persona":"Management"
+                                                },
+                                                "style": "positive"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "Container",
+                "items": [
+                    {
+                        "type": "ColumnSet",
+                        "columns": [
+                            {
+                                "type": "Column",
+                                "width": "auto",
+                                "items": [
+                                    {
+                                        "type": "Image",
+                                        "altText": "",
+                                        "url": "https://cdn.iconscout.com/icon/free/png-256/avatar-369-456321.png",
+                                        "size": "Small",
+                                        "style": "Person",
+                                        "backgroundColor": "white"
+                                    }
+                                ],
+                                "verticalContentAlignment": "Center"
+                            },
+                            {
+                                "type": "Column",
+                                "width": "auto",
+                                "items": [
+                                    {
+                                        "type": "ActionSet",
+                                        "actions": [
+                                            {
+                                                "type": "Action.Submit",
+                                                "title": "Faculty",
+                                                "data":{
+                                                    "persona":"Faculty"
+                                                },
+                                                "style": "positive"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "Container",
+                "items": [
+                    {
+                        "type": "ColumnSet",
+                        "columns": [
+                            {
+                                "type": "Column",
+                                "width": "auto",
+                                "items": [
+                                    {
+                                        "type": "Image",
+                                        "altText": "",
+                                        "url": "https://cdn4.iconfinder.com/data/icons/professions-1-1/128/25-512.png",
+                                        "size": "Small",
+                                        "style": "Person",
+                                        "backgroundColor": "white"
+                                    }
+                                ],
+                                "verticalContentAlignment": "Center"
+                            },
+                            {
+                                "type": "Column",
+                                "width": "auto",
+                                "items": [
+                                    {
+                                        "type": "ActionSet",
+                                        "actions": [
+                                            {
+                                                "type": "Action.Submit",
+                                                "title": "Student",
+                                                "data":{
+                                                    "persona":"Student"
+                                                },
+                                                "style": "positive"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "Container",
+                "items": [
+                    {
+                        "type": "ColumnSet",
+                        "columns": [
+                            {
+                                "type": "Column",
+                                "width": "auto",
+                                "items": [
+                                    {
+                                        "type": "Image",
+                                        "altText": "",
+                                        "url": "https://img.pngio.com/parent-directory-avatar-2png-avatar-png-256_256.png",
+                                        "size": "Small",
+                                        "style": "Person",
+                                        "backgroundColor": "white"
+                                    }
+                                ],
+                                "verticalContentAlignment": "Center"
+                            },
+                            {
+                                "type": "Column",
+                                "width": "auto",
+                                "items": [
+                                    {
+                                        "type": "ActionSet",
+                                        "actions": [
+                                            {
+                                                "type": "Action.Submit",
+                                                "title": "Parent",
+                                                "data":{
+                                                    "persona":"Parent"
+                                                },
+                                                "style": "positive"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+    }
+    return personaServiceCard
+}
+   
 exports.parServiceCard = async (data) => {
  var parServiceCard= {
     "type": "AdaptiveCard",
     "version": "1.0",
     "body": [
+        {
+            "type": "TextBlock",
+            "text": "Here are few suggesstions which you can try:",
+            "horizontalAlignment": "Left",
+            "weight": "Bolder"
+        },
         {
             "type": "ColumnSet",
             "columns": [
@@ -101,6 +300,12 @@ exports.stuServiceCard = async (data) => {
     "version": "1.0",
     "body": [
         {
+            "type": "TextBlock",
+            "text": "Here are few suggesstions which you can try:",
+            "horizontalAlignment": "Left",
+            "weight": "Bolder"
+        },
+        {
             "type": "ColumnSet",
             "columns": [
                 {
@@ -173,6 +378,12 @@ exports.facServiceCard = async (data) => {
     "type": "AdaptiveCard",
     "version": "1.0",
     "body": [
+        {
+            "type": "TextBlock",
+            "text": "Here are few suggesstions which you can try:",
+            "horizontalAlignment": "Left",
+            "weight": "Bolder"
+        },
         {
             "type": "ColumnSet",
             "columns": [
@@ -288,6 +499,12 @@ exports.mgtServiceCard = async (data) => {
     "type": "AdaptiveCard",
     "version": "1.0",
     "body": [
+        {
+            "type": "TextBlock",
+            "text": "Here are few suggesstions which you can try:",
+            "horizontalAlignment": "Left",
+            "weight": "Bolder"
+        },
         {
             "type": "ColumnSet",
             "columns": [

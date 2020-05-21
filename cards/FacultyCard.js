@@ -100,7 +100,7 @@ exports.fclCard = async (data) => {
                             ],
                             "horizontalAlignment": "Center",
                             "verticalContentAlignment": "Center",
-                            "seperator": true
+                          
                         },
                         {
                             "type": "Column",
@@ -115,7 +115,7 @@ exports.fclCard = async (data) => {
                             ],
                             "horizontalAlignment": "Center",
                             "verticalContentAlignment": "Center",
-                            "seperator": true
+                            
                         },
                         {
                             "type": "Column",
@@ -131,7 +131,7 @@ exports.fclCard = async (data) => {
                             ],
                             "horizontalAlignment": "Center",
                             "verticalContentAlignment": "Center",
-                            "seperator": true
+                            
                         },
                         {
                             "type": "Column",
@@ -145,7 +145,7 @@ exports.fclCard = async (data) => {
                                 }
                             ],
                             "verticalContentAlignment": "Center",
-                            "seperator": true,
+                            
                             "horizontalAlignment": "Center"
                         }
                     ]
@@ -171,8 +171,7 @@ exports.fclCard = async (data) => {
                                 ],
                                 "horizontalAlignment": "Center",
                                 "verticalContentAlignment": "Center",
-                                "seperator": true,
-                                "separator": true
+                              
                             },
                             {
                                 "type": "Column",
@@ -187,8 +186,7 @@ exports.fclCard = async (data) => {
                                 ],
                                 "horizontalAlignment": "Center",
                                 "verticalContentAlignment": "Center",
-                                "seperator": true,
-                                "separator": true
+                                
                             },
                             {
                                 "type": "Column",
@@ -203,7 +201,7 @@ exports.fclCard = async (data) => {
                                 ],
                                 "horizontalAlignment": "Center",
                                 "verticalContentAlignment": "Center",
-                                "seperator": true
+                                
                             },
                             {
                                 "type": "Column",
@@ -218,7 +216,7 @@ exports.fclCard = async (data) => {
                                 ],
                                 "horizontalAlignment": "Center",
                                 "verticalContentAlignment": "Center",
-                                "seperator": true
+                                
                             }
                         ]
                     }

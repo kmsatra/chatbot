@@ -155,8 +155,7 @@ exports.CampuswisefeedetailCard = async (data) => {
                 }
             ]
         },
-    
-        ]
+    ]  
     }
     for (var i = 0; i < data.length; i++) {
         card['body'].push({
@@ -246,7 +245,7 @@ exports.CampuswisefeedetailCard = async (data) => {
                                     "width": "21px",
                                     "horizontalAlignment": "Center"
                                 }
-                                    ]
+                            ]
                         }
                     ]
                 }
@@ -428,7 +427,8 @@ exports.schoolwisefeedetails = async (data, name) => {
                         ]
                     }
                 ]
-            }
+            },
+            
         ],
         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
     }
@@ -524,8 +524,9 @@ exports.schoolwisefeedetails = async (data, name) => {
                                     ]
                         }
                     ]
-                }
+                },
             ]
+
         })
     }
 
@@ -1863,8 +1864,7 @@ exports.Studentfeedetails = async (data) => {
                 ]
             }
         ],
-        
-                    "actions": [
+        "actions": [
             {
                  "type": "Action.OpenUrl",
                     "title": "Talk to parent",
